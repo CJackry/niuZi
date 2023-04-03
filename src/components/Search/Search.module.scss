@@ -1,0 +1,184 @@
+.root{
+  background: #fff;
+  border-bottom: 1px solid #dddd;
+}
+.root .w{
+  height: 140px;
+}
+.header_box{
+  position: relative;
+  height: 140px;
+}
+
+.logo{
+  position: absolute;
+  width: 190px;
+  height: 120px;
+  left: 0;
+  top: 10px;
+  img{
+    display: block;
+    width: 190px;
+    margin: 0 auto;
+  }
+}
+.search_m{
+  position: relative;
+  width: 100%;
+  height: 60px;
+}
+.search_logo{
+  display: none;
+  position: absolute;
+  width: 125px;
+  height: 40px;
+  top:4px;
+  left: 0;
+}
+.form{
+  position: absolute;
+  left: 260px;
+  top: 25px;
+  height: 32px;
+  width: 490px;
+  border: 2px solid #e2231a;
+  background: #fff;
+}
+.search_bg, .search_input{
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 2px 44px 2px 17px;
+  width: 367px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 12px;
+  border: 1px solid transparent;
+  color: #989898;
+  outline: none;
+}
+.photo_search_btn{
+  position: absolute;
+  right: 75px;
+  top: 10px;
+  width: 19px;
+  height: 15px;
+  overflow: hidden;
+}
+.photo_search_btn, .upload_bg{
+  display: block;
+  width: 20px;
+  height: 20px;
+  line-height: 14px;
+  font-size: 14px;
+  text-align: center;
+  color: #9f9f9f;
+  cursor: pointer;
+}
+
+.form button{
+  position: absolute;
+  right: 0;
+  width: 58px;
+  height: 32px;
+  line-height: 32px;
+  border: none;
+  background: #e1251b;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  transition: background .2s ease;
+}
+.form .search_helper{
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 35px;
+  width: 428px;
+  border: 1px solid #ccc;
+  background-color: #fff;;
+  box-shadow: 1px 2px 1px rgba(0,0,0,.2);
+}
+.search_helper li:hover{
+  background-color: #fff;
+}
+.dropdown{
+  position: absolute;
+  right: 130px;
+  top:25px;
+  z-index:21;
+}
+.cw_icon{
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  float: left;
+  border: 1px solid #e3e4e5;
+}
+.dropdown .cw_icon{
+  width: 130px;
+  height: 34px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 34px;
+  border-color: #eee;
+}
+.dropdown .cw_icon a, .dropdown .iconfont{
+  color: #e1251b;
+  transition:  color .2s ease;
+  font-size: 12px;
+}
+.dropdown .iconfont{
+  margin-right: 13px;
+  font-size: 16px;
+}
+.dropdown .ci_count{
+  position: absolute;
+  top:1px;
+  left: 29px;
+  right: auto;
+  display: inline-block;
+  padding: 1px 3px;
+  font-size: 12px;
+  line-height: 12px;
+  color: #fff;
+  background-color: #e1251b;
+  border-radius: 7px;
+  min-width: 12px;
+  text-align: center;
+}
+
+.hotwords{
+  overflow: hidden;
+  position: absolute;
+  left: 260px;
+  top:65px;
+  width: 450px;
+  height: 20px;
+  line-height: 20px;
+}
+.hotwords a{
+  float: left;
+  margin-right: 10px;
+  white-space: nowrap;
+  color: #999;
+}
+.hotwords .style_red{
+  color: #e1251b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* Project id 3994610 */
+  src: url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.woff2?t=1680525011779') format('woff2'),
+  url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.woff?t=1680525011779') format('woff'),
+  url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.ttf?t=1680525011779') format('truetype');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;}
