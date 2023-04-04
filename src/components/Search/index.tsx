@@ -26,17 +26,39 @@ function Search() {
                             <div className={classes.cw_icon}>
                                 <i className={classes.iconfont}>&#xe70b;</i>
                                 <a>我的购物车</a>
+                                {/*此处的数据需要动态加载*/}
                                 <i className={classes.ci_count}>0</i>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className={classes.hotwords}>
+                    {/*此处的数据需要动态加载*/}
                     <a className={classes.style_red}>Jack</a>
                     <a>Jack</a>
                     <a>Jack</a>
                     <a>Jack</a>
                     <a>Jack</a>
+                </div>
+                <div className={classes.navitems}>
+                    <ul id='navitems_group1'>
+                        <a>京东超市</a>
+                        <a>秒杀</a>
+                        <a>便宜包邮</a>
+                        <a>京东生鲜</a>
+                    </ul>
+                    <ul id='navitems_group2'>
+                        <a>京东超市</a>
+                        <a>秒杀</a>
+                        <a>便宜包邮</a>
+                        <a>京东生鲜</a>
+                    </ul>
+                    <ul id='navitems_group3'>
+                        <a>京东超市</a>
+                        <a>秒杀</a>
+                        <a>便宜包邮</a>
+                        <a>京东生鲜</a>
+                    </ul>
                 </div>
             </div>
         </div>

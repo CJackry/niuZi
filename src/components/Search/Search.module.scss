@@ -4,6 +4,8 @@
 }
 .root .w{
   height: 140px;
+  position: relative;
+  width: 990px;
 }
 .header_box{
   position: relative;
@@ -19,7 +21,6 @@
   img{
     display: block;
     width: 190px;
-    margin: 0 auto;
   }
 }
 .search_m{
@@ -168,6 +169,25 @@
   color: #e1251b;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.navitems{
+  overflow: hidden;
+  position: absolute;
+  left: 203px;
+  bottom: 0;
+  height: 40px;
+  padding-top: 20px;
+}
+.navitems ul, .navitems a{
+  float: left;
+}
+.navitems a{
+  margin-left: 12px;
+  color: #666666;
+}
+.navitems a:hover{
+  color: #e1251b;
 }
 
 @font-face {
