@@ -1,0 +1,65 @@
+.root{
+  position: relative;
+}
+.seckill{
+  height: 260px;
+  margin-bottom: 20px;
+}
+.seckill_inner{
+  margin: 0 auto;
+  height: 100%;
+  width: 990px;
+}
+.countdown{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 190px;
+  height: 100%;
+  background-image: url("https://storage.360buyimg.com/channel2022/jd_home/0.0.13/assets/img/4a15d8883775742e3efbb850ae14def7.png");
+}
+.countdown_tit{
+  width: 100%;
+  height: 45px;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  margin-top: 31px;
+}
+.countdown_desc{
+  height: 26px;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #fff;
+  font-size: 14px;
+}
+.countdown_desc strong{
+  font-size: 18px;
+  display: inline-block;
+  padding-right: 2px;
+}
+.countdown_time{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 40px;
+}
+.countdown_time span{
+  font-size: 20px;
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+
+}
+.countdown_hour:after, .countdown_min:after{
+  content: ":";
+  display: inline-block;
+  background-color: transparent;
+  width: 20px;
+  height: 100%;
+}
