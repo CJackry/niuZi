@@ -1,11 +1,11 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import VHome from "@/src/components/VHome";
+import Layout from "../components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-      <VHome>
+      <Layout>
         <Component {...pageProps} />
-      </VHome>
+      </Layout>
   )
 }

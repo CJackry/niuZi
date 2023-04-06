@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Home.module.scss'
+import classes from './Layout.module.scss'
 import Header from "../Header";
 import Footer from "@/src/components/Footer";
 import {ReactNode} from 'react'
@@ -7,8 +7,8 @@ import {ReactNode} from 'react'
 interface Props{
     children?: ReactNode
 }
-
-const VHome: React.FC<Props> = ({children})=>{
+//包含头尾组件的通用布局组件
+const Layout: React.FC<Props> = ({children})=>{
     return (
         <div className={classes.root}>
             <Header />
@@ -18,4 +18,4 @@ const VHome: React.FC<Props> = ({children})=>{
     );
 }
 
-export default VHome;
+export default Layout;

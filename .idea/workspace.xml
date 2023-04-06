@@ -5,16 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="完成秒杀组件UI+首页重构">
+      <change afterPath="$PROJECT_DIR$/src/views/Index/index.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/Index/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListContainer/ListContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/ListContainer/ListContainer.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListContainer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/ListContainer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Search.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/Search/Search.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/Search/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SecKill/SecKill.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/SecKill/SecKill.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SecKill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/SecKill/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VHome/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VHome/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/VHome/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/VHome/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/ListContainer/ListContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/ListContainer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/ListContainer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/Search/Search.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/Search/Search.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/Search/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/Search/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/SecKill/SecKill.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/SecKill/SecKill.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/SecKill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +65,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\views\Index\comps" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\views\Index" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\components" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\views" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src" />
-      <recent name="D:\WorkSpeace\Projects\Web\niuzi\styles" />
     </key>
   </component>
   <component name="RunManager">
@@ -142,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680770893633</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="完成秒杀组件UI+首页重构">
+      <created>1680772813333</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680772813333</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

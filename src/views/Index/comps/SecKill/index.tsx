@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './SecKill.module.scss'
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation, Pagination, Scrollbar} from "swiper";
@@ -6,9 +6,59 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
-import 'swiper/scss/autoplay';
 
 function SecKill() {
+
+    function numToStringDouble(num:number){
+        if(num<10) return "0"+String(num);
+        else    return String(num);
+    }
+
+    const myDate:Date = new Date();
+    const secKillTime:Array<number> = [10, 12, 19, 21, 22, 24];
+    const [leftTime, setLeftTime] = useState({hour: "00", min: "00", sec: "00"});
+    let secIndex:number = 0;
+    const [secKillHour, setSecKillHour] = useState(-1);
+    const hour:number = myDate.getHours();
+
+
+    React.useEffect(()=>{
+        if(hour < secKillTime[secKillTime.length-1]){
+            for(let i=0; i < secKillTime.length-1; i++){
+                if(hour < secKillTime[i]){
+                    setSecKillHour(secKillTime[i]);
+                    secIndex = i;
+                    break;
+                }
+            }
+        }else{
+            setSecKillHour(secKillTime[0]);
+            secIndex = 0;
+        }
+        let leftHour = secKillHour - myDate.getHours() - 1;
+        let leftMin = 60 - myDate.getMinutes() - 1;
+        let leftSec = 60 - myDate.getSeconds();
+        const secKillTimer = setTimeout(()=>{
+            if(leftSec>=1)   leftSec--;
+            else if(leftMin >= 1){
+                leftSec = 59;
+                leftMin--;
+            }else if(leftMin <= 0 && leftHour >= 1){
+                leftSec = 59;
+                leftMin = 59;
+                leftHour--;
+            }
+            if(leftSec===0&&leftMin===0&&leftHour===0){
+                if(secIndex === secKillTime.length-1)   secIndex = 0;
+                else    secIndex++;
+                setSecKillHour(secKillTime[secIndex]);
+            }
+            setLeftTime({hour: numToStringDouble(leftHour), sec: numToStringDouble(leftSec), min: numToStringDouble(leftMin)});
+        }, 1000);
+        return ()=>{
+            clearTimeout(secKillTimer);
+        }
+    }, [leftTime])
     return (
         <div className={classes.root}>
             <div className={classes.seckill}>
@@ -17,14 +67,14 @@ function SecKill() {
                         <strong className={classes.countdown_tit}>京东秒杀</strong>
                         <div>
                             <div className={classes.countdown_desc}>
-                                <strong>99:99</strong>点场 距结束
+                                <strong>{secKillHour}:00</strong>点场 距结束
                             </div>
                             <div className={classes.countdown_time}>
-                                <span className={classes.countdown_hour}>99</span>
+                                <span className={classes.countdown_hour}>{leftTime.hour}</span>
                                 <span className={classes.countdown_dot}>:</span>
-                                <span className={classes.countdown_min}>99</span>
+                                <span className={classes.countdown_min}>{leftTime.min}</span>
                                 <span className={classes.countdown_dot}>:</span>
-                                <span className={classes.countdown_sec}>99</span>
+                                <span className={classes.countdown_sec}>{leftTime.sec}</span>
                             </div>
                         </div>
                     </a>
@@ -41,10 +91,6 @@ function SecKill() {
                             }}
                             onSwiper={(swiper) => console.log(swiper)}
                             onSlideChange={() => console.log('slide change')}
-                            autoplay={{
-                                delay: 3000,
-                                pauseOnMouseEnter: true
-                            }}
                         >
                             <SwiperSlide>
                                 <a className={classes.seckill_item}>
