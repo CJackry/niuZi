@@ -1,17 +1,14 @@
-import Search from "@/src/components/Search";
-import ListContainer from "../components/ListContainer";
-import SecKill from "@/src/components/SecKill";
+import Search from "../views/Index/Search";
+import ListContainer from "../views/Index/ListContainer";
+import SecKill from "../views/Index/SecKill";
 import VHome from "../components/VHome";
 
-export default function Home() {
+export default function Index() {
     return (
         <div>
-            <VHome>
                 <Search/>
                 <ListContainer/>
                 <SecKill/>
-            </VHome>
-
         </div>
     )
 }

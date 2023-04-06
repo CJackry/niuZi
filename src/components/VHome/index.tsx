@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Home.module.scss'
-import Header from "@/src/components/Header";
+import Header from "../Header";
 import Footer from "@/src/components/Footer";
 import {ReactNode} from 'react'
 
