@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="完成导航栏（初步UI）">
-      <change afterPath="$PROJECT_DIR$/src/components/Footer/Footer.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Home.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/index.tsx" afterDir="false" />
+    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="完成秒杀组件UI+首页重构">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SecKill/SecKill.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SecKill/SecKill.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SecKill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SecKill/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +111,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680608730961</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="完成秒杀组件UI+首页重构">
+      <created>1680770154253</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680770154253</updated>
+    </task>
+    <task id="LOCAL-00005" summary="完成秒杀组件UI+首页重构">
+      <created>1680770181152</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680770181152</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +135,7 @@
     <MESSAGE value="delete react" />
     <MESSAGE value="init next" />
     <MESSAGE value="完成导航栏（初步UI）" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成导航栏（初步UI）" />
+    <MESSAGE value="完成秒杀组件UI+首页重构" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成秒杀组件UI+首页重构" />
   </component>
 </project>

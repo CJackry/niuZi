@@ -8,14 +8,14 @@ interface Props{
     children?: ReactNode
 }
 
-const Home: React.FC<Props> = (props)=>{
+const VHome: React.FC<Props> = ({children})=>{
     return (
         <div className={classes.root}>
             <Header />
-            {props.children}
+            {children}
             <Footer />
         </div>
     );
 }
 
-export default Home;
+export default VHome;
