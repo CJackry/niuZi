@@ -1,0 +1,61 @@
+.root{
+  height: 568px;
+  background-color: #f4f4f4;
+}
+.mod_service{
+  height: 43px;
+  padding: 30px 0;
+  border-bottom: 1px solid #e3e4e5;
+}
+.service_inner{
+  width: 990px;
+  margin: 0 auto;
+}
+.service_list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.service_item{
+  width: 247px;
+  height: 42px;
+  font-size: 0;
+}
+.service_unit{
+  width: 216px;
+  height: 100%;
+  margin: 0 auto;
+}
+.service_tit{
+  display: inline-block;
+  width: 36px;
+  height: 42px;
+  background-repeat: no-repeat;
+  background-image: url("https://img10.360buyimg.com/imagetools/jfs/t1/211298/12/18097/67160/6215e091E7fb1c693/cc1d8d291ea917c0.png");
+  overflow: hidden;
+  vertical-align: middle;
+  border: none;
+  margin-right: 5px;
+}
+.service_tit_duo{
+  background-position: 0 -192px;
+}
+.service_tit_kuai{
+  background-position: -41px -192px;
+}
+.service_tit_hao{
+  background-position: -82px -192px;
+}
+.service_tit_sheng{
+  background-position: -123px -192px;
+}
+.service_txt{
+  display: inline-block;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  overflow: hidden;
+  font-weight: 700;
+}
