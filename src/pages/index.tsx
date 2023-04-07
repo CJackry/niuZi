@@ -1,9 +1,9 @@
-import Index from "@/src/views/Index";
+import Index from '@/src/views/Index';
 
 export default function Home() {
-    return (
-        <div>
-            <Index />
-        </div>
-    )
+  return (
+    <div>
+      <Index />
+    </div>
+  );
 }

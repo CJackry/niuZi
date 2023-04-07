@@ -1,0 +1,5 @@
+/dist
+/public/
+package.json
+*.js
+.husky
