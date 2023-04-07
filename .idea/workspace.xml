@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="完成秒杀组件UI+首页重构">
-      <change afterPath="$PROJECT_DIR$/src/views/Index/index.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/Index/index.tsx" afterDir="false" />
+    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="完成秒杀框（初步UI）">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_4_6_12_19__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_4_6_12_19__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VHome/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VHome/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/ListContainer/ListContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/ListContainer.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/ListContainer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/Search/Search.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/Search/Search.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/Search/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/Search/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/SecKill/SecKill.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/SecKill/SecKill.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/SecKill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/hello.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/hello.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/commonFuns.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/commonFuns.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +48,15 @@
     "last_opened_file_path": "D:/WorkSpeace/Projects/Web/Shangpinhui",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "D:\\WorkSpeace\\Projects\\Web\\niuzi\\node_modules\\typescript\\lib",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "D:\\WorkSpeace\\Projects\\Web\\niuZi\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -102,6 +99,7 @@
       <workItem from="1680572328598" duration="23956000" />
       <workItem from="1680663278174" duration="1986000" />
       <workItem from="1680744247240" duration="5468000" />
+      <workItem from="1680834461029" duration="9025000" />
     </task>
     <task id="LOCAL-00001" summary="delete react">
       <created>1680501128639</created>
