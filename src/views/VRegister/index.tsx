@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './register.module.scss';
 
-function Register() {
+function VRegister() {
   return (
     <div className={classes.root}>
       <div>
@@ -14,4 +14,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default VRegister;
