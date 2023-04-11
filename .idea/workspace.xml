@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="fix: 解决请求BUG">
-      <change afterPath="$PROJECT_DIR$/src/views/Index/service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_4_6_12_19__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023_4_6_12_19__Changes_.xml" afterDir="false" />
+    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="Header组件初始化检测是否登录+axios失败的封装">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/responseNiuzi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/responseNiuzi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/[reqAddr].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/[reqAddr].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/http-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/http-client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,22 +39,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="16.15.1" />
-    <property name="javascript.nodejs.core.library.typings.version" value="16.18.23" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.standard" value="" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="D:\react-workspace\niuZi\node_modules\typescript\lib" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/WorkSpeace/Projects/Web/niuZiNode&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\WorkSpeace\\Projects\\Web\\niuZi\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WorkSpeace\Projects\Web\niuZi\src\pages\api" />
@@ -80,7 +77,6 @@
         <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
-      <package-manager value="yarn" />
       <envs />
       <method v="2" />
     </configuration>
@@ -106,7 +102,6 @@
       <workItem from="1680744247240" duration="5468000" />
       <workItem from="1680834461029" duration="9194000" />
       <workItem from="1680851099100" duration="3351000" />
-      <workItem from="1681216772067" duration="1108000" />
     </task>
     <task id="LOCAL-00001" summary="delete react">
       <created>1680501128639</created>
@@ -198,17 +193,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="delete react" />
     <MESSAGE value="init next" />
@@ -217,11 +201,6 @@
     <MESSAGE value="秒杀框定时器逻辑拆分优化" />
     <MESSAGE value="Header组件初始化检测是否登录" />
     <MESSAGE value="Header组件初始化检测是否登录+axios失败的封装" />
-    <MESSAGE value="fix: 解决请求BUG" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: 解决请求BUG" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <option name="LAST_COMMIT_MESSAGE" value="Header组件初始化检测是否登录+axios失败的封装" />
   </component>
 </project>
