@@ -1,10 +1,11 @@
 const koa = require('koa');
 const fs = require('fs');
+const path = require('path')
 const app = new koa();
 const port = 3002;
 
 function getJSON(fileName) {
-    const data = fs.readFileSync(`JSON/${fileName}.json`, 'utf-8')
+    const data = fs.readFileSync(path.join(__dirname,`/JSON/${fileName}.json`), 'utf-8')
     return JSON.parse(data);
 }
 

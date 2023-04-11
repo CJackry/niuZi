@@ -3,9 +3,7 @@ import axios from 'axios';
 /**
 * 客户端axios实例
  */
-const clientInstance = axios.create({
-  timeout: 5000,
-});
+const clientInstance = axios.create();
 
 /*
 * 客户端axios响应拦截器

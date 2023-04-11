@@ -8,16 +8,14 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
-
-const reqNavList = async () => clientInstance({
-  url: '/api/navList',
-  method: 'get',
-});
-
+/* eslint-disable max-len */
 function ListContainer() {
   useEffect(() => {
-    const navList = reqNavList();
-    console.log(navList);
+    clientInstance({
+      url: '/api/navList',
+      method: 'get',
+    }).then();
+    // console.log(navList);
   });
   return (
     <div className={classes.root}>
