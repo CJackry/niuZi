@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { clearTimeout } from 'timers';
+// import { clearTimeout } from 'timers';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/scss';
