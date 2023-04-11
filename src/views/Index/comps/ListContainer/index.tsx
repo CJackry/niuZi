@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Navigation, Pagination, Scrollbar, A11y,
-} from 'swiper';
+import { Navigation, Pagination, Scrollbar } from 'swiper';
+import clientInstance from '@/src/utils/http-client';
 import classes from './ListContainer.module.scss';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -10,7 +9,16 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
 
+const reqNavList = async () => clientInstance({
+  url: '/api/navList',
+  method: 'get',
+});
+
 function ListContainer() {
+  useEffect(() => {
+    const navList = reqNavList();
+    console.log(navList);
+  });
   return (
     <div className={classes.root}>
       <div className={`${classes.grid_c1} ${classes.fs_inner}`}>
@@ -479,7 +487,6 @@ function ListContainer() {
                 <a className={classes.user_tip}>Hi~欢迎逛京东！</a>
                 <p>
                   <a className={classes.user_login}>登录</a>
-                  {' '}
                   |
                   <a className={classes.user_reg}>注册</a>
                 </p>

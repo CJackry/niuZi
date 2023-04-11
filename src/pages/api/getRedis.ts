@@ -7,9 +7,10 @@ export default async function handler(
 ):Promise<void> {
   console.log('getRedis');
   const { id } = req.query;
-  await redis.get(String(id), (result) => {
+  console.log(String(id));
+  await redis.get(String(id)).then((result) => {
     console.log('redisGet: ', result);
-    // res.send(result);
+    res.send(result);
   });
-  res.send({ message: '123' });
+  // res.send({ message: '123' });
 }
