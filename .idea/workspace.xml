@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="Header组件初始化检测是否登录">
-      <change afterPath="$PROJECT_DIR$/src/pages/api/[reqAddr].ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stores/context.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/http-client.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/http-server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/getRedis.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/getRedis.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="Header组件初始化检测是否登录+axios失败的封装" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +21,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="node" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -84,6 +79,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -181,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681179999757</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Header组件初始化检测是否登录+axios失败的封装">
+      <created>1681216221617</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681216221617</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +197,7 @@
     <MESSAGE value="完成秒杀组件UI+首页重构" />
     <MESSAGE value="秒杀框定时器逻辑拆分优化" />
     <MESSAGE value="Header组件初始化检测是否登录" />
-    <option name="LAST_COMMIT_MESSAGE" value="Header组件初始化检测是否登录" />
+    <MESSAGE value="Header组件初始化检测是否登录+axios失败的封装" />
+    <option name="LAST_COMMIT_MESSAGE" value="Header组件初始化检测是否登录+axios失败的封装" />
   </component>
 </project>
