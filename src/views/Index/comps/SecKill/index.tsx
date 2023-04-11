@@ -49,7 +49,7 @@ const animation = (secKillHour: number, setLeftTime: React.Dispatch<Time>): void
       leftHour -= 1;
     }
     if (leftSec === 0 && leftMin === 0 && leftHour === 0) {
-      clearTimeout(secKillTimer);
+      window.clearTimeout(secKillTimer);
     }
     leftTime = {
       hour: numToStringDouble(leftHour),

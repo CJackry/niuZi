@@ -27,16 +27,16 @@ const loginSaveRedis = async (res:NextApiResponse, loginInfo:loginData) => {
   });
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<resData>,
-):void {
+):Promise<void> {
   const token = 'token';
   const resBody:resData = { message: '', status_code: -1 };
   const { name, password } = req.query;
   if (name === '123' && password === '123') {
     const loginInfo:loginData = { token, name };
-    loginSaveRedis(res, loginInfo);
+    await loginSaveRedis(res, loginInfo).then((r) => console.log(r));
     resBody.message = 'login succeed!';
     resBody.status_code = 200;
   } else {

@@ -4,23 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="初步完成登录（setCookie出错）">
-      <change afterPath="$PROJECT_DIR$/src/pages/api/getredis.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/login_auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/register.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/redis.ts" afterDir="false" />
+    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="秒杀框定时器逻辑拆分优化">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/hello.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/hello.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/getredis.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/getRedis.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/login_auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login_auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/api/register.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/register.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/redis.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/redis.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/VLogin/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/VLogin/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +31,6 @@
         <option value="CSS File" />
         <option value="TypeScript JSX File" />
         <option value="SCSS File" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -49,34 +45,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/WorkSpeace/Projects/Web/Shangpinhui",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "D:\\WorkSpeace\\Projects\\Web\\niuzi\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/WorkSpeace/Projects/Web/Shangpinhui&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\WorkSpeace\\Projects\\Web\\niuZi\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\utils" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\views\Index\comps" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\views\Index" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\components" />
       <recent name="D:\WorkSpeace\Projects\Web\niuzi\src\views" />
+      <recent name="D:\WorkSpeace\Projects\Web\niuzi\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -109,7 +105,8 @@
       <workItem from="1680572328598" duration="23956000" />
       <workItem from="1680663278174" duration="1986000" />
       <workItem from="1680744247240" duration="5468000" />
-      <workItem from="1680834461029" duration="9025000" />
+      <workItem from="1680834461029" duration="9194000" />
+      <workItem from="1680851099100" duration="3351000" />
     </task>
     <task id="LOCAL-00001" summary="delete react">
       <created>1680501128639</created>
@@ -160,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680772813333</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="秒杀框定时器逻辑拆分优化">
+      <created>1680850978409</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680850978409</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +175,7 @@
     <MESSAGE value="init next" />
     <MESSAGE value="完成导航栏（初步UI）" />
     <MESSAGE value="完成秒杀组件UI+首页重构" />
-    <MESSAGE value="初步完成登录（setCookie出错）" />
-    <option name="LAST_COMMIT_MESSAGE" value="初步完成登录（setCookie出错）" />
+    <MESSAGE value="秒杀框定时器逻辑拆分优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="秒杀框定时器逻辑拆分优化" />
   </component>
 </project>
