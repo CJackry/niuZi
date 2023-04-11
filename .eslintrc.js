@@ -30,6 +30,7 @@ module.exports = {
   rules: {
     semi: 2,
     quotes: [2, 'single'],
+    'linebreak-style': [0, "error", "windows"], //声明为Windows系统，回车类型为CRLF
     'react-hooks/exhaustive-deps': 0,
     'no-console': 0, // 生成环境 自动移除 console.*  不需要eslint提示
     'react/no-danger': 0,
