@@ -6,8 +6,7 @@ function VLogin() {
   const nameEl = useRef<HTMLInputElement>(null);
   const pwdEl = useRef<HTMLInputElement>(null);
   const handleLogin = async (): Promise<void> => {
-    // @ts-ignore
-    const user = { name: nameEl.current.value, password: pwdEl.current.value };
+    const user = { name: nameEl.current?.value, password: pwdEl.current?.value };
     const instance = axios.create();
     await instance({
       url: 'api/login',
