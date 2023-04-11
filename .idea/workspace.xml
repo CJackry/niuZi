@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="秒杀框定时器逻辑拆分优化">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
+    <list default="true" id="c5a991b6-3dbe-4c7f-9eb9-8d957d95b7c0" name="Changes" comment="Header组件初始化检测是否登录">
       <change beforePath="$PROJECT_DIR$/src/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_document.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_document.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/getredis.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/getRedis.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/login_auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/login_auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/register.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/register.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/redis.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/redis.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/ListContainer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Index/comps/SecKill/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/VLogin/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/VLogin/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680850978409</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Header组件初始化检测是否登录">
+      <created>1681179405512</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681179405512</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Header组件初始化检测是否登录">
+      <created>1681179422620</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1681179422620</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +177,7 @@
     <MESSAGE value="完成导航栏（初步UI）" />
     <MESSAGE value="完成秒杀组件UI+首页重构" />
     <MESSAGE value="秒杀框定时器逻辑拆分优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="秒杀框定时器逻辑拆分优化" />
+    <MESSAGE value="Header组件初始化检测是否登录" />
+    <option name="LAST_COMMIT_MESSAGE" value="Header组件初始化检测是否登录" />
   </component>
 </project>

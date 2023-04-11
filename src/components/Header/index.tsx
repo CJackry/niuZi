@@ -10,7 +10,7 @@ const getName = async (id:string):Promise<void> => {
     console.log('request getRedis');
     const instance = axios.create();
     await instance({
-      url: 'api/getRedis',
+      url: '/api/getRedis',
       params: { id },
       method: 'get',
     });
