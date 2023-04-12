@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
 import clientInstance from '@/src/utils/http-client';
@@ -8,15 +8,16 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
+
+type Props = {
+  navList: Array<object>,
+}
 /* eslint-disable max-len */
-function ListContainer() {
-  useEffect(() => {
-    clientInstance({
-      url: '/api/navList',
-      method: 'get',
-    }).then();
-    // console.log(navList);
-  });
+const ListContainer:React.FC = () => {
+  // const { navList } = props;
+  // console.log(`navList: ${navList}`);
+  const navList = {};
+  console.log(navList);
   return (
     <div className={classes.root}>
       <div className={`${classes.grid_c1} ${classes.fs_inner}`}>
@@ -639,6 +640,6 @@ function ListContainer() {
       </div>
     </div>
   );
-}
+};
 
 export default ListContainer;

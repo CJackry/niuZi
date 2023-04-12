@@ -5,7 +5,7 @@ import axios from 'axios';
  */
 const clientInstance = axios.create();
 
-/*
+/**
 * 客户端axios响应拦截器
  */
 clientInstance.interceptors.response.use(

@@ -12,7 +12,7 @@ const serverInstance = axios.create({
  * */
 serverInstance.interceptors.request.use((request) => {
   const targetUrl = 'http://localhost:3002';
-  console.log('url: ', request.url);
+  console.log('server url: ', request.url);
   if (request.url?.startsWith('/api')) {
     request.url = request.url.replace('/api', '');
     request.baseURL = targetUrl;
