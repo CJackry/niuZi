@@ -1,7 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
-import clientInstance from '@/src/utils/http-client';
 import classes from './ListContainer.module.scss';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -442,8 +441,6 @@ const ListContainer:React.FC = () => {
                 type: 'bullets',
                 clickable: true,
               }}
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log('slide change')}
               autoplay={{
                 delay: 3000,
                 pauseOnMouseEnter: true,
