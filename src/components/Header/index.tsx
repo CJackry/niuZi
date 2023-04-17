@@ -1,6 +1,7 @@
 import { parseCookies } from 'nookies';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import clientInstance from '@/src/utils/http-client';
 import classes from './Header.module.scss';
 
 const getName = async (id:string):Promise<string> => {
@@ -9,14 +10,12 @@ const getName = async (id:string):Promise<string> => {
   // const isLogin = !!id;
   if (id) {
     console.log('request getRedis');
-    const instance = axios.create();
-    await instance({
+    const result = await clientInstance({
       url: 'api/getRedis',
       params: { id },
       method: 'get',
-    }).then((r) => {
-      name = r.data.name;
     });
+    name = result.data.name;
   }
   return name;
 };
@@ -37,12 +36,12 @@ function Header() {
         <span>addr</span>
       </div>
       <div className={classes.fr}>
-        {isLogin ? <a href="/api/login">{username}</a>
+        {isLogin ? <Link href="/login">{username}</Link>
           : (
             <span>
-              <a href="/api/login">请登录</a>
+              <Link href="/login">请登录</Link>
               |
-              <a href="/api/register">免费注册</a>
+              <Link href="/register">免费注册</Link>
             </span>
           )}
 

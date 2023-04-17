@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { parseCookies } from 'nookies';
-import clientInstance from '@/src/utils/http-client';
+import clientRequest from '@/src/utils/http-client';
 import Layout from '../components/Layout';
 
 function NiuZiApp({ Component, pageProps }:AppProps) {
@@ -18,19 +18,21 @@ NiuZiApp.getInitialProps = async () => {
   const { id } = cookies;
   console.log('App getInitialProps');
   let name;
-  if (typeof window !== 'undefined') {
-    console.log('getInitialProps running on client');
-    name = clientInstance({
+  if (typeof window === 'undefined') {
+    console.log('getInitialProps running on server');
+    name = clientRequest({
       url: '/api/getRedis',
       params: { id },
       method: 'get',
     });
   } else {
-    console.log('getInitialProps running on server');
+    console.log('getInitialProps running on client');
   }
   console.log('name', name);
   return {
-    name,
+    pageProps: {
+      name,
+    },
   };
 };
 

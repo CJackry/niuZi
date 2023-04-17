@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import axios from 'axios';
+import clientRequest from '@/src/utils/http-client';
 import classes from './login.module.scss';
 
 function VLogin() {
@@ -7,8 +7,7 @@ function VLogin() {
   const pwdEl = useRef<HTMLInputElement>(null);
   const handleLogin = async (): Promise<void> => {
     const user = { name: nameEl.current?.value, password: pwdEl.current?.value };
-    const instance = axios.create();
-    await instance({
+    await clientRequest({
       url: 'api/login',
       method: 'get',
       params: user,
