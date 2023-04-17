@@ -1,7 +1,5 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { parseCookies } from 'nookies';
-import clientInstance from '@/src/utils/http-client';
 import Layout from '../components/Layout';
 
 function NiuZiApp({ Component, pageProps }:AppProps) {
@@ -13,22 +11,18 @@ function NiuZiApp({ Component, pageProps }:AppProps) {
   );
 }
 
-NiuZiApp.getInitialProps = async () => {
-  const cookies = parseCookies();
-  const { id } = cookies;
-  console.log('App getInitialProps');
+NiuZiApp.getInitialProps = async ({ ctx }) => {
+  const { id } = ctx.req.cookies;
+  console.log('App getInitialProps', id);
   let name;
-  if (typeof window !== 'undefined') {
+  if (typeof window === 'undefined') {
     console.log('getInitialProps running on client');
-    name = clientInstance({
-      url: '/api/getRedis',
-      params: { id },
-      method: 'get',
-    });
+    name = await fetch(`http://localhost:3000/api/getRedis?id=${id}&t=${Date().valueOf()}`);
+    const res = await name.json();
+    console.log('result', res);
   } else {
     console.log('getInitialProps running on server');
   }
-  console.log('name', name);
   return {
     name,
   };
