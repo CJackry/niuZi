@@ -1,24 +1,26 @@
 import { parseCookies } from 'nookies';
+// import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import clientInstance from '@/src/utils/http-client';
 import classes from './Header.module.scss';
 
-const getName = async (id:string):Promise<string> => {
-  console.log(id);
-  let name = '';
-  // const isLogin = !!id;
-  if (id) {
-    console.log('request getRedis');
-    const result = await clientInstance({
-      url: 'api/getRedis',
-      params: { id },
-      method: 'get',
-    });
-    name = result.data.name;
-  }
-  return name;
-};
+// const getName = async (id:string):Promise<string> => {
+//   console.log(id);
+//   let name = '';
+//   // const isLogin = !!id;
+//   if (id) {
+//     console.log('request getRedis');
+//     const instance = axios.create();
+//     await instance({
+//       url: '/api/getRedis',
+//       params: { id },
+//       method: 'get',
+//     }).then((r) => {
+//       name = r.data.name;
+//     });
+//   }
+//   return name;
+// };
 
 function Header() {
   const cookies = parseCookies();
@@ -28,7 +30,8 @@ function Header() {
   useEffect(() => {
     const { id } = cookies;
     setIsLogin(!!id);
-    if (isLogin) getName(id).then((name) => setUsername(name));
+    setUsername(username);
+    // if (isLogin) getName(id).then((name) => setUsername(name));
   }, [isLogin]);
   return (
     <div className={classes.top}>
@@ -36,12 +39,12 @@ function Header() {
         <span>addr</span>
       </div>
       <div className={classes.fr}>
-        {isLogin ? <Link href="/login">{username}</Link>
+        {isLogin ? <Link href="/api/login">{username}</Link>
           : (
             <span>
-              <Link href="/login">请登录</Link>
+              <Link href="/api/login">请登录</Link>
               |
-              <Link href="/register">免费注册</Link>
+              <Link href="/api/register">免费注册</Link>
             </span>
           )}
 

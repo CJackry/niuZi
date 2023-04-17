@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import redis from '@/src/utils/redis';
+import redisClient from '@/src/utils/redis';
 import { nanoid } from 'nanoid';
 import nookies from 'nookies';
 
@@ -14,7 +14,7 @@ type loginData = {
 
 const loginSaveRedis = async (res:NextApiResponse, loginInfo:loginData) => {
   const id = nanoid();
-  await redis.set(
+  await redisClient.set(
     id,
     JSON.stringify({
       token: loginInfo.token,

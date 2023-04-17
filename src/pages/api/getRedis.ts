@@ -1,22 +1,22 @@
-import redis from '@/src/utils/redis';
+import redisClient from '@/src/utils/redis';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { RESPONSE } from '@/src/utils/http-client';
+import { errorReturnObj } from '@/src/utils';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ):Promise<void> {
   const { id } = req.query;
-  let body:RESPONSE<object>;
-  const result = await redis.get(String(id));
-  if (result) {
-    body = {
-      success: true, code: 200, message: '', data: JSON.parse(result),
-    };
-  } else {
-    body = {
-      success: false, code: 400, message: 'cannot get info', data: {},
-    };
+  console.log('get', req.query);
+  try {
+    const result = await redisClient.get(String(id));
+    console.log('redisGet', result);
+    if (result) {
+      res.status(200).send(result);
+    } else {
+      res.status(401).send(errorReturnObj('未登录！'));
+    }
+  } catch (err) {
+    res.status(500).send(err || errorReturnObj());
   }
-  res.send(body);
 }

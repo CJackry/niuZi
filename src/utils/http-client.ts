@@ -13,6 +13,16 @@ type NzInstance = <T = object>(config: AxiosRequestConfig) => Promise<T extends 
 const clientInstance = axios.create();
 const clientRequest:NzInstance = clientInstance.request;
 
+export type RESPONSE<T> = {
+  code: number;
+  data: T;
+  msg: string;
+  success: boolean;
+};
+
+type Instance = <T = object>(config: AxiosRequestConfig) => Promise<T extends Blob ? Blob : RESPONSE<T>>;
+
+const clientRequest: Instance = clientInstance.request;
 /**
 * 客户端axios响应拦截器
  */
