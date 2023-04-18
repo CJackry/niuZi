@@ -15,7 +15,7 @@ function NiuZiApp({ Component, pageProps }:AppProps) {
 }
 
 NiuZiApp.getInitialProps = async ({ ctx }) => {
-  const { id } = ctx.req.cookies;
+  const { id } = ctx.req?.cookies;
   console.log('App getInitialProps', id);
   let name;
   if (typeof window === 'undefined') {

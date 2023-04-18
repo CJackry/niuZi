@@ -1,28 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
-import classes from './ListContainer.module.scss';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
+import clientRequest from '@/src/utils/http-client';
+import Link from 'next/link';
+import classes from './ListContainer.module.scss';
 
-type Props = {
-  navList: Array<object>,
-}
+type NavList = [
+    [{
+  name:string,
+      link:string,
+    }]
+]
+
 /* eslint-disable max-len */
 const ListContainer:React.FC = () => {
-  // const { navList } = props;
-  // console.log(`navList: ${navList}`);
-  const navList = {};
-  console.log(navList);
+  const [navList, setNavList] = useState();
+  useEffect(() => {
+    let result;
+    clientRequest({
+      url: '/api/navList',
+      method: 'get',
+    }).then((r) => {
+      result = r.data;
+      if (result) setNavList(result);
+    });
+  }, []);
   return (
     <div className={classes.root}>
       <div className={`${classes.grid_c1} ${classes.fs_inner}`}>
         <div className={classes.fs_col1}>
           <div className={classes.cate}>
             <ul className={classes.cate_menu}>
+              {navList.map((item, index) => (
+                <li className={classes.cate_menu_item} key={index}>
+                  <Link
+                    target="_blank"
+                    className={classes.cate_menu_lk}
+                    href={item.link}
+                    rel="noreferrer"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
               <li className={classes.cate_menu_item} data-index="1">
                 <a
                   target="_blank"
