@@ -8,7 +8,7 @@ export const successReturnObj = (data = null) => ({
   msg: 'ok',
 });
 
-export const errorReturnObj = (data = null) => ({
+export const errorReturnObj = (data: null| string = null) => ({
   data,
   code: 500,
   success: false,

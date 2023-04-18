@@ -1,11 +1,6 @@
 import Index from '@/src/views/Index';
-import clientInstance from '@/src/utils/http-client';
 
-type Props = {
-  navList: Array<object>
-}
-export default function Home(props:Props) {
-  console.log(props);
+export default function Home() {
   return (
     <div>
       <Index />

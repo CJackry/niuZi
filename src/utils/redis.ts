@@ -18,6 +18,7 @@ const redisClient = () => {
     }
     return null;
   };
+  // ttl是key的生存时间，也就是当传入ttl时可以设定该key值的有效时间，逾期消失
   const set = async (id: string, sess: unknown, ttl?:number) => {
     let timer = null;
     if (typeof ttl === 'number') {
@@ -36,7 +37,7 @@ const redisClient = () => {
   };
 
   const destroy = async (id: string) => {
-    await this.client.del(id);
+    await redis.del(id);
   };
 
   return {
