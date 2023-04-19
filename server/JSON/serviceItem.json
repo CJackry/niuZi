@@ -1,0 +1,62 @@
+[
+  {
+    "name": "企业购",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/40738/20/14562/826/5d773a01E09eb8121/d6f3909618c6307a.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/45316/3/388/884/5cd4f25eEea4c67ed/671f7c186c5e9b01.png"
+  },
+  {
+    "name": "礼品卡",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/57014/6/10297/815/5d773a07Ec7a61fc9/97917a2daa34be0f.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/55911/31/402/858/5cd4f23eE6f536460/5da079255c6dfabe.png"
+  },
+  {
+    "name": "话费",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/64347/37/9953/720/5d7739a6Ef5f451d6/4e2bc2d96b0fbbec.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/45423/33/385/778/5cd4f265E442a9342/0aff0a42cece09ee.png"
+  },
+  {
+    "name": "白条",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/56296/3/10260/1443/5d7739f3E233abc53/e6976f3cb30c9a8a.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/39983/24/6834/1596/5cd4f247E8cf89f1e/b8a8418d5418f471.png"
+  },
+  {
+    "name": "游戏",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/50019/25/10190/3699/5d7739d7Ed503c6cc/6aa3afbe6c3a0951.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/57520/8/375/4092/5cd4f1d8Ea1266047/1c590322ece537ba.png"
+  },
+  {
+    "name": "加油卡",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/71890/14/9897/3048/5d7739ddE93eb94f8/f1f6dc5c207329f9.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/36002/35/9106/3311/5cd4f1bdE06ff07ed/9570fdd46ecd3a76.png"
+  },
+  {
+    "name": "机票",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/49654/24/10325/2901/5d7739caE0db5e87b/d9d908ad415a5265.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/34261/15/10242/3120/5cd4f256E10257aba/8f3f63ae04ff19af.png"
+  },
+  {
+    "name": "云建站",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/199328/36/31668/5055/6409d6eaF95b8c8bd/142ac4557cc71434.png",
+    "active_img": "https://img13.360buyimg.com/imagetools/jfs/t1/130977/10/34217/2592/640e859bF638dd1d3/293d14cc9f1e7d98.png"
+  },
+  {
+    "name": "五金城",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/9966/19/18575/2703/62fb7416E91849618/14a4b81a50f2a535.png",
+    "active_img": "https://img12.360buyimg.com/imagetools/jfs/t1/164234/18/29348/2711/62fb6f56E9e45a090/454c7d913a51126b.png"
+  },
+  {
+    "name": "酒店",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/52668/12/10399/979/5d7739d1Efd1b6a04/18668c963bf9d646.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/44601/19/915/1039/5cd4f1cfE2e46473c/b61f083872a7a1de.png"
+  },
+  {
+    "name": "火车票",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/45761/32/10307/1581/5d7739e2Ece4b6671/0004c1b85fbf7bde.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/58891/36/278/1745/5cd4f1e0Ef4cc50a7/f12276b17e5dcf3b.png"
+  },
+  {
+    "name": "电影票",
+    "imgSrc": "https://m.360buyimg.com/babel/jfs/t1/60778/37/9838/3066/5d7739faEd3b7dbb9/dd4d9ef7ce8fc169.png",
+    "active_img": "https://m.360buyimg.com/babel/jfs/t1/41106/15/4551/3300/5cd4f1c7E507148c7/90a218f053e903d2.png"
+  }
+]

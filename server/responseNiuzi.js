@@ -12,11 +12,20 @@ function getJSON(fileName) {
 const navList = getJSON('navigatorList');
 const hotWords = getJSON('hotWords');
 const secKillList = getJSON('secKillList');
+const serviceItem = getJSON('serviceItem');
+
+const staticData = {
+    navList, serviceItem
+};
 const phones = getJSON('phones');
 app.use(async ctx=>{
     let body = {code: 200};
     console.log('someone request', ctx.url);
     switch (ctx.path){
+        case '/getStaticData':{
+            body.data=staticData;
+            break;
+        }
         case '/navList': {
             body.data=navList;
             break;

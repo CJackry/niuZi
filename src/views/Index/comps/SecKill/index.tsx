@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { clearTimeout } from 'timers';
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/scss';
@@ -8,6 +8,7 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 
 import { numToStringDouble } from '@/src/utils/commonFuns';
+import { nanoid } from 'nanoid';
 import classes from './SecKill.module.scss';
 
 interface Time {
@@ -60,6 +61,11 @@ const animation = (secKillHour: number, setLeftTime: React.Dispatch<Time>): void
   }, 1000);
 };
 
+const getSecKillList = async () => {
+  const result = await fetch('/api/secKillList');
+  return result.json();
+};
+
 function SecKill() {
   const myDate: Date = new Date();
 
@@ -68,10 +74,17 @@ function SecKill() {
   const [leftTime, setLeftTime] = useState({ hour: '00', min: '00', sec: '00' });
   const [secKillHour, setSecKillHour] = useState(10);
 
+  const [secKillSecList, setSecKillSecList] = useState([{
+    name: '', price: '', link: '', imgSrc: '',
+  }]);
+
   React.useEffect(() => {
     const secHour: number = getSecKillTime(myDate.getHours(), secKillTime);
     setSecKillHour(secHour);
     animation(secKillHour, setLeftTime);
+    getSecKillList().then((r) => {
+      setSecKillSecList(r.data);
+    });
   }, [leftTime]);
   return (
     <div className={classes.root}>
@@ -102,70 +115,35 @@ function SecKill() {
               spaceBetween={50}
               slidesPerView={3}
               navigation
-              pagination={{
-                enabled: true,
-                type: 'bullets',
-                clickable: true,
-              }}
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log('slide change')}
             >
-              <SwiperSlide>
-                <a className={classes.seckill_item} href="https://miaosha.jd.com/#7748905">
-                  {/* eslint-disable-next-line max-len */}
-                  <img
-                    src="https://img30.360buyimg.com/seckillcms/s140x140_jfs/
-                    t1/220722/9/21877/80908/6409c9feF94ce723f/6e595af164a71381.jpg.webp"
-                    alt="coke"
-                  />
-                  <h6>百事可乐 Pepsi 碳酸饮料整箱 300ml*12瓶 (新老包装随机发货) 百事出品</h6>
-                  <span>￥17.89</span>
-                </a>
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={classes.seckill_item}>
-                  {/* eslint-disable-next-line max-len,jsx-a11y/alt-text */}
-                  <img
-                    src="https://img30.360buyimg.com/seckillcms/s140x140_jfs/
-                    t1/220722/9/21877/80908/6409c9feF94ce723f/6e595af164a71381.jpg.webp"
-                    alt="coke"
-                  />
-                  <h6>百事可乐 Pepsi 碳酸饮料整箱 300ml*12瓶 (新老包装随机发货) 百事出品</h6>
-                  <span>￥17.89</span>
-                </a>
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={classes.seckill_item}>
-                  {/* eslint-disable-next-line max-len,jsx-a11y/alt-text */}
-                  <img
-                    src="https://img30.360buyimg.com/seckillcms/s140x140_jfs/
-                    t1/220722/9/21877/80908/6409c9feF94ce723f/6e595af164a71381.jpg.webp"
-                    alt="coke"
-                  />
-                  <h6>百事可乐 Pepsi 碳酸饮料整箱 300ml*12瓶 (新老包装随机发货) 百事出品</h6>
-                  <span>￥17.89</span>
-                </a>
-              </SwiperSlide>
+              {secKillSecList.map((item) => (
+                <SwiperSlide key={nanoid()}>
+                  <a className={classes.seckill_item} href={item.link}>
+                    <img
+                      src={item.imgSrc}
+                      alt="secKillItem"
+                    />
+                    <h6>{item.name}</h6>
+                    <span>
+                      ￥
+                      {item.price}
+                    </span>
+                  </a>
+                </SwiperSlide>
+              ))}
+
             </Swiper>
 
           </div>
           <div className={classes.seckill_brand}>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a className={classes.brand_item}>
-              {/* eslint-disable-next-line max-len,jsx-a11y/alt-text */}
-              <img
-                src="https://img12.360buyimg.com/seckillcms/s130x130_jfs/
-                t1/52541/32/20117/44501/6408b31dFf21f2750/39b153404c30f6b3.jpg.webp"
-                alt="coke"
-              />
+            <Link className={classes.brand_item} href="https://api.cyrilstudio.top/bing/image.php">
+              <img src="https://api.cyrilstudio.top/bing/image.php?size=320x240" alt="secKill" />
               <div className={classes.item_info}>
                 <p className={classes.brand_tit}>箱包品类秒杀</p>
                 <p className={classes.brand_promo}>低至5折</p>
                 <span className={classes.item_info_action}>品类秒杀</span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
