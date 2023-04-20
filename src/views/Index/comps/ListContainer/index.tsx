@@ -8,15 +8,15 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
 import { nanoid } from 'nanoid';
-import { NavList, ServiceItem } from '@/src/views/Index/data';
+import { NavList, ServiceItem } from '@/src/views/Index/interface';
 import classes from './ListContainer.module.scss';
 
 type Props = {
-  navList?:NavList,
-  serviceItem?: ServiceItem,
+  navList?: Array<NavList>,
+  serviceItem?: Array<ServiceItem>,
 }
 
-const ListContainer:React.FC<Props> = ({ navList, serviceItem }) => (
+const ListContainer: React.FC<Props> = ({ navList, serviceItem }) => (
   <div className={classes.root}>
     <div className={`${classes.grid_c1} ${classes.fs_inner}`}>
       <div className={classes.fs_col1}>

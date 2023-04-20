@@ -1,14 +1,14 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
-import type { HotWords } from '@/src/views/Index/data';
 import Link from 'next/link';
+import { HotWords } from '@/src/views/Index/interface';
 import classes from './Search.module.scss';
 
-type Props = {
-  hotWords?:HotWords
+interface Props {
+  hotWords?: Array<HotWords>
 }
 
-const Search:React.FC<Props> = ({ hotWords }) => (
+const Search: React.FC<Props> = ({ hotWords }) => (
   <div className={classes.root}>
     <div className={`${classes.w} ${classes.header_box}`}>
       <div className={classes.logo}>
