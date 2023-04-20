@@ -1,7 +1,6 @@
 import '@/styles/globals.css';
 import type { AppContext, AppProps } from 'next/app';
 import { UserProvider } from '@/src/stores/context';
-import { NextPageContext } from 'next';
 import Layout from '../components/Layout';
 
 function NiuZiApp({ Component, pageProps }:AppProps) {
