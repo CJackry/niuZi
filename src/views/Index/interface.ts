@@ -1,4 +1,4 @@
-export interface NavList {
+export interface NavItem {
   name: string;
   link: string;
 }
@@ -24,6 +24,6 @@ export interface SecKillList {
 export interface CommonData {
   hotWords: Array<HotWords>;
   serviceItem: Array<ServiceItem>;
-  navList: Array<NavList>;
+  navList: Array<Array<NavItem>>;
   secKillList: Array<SecKillList>;
 }

@@ -1,3 +1,97 @@
 .root {
-
+  background-color: #f4f4f4;
+}
+.w{
+  width: 990px;
+  margin: 0 auto;
+}
+.welcome{
+height: 60px;
+  font-size: 0;
+}
+.welcome img{
+  height: 50px;
+  vertical-align: middle;
+}
+.welcome_text{
+  font-size: 25px;
+  padding-left: 20px;
+  vertical-align: middle;
+}
+.mid{
+  display: flex;
+  justify-content: space-between;
+  height: 475px;
+  background-color: #f4f4f4;
+}
+.imgShow{
+  width: 600px;
+  height: 100%;
+  margin: auto;
+  padding-top: 80px;
+}
+.imgShow img{
+  display: block;
+  height: 305px;
+  margin: 0 auto;
+}
+.loginForm{
+  width: 300px;
+  height: 305px;
+  margin-top: 80px;
+  margin-right: 50px;
+  background-color: white;
+}
+.loginTab{
+  margin: 0 auto;
+}
+.loginTab span{
+  display: inline-block;
+  width: 150px;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  border-bottom: 1px solid #f4f4f4;
+}
+.loginBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  margin: 0 auto;
+}
+.loginBox input{
+  width: 250px;
+  height: 30px;
+  margin-bottom: 15px;
+}
+.forget{
+  display: block;
+  font-size: 5px;
+  text-align: right;
+  padding-bottom: 5px;
+}
+.loginBtn{
+  width: 250px;
+  height: 30px;
+  background-color: #e1251b;
+  color: white;
+  border: 0;
+}
+.loginBottom{
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  background-color: #fcfcfc;
+  font-size: 10px;
+  text-align: center;
+  line-height: 50px;
+}
+.loginShort span{
+  display: inline-block;
+  width: 50px;
+}
+.loginRegister{
+  padding-right: 10px;
 }

@@ -8,11 +8,11 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/autoplay';
 import { nanoid } from 'nanoid';
-import { NavList, ServiceItem } from '@/src/views/Index/interface';
+import { NavItem, ServiceItem } from '@/src/views/Index/interface';
 import classes from './ListContainer.module.scss';
 
 type Props = {
-  navList?: Array<NavList>,
+  navList?: Array<Array<NavItem>>,
   serviceItem?: Array<ServiceItem>,
 }
 
