@@ -55,25 +55,13 @@ const ListContainer:React.FC<Props> = ({ navList, serviceItem }) => (
             }}
           >
             <SwiperSlide>
-              <img
-                className="focus-item-img"
-                src="https://www.dmoe.cc/random.php"
-                alt="banner1"
-              />
+              <img className="focus-item-img" src="/banners/banner1.png" alt="banner1" />
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                className="focus-item-img"
-                src="https://www.dmoe.cc/random.php"
-                alt="banner2"
-              />
+              <img className="focus-item-img" src="/banners/banner2.png" alt="banner2" />
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                className="focus-item-img"
-                src="https://www.dmoe.cc/random.php"
-                alt="banner3"
-              />
+              <img className="focus-item-img" src="/banners/banner3.png" alt="banner3" />
             </SwiperSlide>
           </Swiper>
         </div>
@@ -136,14 +124,8 @@ const ListContainer:React.FC<Props> = ({ navList, serviceItem }) => (
           <div className={classes.service_entry}>
             <ul className={classes.service_list}>
               {serviceItem ? serviceItem.map((item) => (
-                <li
-                  className={classes.service_item}
-                  key={nanoid()}
-                >
-                  <Link
-                    className={classes.service_lk}
-                    href="https://wallhaven.cc/"
-                  >
+                <li className={classes.service_item} key={nanoid()}>
+                  <Link className={classes.service_lk} href="https://wallhaven.cc/">
                     <i className={classes.service_ico}>
                       <img className={classes.service_default} src={item.imgSrc} alt="active_img" />
                       <img className={classes.service_active} src={item.active_img} alt="active_img" />
