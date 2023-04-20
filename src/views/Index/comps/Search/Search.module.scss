@@ -5,7 +5,8 @@
 .root .w{
   height: 140px;
   position: relative;
-  width: 1190px;
+  width: 990px;
+  margin: 0 auto;
 }
 .header_box{
   position: relative;
@@ -106,7 +107,7 @@
 }
 .dropdown{
   position: absolute;
-  right: 130px;
+  right: 80px;
   top:25px;
   z-index:21;
 }
@@ -177,8 +178,11 @@
   position: absolute;
   left: 203px;
   bottom: 0;
-  height: 40px;
+  vertical-align: text-bottom;
+  height: 20px;
   padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 14px;
 }
 .navitems ul, .navitems a{
   float: left;
@@ -198,7 +202,7 @@
   url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.ttf?t=1680525011779') format('truetype');
 }
 .iconfont{
-  font-family:"iconfont" !important;
+  font-family: "iconfont", serif !important;
   font-size:16px;font-style:normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;

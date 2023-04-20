@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
@@ -9,12 +9,16 @@ import 'swiper/scss/scrollbar';
 
 import { numToStringDouble } from '@/src/utils/commonFuns';
 import { nanoid } from 'nanoid';
+import { SecKillList } from '@/src/views/Index/data';
 import classes from './SecKill.module.scss';
 
 interface Time {
     hour: string,
     min: string,
     sec: string
+}
+type Props = {
+  secKillList?: SecKillList
 }
 
 // 获取下一场秒杀时间点（整点场）
@@ -61,30 +65,17 @@ const animation = (secKillHour: number, setLeftTime: React.Dispatch<Time>): void
   }, 1000);
 };
 
-const getSecKillList = async () => {
-  const result = await fetch('/api/secKillList');
-  return result.json();
-};
-
-function SecKill() {
+const SecKill:React.FC<Props> = ({ secKillList }) => {
   const myDate: Date = new Date();
 
   // 秒杀的时间场次
   const secKillTime: Array<number> = [10, 12, 19, 21, 22, 24];
   const [leftTime, setLeftTime] = useState({ hour: '00', min: '00', sec: '00' });
   const [secKillHour, setSecKillHour] = useState(10);
-
-  const [secKillSecList, setSecKillSecList] = useState([{
-    name: '', price: '', link: '', imgSrc: '',
-  }]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     const secHour: number = getSecKillTime(myDate.getHours(), secKillTime);
     setSecKillHour(secHour);
     animation(secKillHour, setLeftTime);
-    getSecKillList().then((r) => {
-      setSecKillSecList(r.data);
-    });
   }, [leftTime]);
   return (
     <div className={classes.root}>
@@ -116,7 +107,7 @@ function SecKill() {
               slidesPerView={3}
               navigation
             >
-              {secKillSecList.map((item) => (
+              {secKillList ? secKillList.map((item) => (
                 <SwiperSlide key={nanoid()}>
                   <a className={classes.seckill_item} href={item.link}>
                     <img
@@ -130,7 +121,13 @@ function SecKill() {
                     </span>
                   </a>
                 </SwiperSlide>
-              ))}
+              )) : (
+                <SwiperSlide>
+                  <a className={classes.seckill_item} href="https://wallhaven.cc/">
+                    没有收到牛子轮播图，去看点牛子图吧
+                  </a>
+                </SwiperSlide>
+              )}
 
             </Swiper>
 
@@ -149,6 +146,6 @@ function SecKill() {
       </div>
     </div>
   );
-}
+};
 
 export default SecKill;
