@@ -2,11 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import redisClient from '@/src/utils/redis';
 import { nanoid } from 'nanoid';
 import nookies from 'nookies';
+import { errorReturnObj, ReturnInter, successReturnObj } from '@/src/utils';
 
-type resData = {
-    message:string,
-    status_code: number
-}
 type loginData = {
     token:string,
     name: string
@@ -29,19 +26,15 @@ const loginSaveRedis = async (res:NextApiResponse, loginInfo:loginData) => {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<resData>,
+  res: NextApiResponse<ReturnInter>,
 ):Promise<void> {
   const token = 'token';
-  const resBody:resData = { message: '', status_code: -1 };
   const { name, password } = req.query;
   if (name === '123' && password === '123') {
     const loginInfo:loginData = { token, name };
     await loginSaveRedis(res, loginInfo).then((r) => console.log(r));
-    resBody.message = 'login succeed!';
-    resBody.status_code = 200;
+    res.status(200).send(successReturnObj());
   } else {
-    resBody.message = 'login failed!';
-    resBody.status_code = 403;
+    res.status(403).send(errorReturnObj('login fail!'));
   }
-  res.send(resBody);
 }
