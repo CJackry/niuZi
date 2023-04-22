@@ -1,24 +1,28 @@
 import React, { useRef } from 'react';
 import clientRequest from '@/src/utils/http-client';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ReturnInter } from '@/src/utils';
 import classes from './login.module.scss';
 
 function VLogin() {
   const nameEl = useRef<HTMLInputElement>(null);
   const pwdEl = useRef<HTMLInputElement>(null);
+  const router = useRouter();
   const handleLogin = async (): Promise<void> => {
     const user = { name: nameEl.current?.value, password: pwdEl.current?.value };
-    await clientRequest({
+    const result = await clientRequest<ReturnInter>({
       url: 'api/login',
       method: 'get',
       params: user,
     });
+    if (result.code === 200) await router.push('/');
   };
   return (
     <div className={classes.root}>
       <div className={classes.w}>
         <div className={classes.welcome}>
-          <img src="https://misc.360buyimg.com/lib/img/e/logo-201305-b.png" alt="logo" />
+          <Link href="/"><img src="/NiuziLogo.png" alt="logo" /></Link>
           <span className={classes.welcome_text}>欢迎登陆</span>
         </div>
         <div className={classes.mid}>

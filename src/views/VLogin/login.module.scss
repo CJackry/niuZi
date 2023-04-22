@@ -6,17 +6,19 @@
   margin: 0 auto;
 }
 .welcome{
-height: 60px;
+  height: 60px;
   font-size: 0;
 }
 .welcome img{
+  padding-top: 10px;
   height: 50px;
   vertical-align: middle;
 }
 .welcome_text{
+  padding-top: 10px;
   font-size: 25px;
   padding-left: 20px;
-  vertical-align: middle;
+  vertical-align: bottom;
 }
 .mid{
   display: flex;
