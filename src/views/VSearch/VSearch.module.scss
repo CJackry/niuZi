@@ -1,0 +1,53 @@
+.root{
+
+}
+.topNav{
+  height: 40px;
+  line-height: 40px;
+}
+.topNav span{
+  display: inline-block;
+  padding-right: 2px;
+  padding-left: 2px;
+  margin: 0 auto;
+}
+.attrNav{
+  background-color: #fff;
+  margin-bottom: 10px;
+  border-top: 1px solid #DDD;
+}
+.brand{
+  display: flex;
+  justify-content: left;
+  height: 120px;
+  border-bottom: 1px solid #DDD;
+}
+.attrKey{
+  display: inline-block;
+  background-color: #f3f3f3;
+  width: 114px;
+}
+.attrKey span{
+  display: block;
+  height: 100%;
+  padding-left: 5px;
+  line-height: 34px;
+  font-weight: bold;
+}
+.category{
+  min-height: 34px;
+  display: flex;
+  justify-content: left;
+}
+.categoryValue{
+  display: flex;
+  justify-content: left;
+}
+.valueList{
+  display: flex;
+  width: 740px;
+}
+.valueList li{
+  display: inline-block;
+  color: #005aa0;
+}
