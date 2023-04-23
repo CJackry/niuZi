@@ -34,10 +34,10 @@ function VSearch() {
               </div>
               <div className={classes.valueMore}>
                 <div className={classes.moreBtn}>
-                  <span>更多</span>
+                  <span className={classes.more}>更多👇</span>
                 </div>
-                <div className={classes.multChoose}>
-                  <span>多选</span>
+                <div className={classes.moreBtn}>
+                  <span className={classes.mutilSelect}>多选+</span>
                 </div>
               </div>
             </div>
