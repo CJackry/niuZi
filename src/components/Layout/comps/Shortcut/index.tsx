@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useUserContext } from '@/src/stores/context';
-import classes from './Header.module.scss';
+import classes from './Shortcut.module.scss';
 
-function Header() {
+function Shortcut() {
   const { store: { name } } = useUserContext();
   return (
     <div className={classes.root}>
@@ -31,4 +31,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Shortcut;

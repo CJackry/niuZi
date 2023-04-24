@@ -26,21 +26,15 @@ app.use(async ctx=>{
             body.data=staticData;
             break;
         }
-        case '/navList': {
-            body.data=navList;
-            break;
-        }
-        case '/hotWords': {
-            body.data=hotWords;
-            break;
-        }
-        case '/secKillList': {
-            body.data=secKillList;
-            break;
-        }
         /*phones太长，不应该一次性给完，可以通过携带query参数来指明需要哪一段，将phones进行分割*/
         case '/phones': {
-            body.data=phones;
+            let {part} = ctx.query;
+            if(!part){
+                body.message = 'No part';
+                part = 1;
+            }
+            console.log(part);
+            body.data=phones.slice((part-1)*60, part*60);
             break;
         }
         default:{

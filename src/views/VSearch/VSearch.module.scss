@@ -187,6 +187,13 @@
   text-align: center;
   border: 1px solid #DDD;
 }
+.loading{
+  text-align: center;
+  font-size: 20px;
+  color: #e1251b;
+  height: 100px;
+  line-height: 100px;
+}
 .goodsList{
   display: flex;
   justify-content: left;
@@ -241,6 +248,10 @@
 .phoneTitle{
   height: 40px;
   line-height: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: nowrap;
 }
 .phoneCommits{
   height: 18px;

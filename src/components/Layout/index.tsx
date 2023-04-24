@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Footer from './comps/Footer';
 import classes from './Layout.module.scss';
-import Header from './comps/Header';
+import Header from './comps/Shortcut';
 
 interface Props {
     children?: ReactNode

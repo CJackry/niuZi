@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import global from '@/styles/global.module.scss';
 import { nanoid } from 'nanoid';
-
+import { Phone } from '@/src/views/VSearch/interface';
 import Pagination from '@mui/material/Pagination';
+import clientRequest from '@/src/utils/http-client';
 import classes from './VSearch.module.scss';
 
-function VSearch() {
+const getPhone = async (part:number) => clientRequest<Array<Phone>>({
+  url: '/api/phones',
+  params: { part },
+});
+
+const VSearch:React.FC = () => {
   const phoneImg = 'https://img11.360buyimg.com/n7/jfs/t1/99542/29/27716/49463/635bb90eEdd20de26/9e7aca116e9bd23a.jpg';
-  const initialArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [phoneInfo, setPhoneInfo] = useState<Array<Phone>|null>(null);
+  useEffect(() => {
+    getPhone(1).then((r) => setPhoneInfo(r.data));
+  }, []);
   return (
     <div className={classes.root}>
       <div className={global.w}>
@@ -114,49 +123,56 @@ function VSearch() {
           </div>
         </div>
         <div className={classes.goodsList}>
-          {initialArray.map((i) => (
-            <li className={classes.goodsItem}>
+          {phoneInfo ? phoneInfo.map((phone) => (
+            <div className={classes.goodsItem} key={nanoid()}>
               <div className={classes.goodsWarp}>
-                <a href="https://jd.com" className={classes.goodsImg}>
-                  <img src={phoneImg} alt={`phone${String(i)}`} />
-                </a>
+                <Link href="https://jd.com" className={classes.goodsImg}>
+                  <img src={phone.color[0].img_link ? phone.color[0].img_link : phoneImg} alt="phone" />
+                </Link>
                 <div className={classes.phoneScroll}>
-                  <li className={classes.psItem}>
-                    <a href="https://jd.com">
-                      <img src={phoneImg} alt="color" />
-                    </a>
-                  </li>
-                  <li className={classes.psItem}>
-                    <a href="https://jd.com">
-                      <img src={phoneImg} alt="color" />
-                    </a>
-                  </li>
+                  {phone.color.map((colorAttr) => (
+                    <li className={classes.psItem} key={nanoid()}>
+                      <a href="https://jd.com">
+                        <img
+                          src={colorAttr.img_link ? colorAttr.img_link : phoneImg}
+                          alt={colorAttr.name}
+                          title={colorAttr.name}
+                        />
+                      </a>
+                    </li>
+                  ))}
                 </div>
                 <div className={classes.phonePrice}>
                   <span>￥</span>
-                  <strong>1199.00</strong>
+                  <strong>{phone.price}</strong>
                 </div>
                 <div className={classes.phoneTitle}>
                   <a href="https://jd.com">
-                    <p>华为之选</p>
+                    <span>{phone.title}</span>
                   </a>
                 </div>
                 <div className={classes.phoneCommits}>
-                  <span>50万+</span>
+                  <span>{phone.commits}</span>
                   条评价
                 </div>
                 <div className={classes.phoneStore}>
-                  <span className={classes.storeName}>
-                    华为京东自营旗舰店
-                  </span>
+                  <Link href={phone.shop.link}>
+                    <span className={classes.storeName}>
+                      {phone.shop.name}
+                    </span>
+                  </Link>
                 </div>
               </div>
-            </li>
-          ))}
-
+            </div>
+          )) : (
+            <div className={classes.loading}>
+              <span>Loading</span>
+            </div>
+          )}
         </div>
+        )
         <div className={classes.page}>
-          <Pagination count={10} variant="outlined" shape="rounded" />
+          <Pagination count={10} variant="outlined" shape="rounded" size="medium" />
           <div className={classes.pageTo}>
             <em>
               共
@@ -171,6 +187,6 @@ function VSearch() {
       </div>
     </div>
   );
-}
+};
 
 export default VSearch;
