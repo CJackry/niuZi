@@ -48,6 +48,42 @@
   justify-content: left;
   width: 740px;
 }
+.b_valueList{
+  display: flex;
+  width: 735px;
+  justify-content: left;
+  flex-wrap: wrap;
+  padding-left: 5px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+.brandImg{
+  display: inline-block;
+}
+.brandImg a{
+  display: inline-block;
+  width: 114px;
+  height: 48px;
+  border: 1px solid #DDD;
+}
+.brandImg img{
+  margin: 5px 6px;
+
+}
+.brandImg span{
+  display: none;
+  font-size: 14px;
+  line-height: 48px;
+  text-align: center;
+}
+.brandImg a:hover span{
+  display: block;
+  color: #e1251b;
+  border-color: #e1251b;
+}
+.brandImg a:hover img{
+  display: none;
+}
 .valueList li{
   display: inline-block;
   color: #005aa0;
@@ -74,4 +110,167 @@
 }
 .moreBtn:hover{
   color: #e1251b;
+}
+.v_filter{
+  border-top: 1px solid #DDD;
+  margin-bottom: 5px;
+}
+.v_filter_top{
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px
+}
+.v_sort{
+  display: inline-block;
+  line-height: 25px;
+  height: 25px;
+  margin-right: 13px;
+}
+.v_sort li{
+  display: inline-block;
+  width: 56px;
+  height: 25px;
+  line-height: 25px;
+  color: #333;
+  border: 1px solid #CCC;
+  background-color: #fff;
+  text-align: center;
+}
+.v_sort li:first-child{
+  background-color: #e1251b;
+  color: #fff;
+}
+.priceArea{
+  width: 132px;
+  height: 25px;
+}
+.priceArea input{
+  width: 52px;
+  height: 17px;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+.pageInfo{
+  width: 234px;
+  height: 25px;
+}
+.totalGoods{
+  display: inline-block;
+  width: 92px;
+  height: 25px;
+  line-height: 25px;
+  color: #999;
+  font-size: 12px;
+}
+.totalCount{
+  color: #666;
+}
+.totalPage{
+  display: inline-block;
+  line-height: 23px;
+  margin-right: 10px;
+}
+.totalPage span:first-child{
+  font-weight: bold;
+  color: #e1251b;
+}
+.pageChange{
+  display: inline-block;
+}
+.pageChange a{
+  display: inline-block;
+  width: 46px;
+  height: 23px;
+  background: #FFF;
+  color: #ccc;
+  line-height: 23px;
+  text-align: center;
+  border: 1px solid #DDD;
+}
+.goodsList{
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  height: auto;
+}
+.goodsItem{
+  width: 288px;
+  margin-top: 10px;
+  margin-right: 40px;
+  border: 1px solid #fff ;
+}
+.goodsItem:hover{
+  border: 1px solid #DDD;
+}
+.goodsWarp{
+  padding: 9px 12px;
+}
+.goodsImg{
+  display: block;
+}
+.goodsImg img{
+  display: block;
+  margin: 0 auto;
+}
+.goodsScroll{
+  height: 30px;
+}
+.psItem{
+  display: inline-block;
+  width: 34px;
+  border: 1px solid #DDD;
+  margin-left: 10px;
+}
+.psItem img{
+  width: 100%;
+}
+.psItem:hover{
+  border-color: #e1251b;
+}
+.phonePrice{
+  height: 22px;
+  color: #e1251b;
+  font-size: 20px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.phonePrice span{
+  font-size: 16px;
+}
+.phoneTitle{
+  height: 40px;
+  line-height: 40px;
+}
+.phoneCommits{
+  height: 18px;
+  margin-bottom: 9px;
+}
+.phoneCommits span{
+  color: #646fb0;
+  font-family: Verdana, serif;
+  font-weight: 700;
+}
+.phoneStore{
+  height: 18px;
+  margin-bottom: 9px;
+}
+.page{
+  display: flex;
+  justify-content: right;
+  height: 38px;
+  margin-bottom: 10px;
+}
+.pageTo{
+  height: 38px;
+  font-size: 14px;
+  margin-left: 20px;
+  line-height: 38px;
+}
+.pageTo em{
+  font-style: normal;
+}
+.pageText{
+  width: 32px;
+  height: 32px;
 }
