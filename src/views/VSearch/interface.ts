@@ -13,3 +13,7 @@ export interface Phone{
     commits: string,
     shop: Shop,
 }
+export interface PhoneInfo{
+    phone: Array<Phone>,
+    total: number,
+}

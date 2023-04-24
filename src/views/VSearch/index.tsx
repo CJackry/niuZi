@@ -5,18 +5,38 @@ import { nanoid } from 'nanoid';
 import { Phone } from '@/src/views/VSearch/interface';
 import Pagination from '@mui/material/Pagination';
 import clientRequest from '@/src/utils/http-client';
+import { useRouter } from 'next/router';
+import { useWhyDidYouUpdate } from 'ahooks';
+import { unstable_batchedUpdates } from 'react-dom';
 import classes from './VSearch.module.scss';
 
-const getPhone = async (part:number) => clientRequest<Array<Phone>>({
-  url: '/api/phones',
-  params: { part },
-});
+const getPhone = async (part:number) => {
+  const res = await clientRequest<Array<Phone>>({
+    url: '/api/phones',
+    params: { part },
+  });
+  return res.data;
+};
 
 const VSearch:React.FC = () => {
+  console.log('VSearch render');
   const phoneImg = 'https://img11.360buyimg.com/n7/jfs/t1/99542/29/27716/49463/635bb90eEdd20de26/9e7aca116e9bd23a.jpg';
-  const [phoneInfo, setPhoneInfo] = useState<Array<Phone>|null>(null);
+  const [phoneInfo, setPhoneInfo] = useState<Array<Phone>|null>();
+  const router = useRouter();
+  const p = Number(router.query.page);
+  const [page, setPage] = useState<number>(p);
+  useWhyDidYouUpdate('VSearch', { phoneInfo, page });
+  const handleChangePage = (event:React.ChangeEvent<unknown>, value:number) => {
+    setPage(value);
+    router.push(`/search?page=${value}`).then((r) => console.log(r));
+  };
   useEffect(() => {
-    getPhone(1).then((r) => setPhoneInfo(r.data));
+    getPhone(page).then((r) => {
+      unstable_batchedUpdates(() => {
+        setPhoneInfo(r);
+        if (p !== undefined) setPage(p);
+      });
+    });
   }, []);
   return (
     <div className={classes.root}>
@@ -116,8 +136,8 @@ const VSearch:React.FC = () => {
                 <span>100</span>
               </div>
               <div className={classes.pageChange}>
-                <Link href="https://jd.com">{'<'}</Link>
-                <Link href="https://jd.com">{'>'}</Link>
+                <Link href={`/search${page <= 2 ? '' : `?page=${page - 1}`}`}>{'<'}</Link>
+                <Link href="/search">{'>'}</Link>
               </div>
             </div>
           </div>
@@ -172,7 +192,14 @@ const VSearch:React.FC = () => {
         </div>
         )
         <div className={classes.page}>
-          <Pagination count={10} variant="outlined" shape="rounded" size="medium" />
+          <Pagination
+            defaultPage={1}
+            count={10}
+            variant="outlined"
+            shape="rounded"
+            size="medium"
+            onChange={handleChangePage}
+          />
           <div className={classes.pageTo}>
             <em>
               共

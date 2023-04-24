@@ -35,6 +35,7 @@ app.use(async ctx=>{
             }
             console.log(part);
             body.data=phones.slice((part-1)*60, part*60);
+            body.data.total = phones.length;
             break;
         }
         default:{
