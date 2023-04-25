@@ -8,6 +8,8 @@ import clientRequest from '@/src/utils/http-client';
 import { useRouter } from 'next/router';
 import { useWhyDidYouUpdate } from 'ahooks';
 import { unstable_batchedUpdates } from 'react-dom';
+import Category from '@/src/views/VSearch/comps/category';
+import AttrFilter from '@/src/views/VSearch/comps/attrFilter';
 import classes from './VSearch.module.scss';
 
 const getPhone = async (part:number) => {
@@ -45,103 +47,8 @@ const VSearch:React.FC = () => {
           <Link href="https://jd.com">全部结果</Link>
           <span>{'>'}</span>
         </div>
-        <div className={classes.attrNav}>
-          <div className={classes.brand}>
-            <div className={classes.attrKey}>
-              <span>品牌：</span>
-            </div>
-            <div className={classes.b_valueList}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-                <li className={classes.brandImg} key={nanoid()}>
-                  <Link href="https://jd.com">
-                    <img src="/brandImgs/Apple.png" alt="apple" />
-                    <span>
-                      Apple
-                      {i}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </div>
-            <div className={classes.valueMore}>
-              <div className={classes.moreBtn}>
-                <span className={classes.more}>更多👇</span>
-              </div>
-              <div className={classes.moreBtn}>
-                <span className={classes.mutilSelect}>多选+</span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.category}>
-            <div className={classes.attrKey}>
-              <span>分类：</span>
-            </div>
-            <div className={classes.categoryValue}>
-              <div className={classes.valueList}>
-                <li>手机</li>
-                <li>二手手机</li>
-                <li>合约机</li>
-              </div>
-              <div className={classes.valueMore}>
-                <div className={classes.moreBtn}>
-                  <span className={classes.more}>更多👇</span>
-                </div>
-                <div className={classes.moreBtn}>
-                  <span className={classes.mutilSelect}>多选+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={classes.v_filter}>
-          <div className={classes.v_filter_top}>
-            <div className={classes.v_sort}>
-              <li>
-                <span>综合</span>
-                <i>👇</i>
-              </li>
-              <li>
-                <span>销量</span>
-                <i>👇</i>
-              </li>
-              <li>
-                <span>评价数</span>
-                <i>👇</i>
-              </li>
-              <li>
-                <span>新品</span>
-                <i>👇</i>
-              </li>
-              <li>
-                <span>价格</span>
-                <i>👇</i>
-              </li>
-            </div>
-            <div className={classes.priceFilter}>
-              <div className={classes.priceArea}>
-                <input className={classes.minPrice} placeholder="￥" />
-                -
-                <input className={classes.minPrice} placeholder="￥" />
-              </div>
-            </div>
-            <div className={classes.pageInfo}>
-              <div className={classes.totalGoods}>
-                共
-                <span className={classes.totalCount}>5900+</span>
-                件商品
-              </div>
-              <div className={classes.totalPage}>
-                <span>1</span>
-                /
-                <span>100</span>
-              </div>
-              <div className={classes.pageChange}>
-                <Link href={`/search${page <= 2 ? '' : `?page=${page - 1}`}`}>{'<'}</Link>
-                <Link href="/search">{'>'}</Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Category />
+        <AttrFilter />
         <div className={classes.goodsList}>
           {phoneInfo ? phoneInfo.map((phone) => (
             <div className={classes.goodsItem} key={nanoid()}>

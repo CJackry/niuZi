@@ -1,0 +1,77 @@
+
+.v_filter{
+  border-top: 1px solid #DDD;
+  margin-bottom: 5px;
+}
+.v_filter_top{
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px
+}
+.v_sort{
+  display: inline-block;
+  line-height: 25px;
+  height: 25px;
+  margin-right: 13px;
+}
+.v_sort li{
+  display: inline-block;
+  width: 56px;
+  height: 25px;
+  line-height: 25px;
+  color: #333;
+  border: 1px solid #CCC;
+  background-color: #fff;
+  text-align: center;
+}
+.v_sort li:first-child{
+  background-color: #e1251b;
+  color: #fff;
+}
+.priceArea{
+  width: 132px;
+  height: 25px;
+}
+.priceArea input{
+  width: 52px;
+  height: 17px;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+.pageInfo{
+  width: 234px;
+  height: 25px;
+}
+.totalGoods{
+  display: inline-block;
+  width: 92px;
+  height: 25px;
+  line-height: 25px;
+  color: #999;
+  font-size: 12px;
+}
+.totalCount{
+  color: #666;
+}
+.totalPage{
+  display: inline-block;
+  line-height: 23px;
+  margin-right: 10px;
+}
+.totalPage span:first-child{
+  font-weight: bold;
+  color: #e1251b;
+}
+.pageChange{
+  display: inline-block;
+}
+.pageChange a{
+  display: inline-block;
+  width: 46px;
+  height: 23px;
+  background: #FFF;
+  color: #ccc;
+  line-height: 23px;
+  text-align: center;
+  border: 1px solid #DDD;
+}

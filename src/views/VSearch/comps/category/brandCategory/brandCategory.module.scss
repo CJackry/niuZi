@@ -1,0 +1,54 @@
+.brand{
+  display: flex;
+  justify-content: left;
+  height: 120px;
+  border-bottom: 1px solid #DDD;
+}
+.brandImg{
+  display: inline-block;
+}
+.brandImg a{
+  display: inline-block;
+  width: 114px;
+  height: 48px;
+  border: 1px solid #DDD;
+}
+.brandImg img{
+  margin: 5px 6px;
+
+}
+.brandImg span{
+  display: none;
+  font-size: 14px;
+  line-height: 48px;
+  text-align: center;
+}
+.brandImg a:hover span{
+  display: block;
+  color: #e1251b;
+  border-color: #e1251b;
+}
+.brandImg a:hover img{
+  display: none;
+}
+.b_valueList{
+  display: flex;
+  width: 735px;
+  justify-content: left;
+  flex-wrap: wrap;
+  padding-left: 5px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+.attrKey{
+  display: inline-block;
+  background-color: #f3f3f3;
+  width: 114px;
+}
+.attrKey span{
+  display: block;
+  height: 100%;
+  padding-left: 5px;
+  line-height: 34px;
+  font-weight: bold;
+}
