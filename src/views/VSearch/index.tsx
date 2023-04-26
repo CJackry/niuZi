@@ -7,39 +7,34 @@ import Pagination from '@mui/material/Pagination';
 import clientRequest from '@/src/utils/http-client';
 import { useRouter } from 'next/router';
 import { useWhyDidYouUpdate } from 'ahooks';
-import { unstable_batchedUpdates } from 'react-dom';
 import Category from '@/src/views/VSearch/comps/category';
 import AttrFilter from '@/src/views/VSearch/comps/attrFilter';
+import ResultItem from '@/src/views/VSearch/comps/resultItem';
 import classes from './VSearch.module.scss';
 
-const getPhone = async (part:number) => {
+const getPhone = async (page:number) => {
   const res = await clientRequest<Array<Phone>>({
     url: '/api/phones',
-    params: { part },
+    params: { page },
   });
   return res.data;
 };
 
 const VSearch:React.FC = () => {
-  console.log('VSearch render');
-  const phoneImg = 'https://img11.360buyimg.com/n7/jfs/t1/99542/29/27716/49463/635bb90eEdd20de26/9e7aca116e9bd23a.jpg';
   const [phoneInfo, setPhoneInfo] = useState<Array<Phone>|null>();
   const router = useRouter();
-  const p = Number(router.query.page);
+  const p = router.query.page ? Number(router.query.page) : 1;
   const [page, setPage] = useState<number>(p);
   useWhyDidYouUpdate('VSearch', { phoneInfo, page });
   const handleChangePage = (event:React.ChangeEvent<unknown>, value:number) => {
     setPage(value);
-    router.push(`/search?page=${value}`).then((r) => console.log(r));
+    router.push(`/search?page=${value}`).catch((e) => console.log(e));
   };
   useEffect(() => {
-    getPhone(page).then((r) => {
-      unstable_batchedUpdates(() => {
-        setPhoneInfo(r);
-        if (p !== undefined) setPage(p);
-      });
+    getPhone(p).then((r) => {
+      setPhoneInfo(r);
     });
-  }, []);
+  }, [page]);
   return (
     <div className={classes.root}>
       <div className={global.w}>
@@ -51,46 +46,7 @@ const VSearch:React.FC = () => {
         <AttrFilter />
         <div className={classes.goodsList}>
           {phoneInfo ? phoneInfo.map((phone) => (
-            <div className={classes.goodsItem} key={nanoid()}>
-              <div className={classes.goodsWarp}>
-                <Link href="https://jd.com" className={classes.goodsImg}>
-                  <img src={phone.color[0].img_link ? phone.color[0].img_link : phoneImg} alt="phone" />
-                </Link>
-                <div className={classes.phoneScroll}>
-                  {phone.color.map((colorAttr) => (
-                    <li className={classes.psItem} key={nanoid()}>
-                      <a href="https://jd.com">
-                        <img
-                          src={colorAttr.img_link ? colorAttr.img_link : phoneImg}
-                          alt={colorAttr.name}
-                          title={colorAttr.name}
-                        />
-                      </a>
-                    </li>
-                  ))}
-                </div>
-                <div className={classes.phonePrice}>
-                  <span>￥</span>
-                  <strong>{phone.price}</strong>
-                </div>
-                <div className={classes.phoneTitle}>
-                  <a href="https://jd.com">
-                    <span>{phone.title}</span>
-                  </a>
-                </div>
-                <div className={classes.phoneCommits}>
-                  <span>{phone.commits}</span>
-                  条评价
-                </div>
-                <div className={classes.phoneStore}>
-                  <Link href={phone.shop.link}>
-                    <span className={classes.storeName}>
-                      {phone.shop.name}
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <ResultItem phone={phone} key={nanoid()} />
           )) : (
             <div className={classes.loading}>
               <span>Loading</span>
@@ -102,6 +58,7 @@ const VSearch:React.FC = () => {
           <Pagination
             defaultPage={1}
             count={10}
+            page={page}
             variant="outlined"
             shape="rounded"
             size="medium"

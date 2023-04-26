@@ -9,7 +9,7 @@ import 'swiper/scss/scrollbar';
 
 import { numToStringDouble } from '@/src/utils/commonFuns';
 import { nanoid } from 'nanoid';
-import { SecKillList } from '@/src/views/Index/data';
+import { SecKillItem } from '@/src/views/Index/interface';
 import classes from './SecKill.module.scss';
 
 interface Time {
@@ -18,7 +18,7 @@ interface Time {
     sec: string
 }
 type Props = {
-  secKillList?: SecKillList
+  secKillList?: Array<SecKillItem>
 }
 
 // 获取下一场秒杀时间点（整点场）

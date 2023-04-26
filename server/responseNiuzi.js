@@ -28,13 +28,15 @@ app.use(async ctx=>{
         }
         /*phones太长，不应该一次性给完，可以通过携带query参数来指明需要哪一段，将phones进行分割*/
         case '/phones': {
-            let {part} = ctx.query;
-            if(!part){
+            let {page} = ctx.query;
+            console.log('query', ctx.query);
+            console.log(page);
+            page = Number(page);
+            if(!page){
                 body.message = 'No part';
-                part = 1;
+                page = 1;
             }
-            console.log(part);
-            body.data=phones.slice((part-1)*60, part*60);
+            body.data=phones.slice((page-1)*10, page*10);
             body.data.total = phones.length;
             break;
         }

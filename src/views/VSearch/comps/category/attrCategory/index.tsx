@@ -1,5 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
+import MoreBtn from '@/src/views/VSearch/comps/moreBtn';
 import classes from './attrCategory.module.scss';
 
 type Props = {
@@ -17,14 +18,7 @@ const AttrCategory:React.FC<Props> = ({ cateName, cateValueList }) => (
           <li key={nanoid()}>{cateValue}</li>
         ))}
       </div>
-      <div className={classes.valueMore}>
-        <div className={classes.moreBtn}>
-          <span className={classes.more}>更多👇</span>
-        </div>
-        <div className={classes.moreBtn}>
-          <span className={classes.mutilSelect}>多选+</span>
-        </div>
-      </div>
+      <MoreBtn />
     </div>
   </div>
 );

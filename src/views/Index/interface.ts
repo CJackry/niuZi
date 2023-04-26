@@ -14,7 +14,7 @@ export interface HotWords {
   link: string;
 }
 
-export interface SecKillList {
+export interface SecKillItem {
   name: string;
   price: string;
   link: string;
@@ -25,5 +25,5 @@ export interface CommonData {
   hotWords: Array<HotWords>;
   serviceItem: Array<ServiceItem>;
   navList: Array<Array<NavItem>>;
-  secKillList: Array<SecKillList>;
+  secKillList: Array<SecKillItem>;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import Link from 'next/link';
+import MoreBtn from '@/src/views/VSearch/comps/moreBtn';
 import classes from './brandCategory.module.scss';
 
 const BrandCategory:React.FC = () => {
@@ -23,14 +24,7 @@ const BrandCategory:React.FC = () => {
           </li>
         ))}
       </div>
-      <div className={classes.valueMore}>
-        <div className={classes.moreBtn}>
-          <span className={classes.more}>更多👇</span>
-        </div>
-        <div className={classes.moreBtn}>
-          <span className={classes.mutilSelect}>多选+</span>
-        </div>
-      </div>
+      <MoreBtn />
     </div>
   );
 };
