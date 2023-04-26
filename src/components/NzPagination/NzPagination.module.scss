@@ -1,0 +1,36 @@
+.page{
+  display: flex;
+  justify-content: right;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.pageTo{
+  height: 40px;
+  font-size: 14px;
+  margin-left: 20px;
+  line-height: 40px;
+}
+.pageTo em{
+  display: inline-block;
+  font-style: normal;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.pageTo em span{
+  display: inline-block;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-weight: 700;
+}
+.pageText{
+  width: 32px;
+  height: 25px;
+  text-align: center;
+}
+.pageTo button{
+  width: 56px;
+  height: 38px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  margin-left: 15px;
+}

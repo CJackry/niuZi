@@ -22,6 +22,10 @@ app.use(async ctx=>{
     let body = {code: 200};
     console.log('someone request', ctx.url);
     switch (ctx.path){
+        case '/hotWords':{
+            body.data = hotWords;
+            break;
+        }
         case '/getStaticData':{
             body.data=staticData;
             break;

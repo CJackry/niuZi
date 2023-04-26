@@ -3,7 +3,7 @@ import SecKill from '@/src/views/Index/comps/SecKill';
 import ListContainer from '@/src/views/Index/comps/ListContainer';
 import { getStaticData } from '@/src/utils/commonFuns';
 import type { CommonData } from '@/src/views/Index/interface';
-import Header from './comps/Header';
+import Header from '../../components/Layout/comps/Header';
 import classes from './index.module.scss';
 
 const Index:React.FC = () => {
