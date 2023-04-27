@@ -10,6 +10,7 @@ import Category from '@/src/views/VSearch/comps/category';
 import AttrFilter from '@/src/views/VSearch/comps/attrFilter';
 import ResultItem from '@/src/views/VSearch/comps/resultItem';
 import NzPagination from '@/src/components/NzPagination';
+import { usePageContext } from '@/src/stores/pageContext';
 import classes from './VSearch.module.scss';
 
 const getPhone = async (page:number) => {
@@ -21,16 +22,12 @@ const getPhone = async (page:number) => {
 };
 
 const VSearch:React.FC = () => {
+  const { store: { page } } = usePageContext();
   const [phoneInfo, setPhoneInfo] = useState<Array<Phone>|null>();
   const router = useRouter();
   const p = router.query.page ? Number(router.query.page) : 1;
   useWhyDidYouUpdate('VSearch', { phoneInfo });
-  const [page, setPage] = useState<number>(p);
-  const localUrl = router.pathname;
-  const handleChangePage = (event:React.ChangeEvent<unknown>, value:number) => {
-    setPage(value);
-    router.push(`${localUrl}?page=${value}`).catch((e) => console.log(e));
-  };
+
   useEffect(() => {
     getPhone(p).then((r) => {
       setPhoneInfo(r);
@@ -54,7 +51,7 @@ const VSearch:React.FC = () => {
             </div>
           )}
         </div>
-        <NzPagination page={page} handlePageChange={handleChangePage} />
+        <NzPagination />
       </div>
     </div>
   );
