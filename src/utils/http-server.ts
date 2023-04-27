@@ -21,11 +21,11 @@ const serverRequest: Instance = serverInstance.request;
  * */
 serverInstance.interceptors.request.use((request) => {
   const targetUrl = 'http://localhost:3002';
-  console.log('server url: ', request.url);
   if (request.url?.startsWith('/api')) {
     request.url = request.url.replace('/api', '');
     request.baseURL = targetUrl;
   }
+  console.log(targetUrl);
   return request;
 });
 

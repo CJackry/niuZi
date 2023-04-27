@@ -1,13 +1,10 @@
 import React from 'react';
 import VSearch from '@/src/views/VSearch';
-import { PageProvider } from '@/src/stores/pageContext';
 
-function Index() {
+function Search() {
   return (
-    <PageProvider initialVal={{ page: 1 }}>
-      <VSearch />
-    </PageProvider>
+    <VSearch />
   );
 }
 
-export default Index;
+export default Search;

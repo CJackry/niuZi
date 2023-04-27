@@ -7,10 +7,8 @@ export default async function handler(
   res: NextApiResponse,
 ):Promise<void> {
   const { id } = req.query;
-  console.log('get', req.query);
   try {
     const result = await redisClient.get(String(id));
-    console.log('redisGet', result);
     if (result) {
       res.status(200).send(result);
     } else {

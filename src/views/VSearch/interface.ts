@@ -17,3 +17,8 @@ export interface PhoneInfo{
     phone: Array<Phone>,
     total: number,
 }
+
+export interface PhoneListModel {
+    records: Array<Phone>;
+    total: number;
+}

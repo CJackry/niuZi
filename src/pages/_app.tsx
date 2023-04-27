@@ -4,7 +4,6 @@ import { UserProvider } from '@/src/stores/context';
 import Layout from '../components/Layout';
 
 function NiuZiApp({ Component, pageProps }:AppProps) {
-  console.log('pageProps', pageProps);
   return (
     <UserProvider initialUser={pageProps}>
       <Layout>
@@ -16,14 +15,13 @@ function NiuZiApp({ Component, pageProps }:AppProps) {
 
 NiuZiApp.getInitialProps = async ({ ctx }:AppContext) => {
   let name;
+  // @ts-ignore
   if (ctx.req?.cookies.id) {
+    // @ts-ignore
     const { id } = ctx.req.cookies;
-    console.log('App getInitialProps', id);
     if (typeof window === 'undefined') {
-      console.log('getInitialProps running on client');
       name = await fetch(`http://localhost:3000/api/getRedis?id=${id}&t=${Date().valueOf()}`);
       const res = await name.json();
-      console.log('result', res);
       name = res.name;
     } else {
       console.log('getInitialProps running on server');

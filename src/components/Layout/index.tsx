@@ -11,6 +11,7 @@ interface Props {
 // 包含头尾组件的通用布局组件
 const Layout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
+  console.log('render');
   if (router.pathname === '/login') return (<div>{ children }</div>);
   if (router.pathname === '/search') {
     return (
@@ -22,7 +23,6 @@ const Layout: React.FC<Props> = ({ children }) => {
       </div>
     );
   }
-  console.log('render');
   return (
     <div className={classes.root}>
       <Shortcut />
