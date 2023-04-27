@@ -18,7 +18,7 @@ const NzPagination: React.FC<NzPaginationProps> = ({
   defaultPage,
   ...reset
 }) => {
-  const [inputValue, setInputVale] = React.useState<string>(String(defaultPage));
+  const [inputValue, setInputValue] = React.useState<string>(String(defaultPage));
   const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
     if (typeof onChange === 'function') {
       onChange(event, value);
@@ -31,7 +31,7 @@ const NzPagination: React.FC<NzPaginationProps> = ({
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputVale(e.target.value);
+    setInputValue(e.target.value);
   };
 
   const pageNum = Math.ceil(total / pageSize);

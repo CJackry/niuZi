@@ -39,7 +39,7 @@
   border: 1px solid #ccc;
 }
 .pageInfo{
-  width: 234px;
+  width: 250px;
   height: 25px;
 }
 .totalGoods{
@@ -65,13 +65,20 @@
 .pageChange{
   display: inline-block;
 }
-.pageChange a{
+.pageChange button{
   display: inline-block;
   width: 46px;
   height: 23px;
   background: #FFF;
-  color: #ccc;
+  color: #e1251b;
   line-height: 23px;
   text-align: center;
-  border: 1px solid #DDD;
+  border: 1px solid #e1251b;
+}
+.pageChange button:first-child{
+  margin-right: 5px;
+}
+.pageChange button:disabled{
+  border-color: #ddd;
+  color: #ccc;
 }

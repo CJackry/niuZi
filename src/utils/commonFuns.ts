@@ -8,20 +8,3 @@ export function numToStringDouble(num:number) {
 }
 
 export const getStaticData = async () => clientRequest<CommonData>({ url: '/api/getStaticData' });
-export const returnPreOrNextPage = (action:'prev'|'next', page:number, url:string):string => {
-  let toLink = '/';
-  switch (action) {
-    case 'prev': {
-      toLink = page <= 2 ? url : `${url}?page=${page - 1}`;
-      break;
-    }
-    case 'next': {
-      toLink = `${url}?page=${page + 1}`;
-      break;
-    }
-    default: {
-      break;
-    }
-  }
-  return toLink;
-};
