@@ -18,6 +18,7 @@ const staticData = {
   navList, serviceItem, secKillList, hotWords
 };
 const phones = getJSON('phones');
+
 app.use(async ctx => {
   let body = {code: 200};
   console.log('someone request', ctx.url);

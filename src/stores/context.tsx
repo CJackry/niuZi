@@ -2,24 +2,25 @@ import React, {
   createContext, ReactNode, useContext, useMemo, useReducer,
 } from 'react';
 
-interface userState {
-  name:string
+interface UserState {
+  name: string
 }
 
 interface Props {
   children?:ReactNode;
-  initialUser: userState
+  initialUser: UserState
 }
 
 type Action = {
   type: string,
-  id?: string
+  id?: string,
+  username?: string,
 }
 // 规定Reducer的类型
-type ExpandReducer = React.Reducer<userState, Action>
+type ExpandReducer = React.Reducer<UserState, Action>
 
 // 初始化Context
-const initialStore:userState = {
+const initialStore:UserState = {
   name: '',
 };
 const initialDispatch: React.Dispatch<Action> = () => null;
@@ -28,10 +29,13 @@ const UserContext = createContext({
   dispatch: initialDispatch,
 });
 
-const userReducer = (preState:userState, action:Action) => {
+const userReducer = (preState:UserState, action:Action) => {
   switch (action.type) {
     case 'getName': {
       return { ...preState };
+    }
+    case 'logout': {
+      return { ...preState, name: '' };
     }
     default: {
       return { ...preState };
