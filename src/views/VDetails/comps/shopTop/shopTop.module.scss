@@ -1,0 +1,32 @@
+.root{
+  height: 110px;
+  background-color: #fff;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+  width: 920px;
+  margin: 0 auto;
+}
+.shopName{
+  width: 443px;
+  font-size: 0;
+}
+.shopName span{
+  display: inline-block;
+  height: 110px;
+  text-align: center;
+  line-height: 110px;
+  font-size: 25px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.concern{
+  height: 40px;
+  width: 80px;
+  vertical-align: middle;
+  margin-left: 15px;
+  border-radius: 20px;
+  border: 2px solid #e3e4e5;
+  background-color: #ffffff;
+}
