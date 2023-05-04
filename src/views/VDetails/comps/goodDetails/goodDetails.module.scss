@@ -1,4 +1,22 @@
 .root{
   height: 748px;
-
+}
+.top{
+  height: 66px;
+  width: 738px;
+  line-height: 66px;
+}
+.specialTag{
+  display: inline-block;
+  width: 58px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #646fb0;
+  text-align: center;
+  margin-right: 5px;
+}
+.title{
+  font-weight: 700;
 }

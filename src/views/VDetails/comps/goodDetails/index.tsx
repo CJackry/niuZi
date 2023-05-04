@@ -16,6 +16,25 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
         <span className={classes.title}>{goodTit}</span>
       </div>
       <GoodPrice price="4999.00" gifts={goodInfo.gifts} />
+      <div className={classes.cates}>
+        <span className={classes.cateName}>增值业务</span>
+        <span className={classes.huishou}>高价回收，急速到账</span>
+      </div>
+      <div className={classes.cates}>
+        <span className={classes.cateName}>配送至</span>
+        <div className={classes.logistics}>
+          <div className={classes.addrInfo}>
+            <span className={classes.huishou}>湖南长沙市岳麓区</span>
+            <span>有货</span>
+          </div>
+          <div className={classes.logisInfo}>
+            <div className={classes.logisServer}>
+              <div className={classes.logisIcon} />
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 };
