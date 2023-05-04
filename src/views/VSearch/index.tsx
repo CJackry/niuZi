@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import global from '@/styles/global.module.scss';
 import { nanoid } from 'nanoid';
@@ -12,32 +12,40 @@ import { getPhone } from '@/src/views/VSearch/service';
 import classes from './VSearch.module.scss';
 
 export const PAGE_SIZE = 10;
+type Props = {
+  phones: Array<Phone>,
+  totalNum: number,
+}
 
-const VSearch: React.FC = () => {
-  const [phoneInfo, setPhoneInfo] = useState<Array<Phone> | null>(null);
+const VSearch: React.FC<Props> = ({ phones, totalNum }) => {
+  const [phoneInfo, setPhoneInfo] = useState<Array<Phone>>(phones);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [pageInfo, setPageInfo] = React.useState({
-    total: 0,
+    total: totalNum,
     pageSize: PAGE_SIZE,
   });
   useWhyDidYouUpdate('VSearch', { phoneInfo });
-  useEffect(() => {
+
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
+    console.log(value);
+    getPhone(currentPage).then((res) => {
+      if (res?.success) {
+        setPhoneInfo(res.data.records);
+        setPageInfo({ total: res.data.total, pageSize: PAGE_SIZE });
+      }
+      setCurrentPage(value);
+    });
+  };
+  const handleMove = (p:number) => {
+    setCurrentPage(currentPage + p);
     getPhone(currentPage).then((res) => {
       if (res?.success) {
         setPhoneInfo(res.data.records);
         setPageInfo({ total: res.data.total, pageSize: PAGE_SIZE });
       }
     });
-  }, [currentPage]);
-
-  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
-    console.log(value);
-    setCurrentPage(value);
   };
-  const handleMove = (p:number) => {
-    setCurrentPage(currentPage + p);
-  };
-  console.log(pageInfo);
+  console.log(currentPage);
 
   return (
     <div className={classes.root}>
