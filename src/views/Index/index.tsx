@@ -15,7 +15,7 @@ const Index:React.FC = () => {
   }, []);
   return (
     <div className={classes.root}>
-      <Header hotWords={staticData?.hotWords || []} />
+      <Header />
       <ListContainer navList={staticData?.navList || []} serviceItem={staticData?.serviceItem || []} />
       <SecKill secKillList={staticData?.secKillList || []} />
     </div>

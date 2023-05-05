@@ -26,19 +26,21 @@
 .cate{
   display: flex;
   justify-content: left;
-  min-height: 30px;
-  line-height: 30px;
+  min-height: 35px;
   width: 100%;
+  margin-bottom: 4px;
 }
 .cateName{
   display: inline-block;
   width: 48px;
-  height: 24px;
+  height: 30px;
+  line-height: 30px;
   text-align: justify;
 }
 .cateVal{
   margin-left: 5px;
   overflow: hidden;
+  line-height: 30px;
 }
 .huishou{
   display: inline-block;
@@ -105,4 +107,73 @@
   width: 100%;
   border-bottom: 1px dotted #dfdfdf;
   margin-bottom: 15px;
+}
+.colorSelect{
+  line-height: 40px;
+}
+.goodAttr{
+  display: flex;
+  justify-content: left;
+}
+.attrVal{
+  display: flex;
+  justify-content: center;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+}
+.attrVal:hover{
+  border-color: #e1251b;
+}
+.attrVal img{
+  width: 40px;
+}
+.attrVal i{
+  display: inline-block;
+  margin: 0 8px;
+  line-height: 40px;
+  color: #666;
+}
+.attrVal span{
+  display: inline-block;
+  margin: 0 8px;
+  color: #666;
+}
+.chooseBtn{
+  display: flex;
+  justify-content: left;
+  height: 46px;
+  padding: 0 10px;
+  margin: 10px 0;
+}
+.chooseAmount{
+  display: flex;
+  justify-content: left;
+  width: 58px;
+  height: 44px;
+  border: 1px solid #ccc;
+}
+.numInput{
+  width: 42px;
+  height: 42px;
+  border: 0;
+  text-align: center;
+  line-height: 42px;
+}
+.changeBtn{
+  width: 16px;
+  height: 22px;
+  border: 1px solid #ccc;
+  background: #f1f1f1;
+}
+.addCart{
+  display: inline-block;
+  width: 140px;
+  height: 46px;
+  margin-left: 10px;
+  padding: 0 26px;
+  text-align: center;
+  line-height: 46px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #df3033;
 }

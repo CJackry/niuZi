@@ -72,17 +72,43 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       </div>
       <div className={classes.summaryLine} />
       <div className={classes.cate}>
-        <div className={classes.cateName}>选择颜色</div>
+        <div className={`${classes.cateName} ${classes.colorSelect}`}>选择颜色</div>
         <div className={classes.cateVal}>
-          {goodInfo.attr[0].color.map((item) => (
-            <div className={classes.goodColor} key={nanoid()}>
-              <img src={item.imgSrc} alt={item.name} />
-              <span>{item.name}</span>
-            </div>
-          ))}
+          <div className={classes.goodAttr}>
+            {goodInfo.attr[0].color.map((item) => (
+              <a className={classes.attrVal} href="https://jd.com" key={nanoid()}>
+                <img src={item.imgSrc} alt={item.name} />
+                <i>{item.name}</i>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
+      <div className={classes.cate}>
+        <div className={classes.cateName}>选择版本</div>
+        <div className={classes.cateVal}>
+          <div className={classes.goodAttr}>
+            {goodInfo.attr.map((item) => (
+              <a className={classes.attrVal} href="https://jd.com" key={nanoid()}>
+                <span>{item.attrName}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className={classes.summaryLine} />
+      <div className={classes.chooseBtn}>
+        <div className={classes.chooseAmount}>
+          <input className={classes.numInput} />
+          <div className={classes.changeNum}>
+            <button className={`${classes.changeBtn} ${classes.addBtn}`}>+</button>
+            <button className={`${classes.changeBtn} ${classes.reduceBtn}`}>+</button>
+          </div>
+        </div>
+        <a className={classes.addCart} href="https://jd.com">加入购物车</a>
+      </div>
     </div>
+
   );
 };
 
