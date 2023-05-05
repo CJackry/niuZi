@@ -7,7 +7,7 @@ import GoodPrice from './comps/goodPrice';
 type Props = {
     goodInfo: GoodInfo,
 }
-
+// https://item.jd.com/100049486783.html#crumb-wrap
 const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   const goodTit = goodInfo.title + goodInfo.attr[0].attrName + goodInfo.attr[0].color[0].name;
   return (
