@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { GoodInfo } from '@/src/views/VDetails/interface';
-import { nanoid } from 'nanoid';
+import Link from 'next/link';
+import AddrSelect from '@/src/components/addrSelect';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
@@ -9,7 +10,15 @@ type Props = {
 }
 // https://item.jd.com/100049486783.html#crumb-wrap
 const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
+  const goodNum = useRef<HTMLInputElement>(null);
+
   const goodTit = goodInfo.title + goodInfo.attr[0].attrName + goodInfo.attr[0].color[0].name;
+  const chooseColor = (e:React.MouseEvent) => {
+    console.log(e.target);
+  };
+  const changeNum = () => {
+    console.log(goodNum.current?.value);
+  };
   return (
     <div className={classes.root}>
       <div className={classes.top}>
@@ -26,9 +35,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       <div className={classes.cate}>
         <span className={classes.cateName}>配送至</span>
         <div className={classes.cateVal}>
-          <div className={classes.addrInfo}>
-            <div className={classes.addr}>湖南长沙市岳麓区</div>
-          </div>
+          <AddrSelect addr="湖南长沙市岳麓区" />
           <strong className={classes.isEnough}>有货</strong>
           <div className={classes.serverCate}>
             <span className={classes.support}>支持</span>
@@ -76,10 +83,17 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
         <div className={classes.cateVal}>
           <div className={classes.goodAttr}>
             {goodInfo.attr[0].color.map((item) => (
-              <a className={classes.attrVal} href="https://jd.com" key={nanoid()}>
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <Link
+                href="#"
+                className={classes.attrVal}
+                key={item.id}
+                onClick={(e) => { chooseColor(e); }}
+                title={item.name}
+              >
                 <img src={item.imgSrc} alt={item.name} />
                 <i>{item.name}</i>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -89,9 +103,9 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
         <div className={classes.cateVal}>
           <div className={classes.goodAttr}>
             {goodInfo.attr.map((item) => (
-              <a className={classes.attrVal} href="https://jd.com" key={nanoid()}>
+              <Link className={classes.attrVal} href="https://jd.com" key={item.id}>
                 <span>{item.attrName}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -99,13 +113,13 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       <div className={classes.summaryLine} />
       <div className={classes.chooseBtn}>
         <div className={classes.chooseAmount}>
-          <input className={classes.numInput} />
+          <input className={classes.numInput} value={1} onChange={changeNum} ref={goodNum} />
           <div className={classes.changeNum}>
             <button className={`${classes.changeBtn} ${classes.addBtn}`}>+</button>
-            <button className={`${classes.changeBtn} ${classes.reduceBtn}`}>+</button>
+            <button className={`${classes.changeBtn} ${classes.reduceBtn}`}>-</button>
           </div>
         </div>
-        <a className={classes.addCart} href="https://jd.com">加入购物车</a>
+        <Link className={classes.addCart} href="https://jd.com">加入购物车</Link>
       </div>
     </div>
 

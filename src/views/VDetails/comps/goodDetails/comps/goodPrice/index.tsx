@@ -22,7 +22,7 @@ const GoodPrice:React.FC<Props> = ({ price, gifts }) => (
       <div className={classes.gifts}>
         {gifts.map((g) => (
           <a className={classes.giftInfo} href="https://jd.com" key={nanoid()}>
-            <img src={g.imgSrc} alt="gift" />
+            <img src={g.imgSrc ? g.imgSrc : '/avatar.png'} alt="gift" />
             <span className={classes.giftNum}>x 1</span>
           </a>
         ))}

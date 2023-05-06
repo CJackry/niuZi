@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import VSearch from '@/src/views/VSearch';
 import { Phone, PhoneListModel } from '@/src/views/VSearch/interface';
 import serverRequest from '@/src/utils/http-server';
@@ -11,14 +11,9 @@ interface PhoneResponse extends Response{
   data: PhoneListModel;
 }
 
-const Search:React.FC<Props> = (props) => {
-  const { phoneInfo, total } = props;
-  const [phones] = useState<Array<Phone>>(phoneInfo);
-  const [totalNum] = useState(total);
-  return (
-    <VSearch phones={phones} totalNum={totalNum} />
-  );
-};
+const Search:React.FC<Props> = ({ phoneInfo, total }) => (
+  <VSearch phones={phoneInfo} totalNum={total} />
+);
 
 export async function getServerSideProps() {
   const res = await serverRequest<PhoneResponse>({

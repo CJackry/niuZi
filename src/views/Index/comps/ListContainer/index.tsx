@@ -75,7 +75,7 @@ const ListContainer: React.FC<Props> = ({ navList, serviceItem }) => (
           <div className={classes.user_inner}>
             <div className={classes.user_avatar}>
               <Link className={classes.user_avatar_lk} href="/login">
-                <img src="/avator.png" alt="avator" />
+                <img src="/avatar.png" alt="avator" />
               </Link>
             </div>
             <div className={classes.user_show}>
