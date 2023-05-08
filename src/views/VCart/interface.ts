@@ -1,15 +1,14 @@
 import { Gift } from '@/src/views/VDetails/interface';
 
-export interface Attr{
-  attr1: string,
-  attr2: string,
-  others?: Array<Attr>,
+export interface Attrs{
+  id: string,
+  name: string,
 }
 
 export interface CartInfo{
   id: string,
   title: string,
-  attr: Attr,
+  attrs: Array<Attrs>,
   price: string,
   amount: number,
   imgSrc: string,

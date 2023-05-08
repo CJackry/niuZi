@@ -1,0 +1,146 @@
+.root{
+  height: 177px;
+}
+.checkOpt{
+  float: left;
+  margin: 15px 5px;
+}
+.good{
+  display: flex;
+  justify-content: left;
+  height: 82px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+.goodCell1{
+  display: flex;
+  justify-content: left;
+  width: 300px;
+}
+.goodImg{
+  display: inline-block;
+  border: 1px solid #eee;
+  width: 80px;
+  height: 80px;
+}
+.goodIntro{
+  display: inline-block;
+  width: 200px;
+  margin-left: 10px;
+}
+.goodTit{
+  display: block;
+  width: 208px;
+  height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.goodServer{
+  display: block;
+  height: 19px;
+  line-height: 19px;
+  color: #aaa;
+}
+.goodAttrs{
+  width: 130px;
+  padding-left: 20px;
+}
+.goodAttrs span{
+  display: block;
+  width: 130px;
+  height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.giftProp{
+  width: 130px;
+  height: 20px;
+  line-height: 20px;
+}
+.goodPrice{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 150px;
+  height: 50px;
+  padding: 0 40px 10px 0;
+  text-align: right;
+}
+.goodPrice span{
+  margin-bottom: 5px;
+}
+.quantity{
+  padding-bottom: 10px;
+}
+.numChange{
+  display: flex;
+  justify-content: left;
+  width: 84px;
+}
+.count {
+  width: 46px;
+  height: 18px;
+  text-align: center;
+  border-width: 1px 0;
+  border-color: #cbcbcb;
+}
+.quantityChange{
+  display: inline-block;
+  height: 20px;
+  width: 17px;
+  color: #ccc;
+  background: #f1f1f1;
+  border: 1px solid #cbcbcb;
+}
+.isEnough{
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #aaa;
+}
+.sum{
+  display: inline-block;
+  width: 100px;
+  height: 20px;
+  padding-bottom: 10px;
+  padding-right: 40px;
+  text-align: right;
+}
+.options{
+  text-align: left;
+  height: 40px;
+  width: 75px;
+}
+.options a{
+  display: block;
+  width: 75px;
+  height: 20px;
+  color: #666;
+}
+.gifts{
+  padding-left: 20px;
+}
+.giftInfo{
+  display: block;
+}
+.gifts span{
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+}
+.giftTit{
+  display: inline-block;
+  width: 300px;
+  height: 20px;
+  margin-right: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.giftNum{
+  width: 15px;
+  margin: 0 5px;
+}

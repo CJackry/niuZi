@@ -36,9 +36,10 @@
 }
 .tit1{
   margin-left: 3px;
-  margin-right: 100px;
+  margin-right: 10px;
 }
 .tit2{
+  margin-left: 90px;
   margin-right: 450px;
 }
 .tit3{
@@ -49,4 +50,53 @@
 }
 .tit5{
   margin-right: 70px;
+}
+.listBottom{
+  display: flex;
+  justify-content: space-between;
+  height: 52px;
+  line-height: 52px;
+  border: 1px solid #e9e9e9;
+}
+.cartCarOpts a{
+  margin-right: 10px;
+}
+.cleanCart{
+  font-weight: 700;
+  color: #666;
+}
+.settlement{
+  display: flex;
+  justify-content: right;
+}
+.goodSelection{
+  height: 20px;
+  margin-right: 10px;
+}
+.goodSelection span{
+  display: inline-block;
+  margin: 0 3px;
+  color: #e1251b;
+  font-weight: 700;
+}
+.totalPrice{
+  font-size: 16px;
+  color: #e2231a;
+  font-family: Verdana, serif;
+  font-weight: 700;
+  margin-right: 20px;
+}
+.goSett{
+  display: inline-block;
+  width: 94px;
+  height: 52px;
+  text-align: center;
+  background: #e2231a;
+  font-size: 20px;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.goSett:hover{
+  background: #df3033;
+  color: #fff;
 }

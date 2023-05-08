@@ -1,15 +1,25 @@
 import React from 'react';
 import global from '@/styles/global.module.scss';
 import AddrSelect from '@/src/components/addrSelect';
-import CartItem from '@/src/views/VCart/cartItem';
 import { CartInfo } from '@/src/views/VCart/interface';
 import { nanoid } from 'nanoid';
+import Link from 'next/link';
+import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
 const cartInfo:CartInfo = {
   id: nanoid(),
   title: 'xiaomi 13',
-  attr: { attr1: '白色', attr2: '12+512' },
+  attrs: [
+    {
+      id: nanoid(),
+      name: '白色',
+    },
+    {
+      id: nanoid(),
+      name: '12+512',
+    },
+  ],
   price: '4999.00',
   amount: 1,
   // eslint-disable-next-line max-len
@@ -49,6 +59,27 @@ const VCart:React.FC = () => (
       </div>
       <div className={classes.goodList}>
         <CartItem cartInfo={cartInfo} />
+      </div>
+      <div className={classes.listBottom}>
+        <div className={classes.cartCarOpts}>
+          <input type="checkbox" className={classes.checkAll} />
+          <span className={classes.tit1}>全选</span>
+          <Link href="https://jd.com">删除选中的商品</Link>
+          <Link href="https://jd.com">移入关注</Link>
+          <Link href="https://jd.com" className={classes.cleanCart}>清理购物车</Link>
+        </div>
+        <div className={classes.settlement}>
+          <div className={classes.goodSelection}>
+            已选择
+            <span className={classes.selectNum}>1</span>
+            件商品
+          </div>
+          <div className={classes.total}>
+            总价：
+            <span className={classes.totalPrice}>￥ 4999.00</span>
+          </div>
+          <Link href="https://jd.com" className={classes.goSett}>去结算</Link>
+        </div>
       </div>
     </div>
   </div>
