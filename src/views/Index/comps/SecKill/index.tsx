@@ -6,7 +6,6 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
-
 import { numToStringDouble } from '@/src/utils/commonFuns';
 import { nanoid } from 'nanoid';
 import { SecKillItem } from '@/src/views/Index/interface';
