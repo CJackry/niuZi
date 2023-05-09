@@ -3,16 +3,25 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { HotWords } from '@/src/views/Index/interface';
 import clientRequest from '@/src/utils/http-client';
+import { useScroll } from 'ahooks';
+import FloatSearch from '@/src/components/Layout/comps/floatSearch';
+import global from '@/styles/global.module.scss';
 import classes from './Header.module.scss';
 
-const Header: React.FC = () => {
+type Props = {
+  isShowFloat: boolean;
+}
+
+const Header: React.FC<Props> = ({ isShowFloat }) => {
   const [hotWords, setHotWords] = useState<Array<HotWords>|null>(null);
   useEffect(() => {
     clientRequest<Array<HotWords>>({ url: '/api/hotWords' }).then((r) => setHotWords(r.data));
   }, []);
+  const scroll = useScroll();
   return (
     <div className={classes.root}>
-      <div className={`${classes.w} ${classes.header_box}`}>
+      {(scroll?.top && isShowFloat ? scroll?.top > 660 : false) ? <FloatSearch /> : <div />}
+      <div className={`${global.w} ${classes.header_box}`}>
         <div className={classes.logo}>
           <img src="/jd_logo.png" alt="logo" />
         </div>

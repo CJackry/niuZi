@@ -1,0 +1,122 @@
+.root{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  border-bottom: 2px solid #f10214;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+  animation:searchTop .5s ease-in-out;
+}
+@keyframes searchTop {
+  from {top: -50px;}
+  to{top: 0}
+}
+.floatSearch{
+  display: flex;
+  justify-content: space-between;
+}
+.root img{
+  height: 30px;
+  line-height: 30px;
+  margin-top: 11px;
+}
+.search{
+  display: flex;
+  justify-content: left;
+  position: relative;
+  margin-top: 8px;
+  width: 486px;
+  height: 32px;
+  border: 2px solid #e2231a;
+}
+.keySearch{
+  height: 26px;
+  width: 390px;
+  line-height: 26px;
+  margin-top: 2px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #989898;
+  outline: none;
+  padding: 2px 44px 2px 15px;
+}
+.keyWord{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 32px;
+  line-height: 32px;
+  margin-left: 15px;
+}
+.upload_bg{
+  display: block;
+  width: 20px;
+  height: 20px;
+  line-height: 32px;
+  font-size: 14px;
+  text-align: center;
+  color: #9f9f9f;
+  cursor: pointer;
+  margin-left: 3px;
+  margin-right: 15px;
+}
+.searchLink{
+  display: inline-block;
+  width: 58px;
+  height: 32px;
+  line-height: 32px;
+  background: #e1251b;
+  transition: background 0.2s ease;
+  text-align: center;
+}
+.searchLink span{
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+.myCartCar{
+  position: relative;
+  width: 132px;
+  height: 35px;
+  margin-top: 8px;
+  line-height: 36px;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #eee;
+  color: #e2231a;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.myCartCar i{
+  font-weight: 700;
+  margin-right: 15px;
+}
+.cartNum{
+  display: inline-block;
+  height: 12px;
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  padding: 1px 3px;
+  line-height: 12px;
+  color: #fff;
+  border-radius: 7px;
+  background-color: #e1251b;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* Project id 3994610 */
+  src: url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.woff2?t=1680525011779') format('woff2'),
+  url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.woff?t=1680525011779') format('woff'),
+  url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.ttf?t=1680525011779') format('truetype');
+}
+.iconfont{
+  font-family: "iconfont", serif !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}

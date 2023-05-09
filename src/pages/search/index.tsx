@@ -2,6 +2,7 @@ import React from 'react';
 import VSearch from '@/src/views/VSearch';
 import { Phone, PhoneListModel } from '@/src/views/VSearch/interface';
 import serverRequest from '@/src/utils/http-server';
+import Header from '@/src/components/Layout/comps/Header';
 
 type Props = {
   phoneInfo: Array<Phone>,
@@ -12,7 +13,10 @@ interface PhoneResponse extends Response{
 }
 
 const Search:React.FC<Props> = ({ phoneInfo, total }) => (
-  <VSearch phones={phoneInfo} totalNum={total} />
+  <>
+    <Header isShowFloat={false} />
+    <VSearch phones={phoneInfo} totalNum={total} />
+  </>
 );
 
 export async function getServerSideProps() {

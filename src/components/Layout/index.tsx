@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Footer from './comps/Footer';
 import classes from './Layout.module.scss';
-import Header from './comps/Header';
 import Shortcut from './comps/Shortcut';
 
 interface Props {
@@ -12,17 +11,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
   console.log('render');
-  if (router.pathname === '/login') return (<div>{ children }</div>);
-  if (router.pathname === '/search') {
-    return (
-      <div>
-        <Shortcut />
-        <Header />
-        {children}
-        <Footer />
-      </div>
-    );
-  }
+  if (router.pathname === '/login') return (<div className={classes.root}>{ children }</div>);
   return (
     <div className={classes.root}>
       <Shortcut />
