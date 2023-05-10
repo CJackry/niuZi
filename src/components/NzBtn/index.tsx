@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import ReactModal from 'react-modal';
+import * as ReactModal from 'react-modal';
 import originClasses from './NzBtn.module.scss';
 
 type Props = {
