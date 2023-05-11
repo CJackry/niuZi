@@ -1,29 +1,47 @@
-import React, { ReactNode } from 'react';
-import * as ReactModal from 'react-modal';
+import React, { useCallback, useRef, useState } from 'react';
+import clsx from 'clsx';
+import { NzBtnProps } from '@/src/components/NzBtn/interface';
 import originClasses from './NzBtn.module.scss';
 
-type Props = {
-  children?: ReactNode,
-  isOpen: boolean,
-  classes?: {
-    root?: string,
-    content?: string
-  }
-}
-
-const NzBtn:React.FC<Props> = (props) => {
-  const { isOpen, classes, children } = props;
+const NzBtn:React.FC<NzBtnProps> = (props) => {
+  const { onClick, classes } = props;
+  const [loading, setLoading] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
+  const btn = useRef(null);
+  const handleClick = useCallback(async (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | KeyboardEvent) => {
+    let promise: Promise<boolean | void> | void;
+    console.log('nzBtn is clicked');
+    if (disabled || loading) {
+      return;
+    }
+    if (onClick) {
+      promise = onClick(e as React.MouseEvent<HTMLButtonElement, MouseEvent>);
+    }
+    if (promise) {
+      console.log('promise');
+      setLoading(true);
+      setDisabled(true);
+      try {
+        promise.finally(() => {
+          setLoading(false);
+          setDisabled(false);
+        });
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    }
+  }, [loading, onClick, disabled]);
   return (
-    <ReactModal
-      isOpen={isOpen}
-      preventScroll
-      className={originClasses.root}
-      overlayClassName={originClasses.overlay}
+    <button
+      className={clsx(originClasses.btnRoot, classes?.root)}
+      ref={btn}
+      onClick={handleClick}
+      disabled={disabled}
     >
-      <div className={originClasses.modal}>
-        <span>我是NzBtn</span>
-      </div>
-    </ReactModal>
+      {loading ? 'loading' : 'NzBtn'}
+    </button>
+
   );
 };
 

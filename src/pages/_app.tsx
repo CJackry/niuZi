@@ -1,7 +1,6 @@
 import '@/styles/globals.css';
 import type { AppContext, AppProps } from 'next/app';
 import { UserProvider } from '@/src/stores/context';
-import NzBtn from '@/src/components/NzBtn';
 import Layout from '../components/Layout';
 
 function NiuZiApp({ Component, pageProps }:AppProps) {
@@ -9,7 +8,6 @@ function NiuZiApp({ Component, pageProps }:AppProps) {
     <UserProvider initialUser={pageProps}>
       <Layout>
         <Component {...pageProps} />
-        <NzBtn isOpen />
       </Layout>
     </UserProvider>
   );

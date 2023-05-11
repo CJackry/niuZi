@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { GoodInfo } from '@/src/views/VDetails/interface';
 import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
+import NumChange from '@/src/components/numChange';
+import { NumChangeFun } from '@/src/components/numChange/interface';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
@@ -10,14 +12,12 @@ type Props = {
 }
 // https://item.jd.com/100049486783.html#crumb-wrap
 const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
-  const goodNum = useRef<HTMLInputElement>(null);
-
   const goodTit = goodInfo.title + goodInfo.attr[0].attrName + goodInfo.attr[0].color[0].name;
   const chooseColor = (e:React.MouseEvent) => {
     console.log(e.target);
   };
-  const changeNum = () => {
-    console.log(goodNum.current?.value);
+  const handleChange:NumChangeFun = (value) => {
+    console.log(value);
   };
   return (
     <div className={classes.root}>
@@ -112,13 +112,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       </div>
       <div className={classes.summaryLine} />
       <div className={classes.chooseBtn}>
-        <div className={classes.chooseAmount}>
-          <input className={classes.numInput} value={1} onChange={changeNum} ref={goodNum} />
-          <div className={classes.changeNum}>
-            <button className={`${classes.changeBtn} ${classes.addBtn}`}>+</button>
-            <button className={`${classes.changeBtn} ${classes.reduceBtn}`}>-</button>
-          </div>
-        </div>
+        <NumChange onChange={handleChange} defaultValue={1} />
         <Link className={classes.addCart} href="https://jd.com">加入购物车</Link>
       </div>
     </div>
