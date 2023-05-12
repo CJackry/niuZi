@@ -15,6 +15,7 @@ export interface HotWords {
 }
 
 export interface SecKillItem {
+  id: string;
   name: string;
   price: string;
   link: string;

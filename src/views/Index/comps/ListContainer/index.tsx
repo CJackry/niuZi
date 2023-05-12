@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar } from 'swiper';
+import {
+  A11y,
+  Autoplay, Navigation, Pagination, Scrollbar,
+} from 'swiper';
 import Link from 'next/link';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -40,10 +43,10 @@ const ListContainer: React.FC<Props> = ({ navList, serviceItem }) => (
       <div className={classes.fs_col2}>
         <div className={classes.focus}>
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar]}
-            spaceBetween={50}
+            modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]}
             slidesPerView={1}
             navigation
+            loop
             pagination={{
               enabled: true,
               type: 'bullets',

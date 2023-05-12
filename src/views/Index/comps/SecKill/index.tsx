@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar } from 'swiper';
+import { Navigation } from 'swiper';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
+import 'swiper/css/autoplay';
 import { numToStringDouble } from '@/src/utils/commonFuns';
-import { nanoid } from 'nanoid';
 import { SecKillItem } from '@/src/views/Index/interface';
 import classes from './SecKill.module.scss';
 
@@ -101,35 +101,30 @@ const SecKill:React.FC<Props> = ({ secKillList }) => {
           </a>
           <div className={classes.seckill_list}>
             <Swiper
-              modules={[Navigation, Pagination, Scrollbar]}
-              spaceBetween={50}
+              modules={[Navigation]}
               slidesPerView={3}
+              width={610}
+              loop
               navigation
             >
-              {secKillList ? secKillList.map((item) => (
-                <SwiperSlide key={nanoid()}>
-                  <a className={classes.seckill_item} href={item.link}>
-                    <img
-                      src={item.imgSrc}
-                      alt="secKillItem"
-                    />
-                    <h6>{item.name}</h6>
-                    <span>
-                      ￥
-                      {item.price}
-                    </span>
-                  </a>
-                </SwiperSlide>
-              )) : (
-                <SwiperSlide>
-                  <a className={classes.seckill_item} href="https://wallhaven.cc/">
-                    没有收到牛子轮播图，去看点牛子图吧
-                  </a>
-                </SwiperSlide>
-              )}
-
+              {
+                  secKillList ? secKillList.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <a className={classes.seckill_item} href={item.link}>
+                        <img src={item.imgSrc} alt="img" />
+                        <h6>{item.name}</h6>
+                        <span>{item.price}</span>
+                      </a>
+                    </SwiperSlide>
+                  )) : (
+                    <SwiperSlide>
+                      <a className={classes.seckill_item} href="https://wallhaven.cc/">
+                        没有收到牛子轮播图，去看点牛子图吧
+                      </a>
+                    </SwiperSlide>
+                  )
+                }
             </Swiper>
-
           </div>
           <div className={classes.seckill_brand}>
             <Link className={classes.brand_item} href="https://api.cyrilstudio.top/bing/image.php">
