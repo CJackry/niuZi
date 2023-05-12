@@ -7,7 +7,8 @@ const NumChange:React.FC<NumChangeProps> = (props) => {
   const {
     onChange, defaultValue, max, min, customClasses,
   } = props;
-  const [val, setVal] = useState(defaultValue);
+  const defaultVal = max && defaultValue >= max ? max : defaultValue;
+  const [val, setVal] = useState(defaultVal);
   const [addDisable, setAddDisable] = useState(false);
   const [reduceDisable, setReduceDisable] = useState(false);
   const numInput = useRef<HTMLInputElement>(null);
