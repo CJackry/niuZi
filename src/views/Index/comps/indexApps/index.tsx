@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import FloatSideBar from '@/src/components/floatSideBar';
 import { CommonData } from '@/src/views/Index/interface';
-import { getStaticData } from '@/src/utils/commonFuns';
-import { nanoid } from 'nanoid';
-import ListContainer from '@/src/views/Index/comps/ListContainer';
-import SecKill from '@/src/views/Index/comps/SecKill';
+import SecKill from './comps/SecKill';
+import classes from './indexApps.module.scss';
 
-const IndexApps:React.FC = () => {
-  const [staticData, setStaticData] = useState<CommonData|null>(null);
-  useEffect(() => {
-    getStaticData().then((r) => {
-      setStaticData(r.data);
-      staticData?.secKillList.forEach((item) => {
-        Object.defineProperty(item, 'id', nanoid());
-      });
-    });
-  }, []);
-  return (
+type Props = {
+  staticData: CommonData;
+}
+
+const IndexApps:React.FC<Props> = ({ staticData }) => (
+  <div className={classes.root}>
     <div>
-      <ListContainer navList={staticData?.navList || []} serviceItem={staticData?.serviceItem || []} />
       <SecKill secKillList={staticData?.secKillList || []} />
     </div>
-  );
-};
+    <FloatSideBar />
+  </div>
+);
 
 export default IndexApps;

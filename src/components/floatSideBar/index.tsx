@@ -4,13 +4,15 @@ import classes from './floatSideBar.module.scss';
 
 const FloatSideBar:React.FC = () => {
   const scroll = useScroll();
+  const top = scroll?.top || scroll?.left;
+  const style: React.CSSProperties = (top ? top > 660 : false) ? {
+    position: 'fixed',
+    top: '75px',
+  } : { display: 'block' };
   return (
     <div
       className={classes.root}
-      style={(scroll?.top ? scroll?.top > 660 : false) ? {
-        position: 'fixed',
-        top: '75px',
-      } : { display: 'block' }}
+      style={style}
     >
       <div className={classes.sideItems}>
         <div className={classes.item}>NiuZi秒杀</div>

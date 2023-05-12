@@ -1,7 +1,33 @@
 import Index from '@/src/views/Index';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { CommonData } from '@/src/views/Index/interface';
+import { nanoid } from 'nanoid';
+import React from 'react';
+import serverRequest from '@/src/utils/http-server';
 
-export default function Home() {
+interface CommonDataResponse{
+  data: CommonData;
+}
+
+export const getServerSideProps: GetServerSideProps<{ staticData: CommonData }> = async () => {
+  const res = await serverRequest<CommonDataResponse>({
+    url: '/api/getStaticData',
+  });
+  const staticData = res.data.data;
+  staticData.secKillList.forEach((item) => {
+    Object.defineProperty(item, 'id', { value: nanoid() });
+  });
+  return {
+    props: {
+      staticData,
+    },
+  };
+};
+
+export function Home({ staticData }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <Index />
+    <Index staticData={staticData} />
   );
 }
+
+export default Home;

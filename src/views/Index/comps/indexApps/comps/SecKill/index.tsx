@@ -103,14 +103,13 @@ const SecKill:React.FC<Props> = ({ secKillList }) => {
             <Swiper
               modules={[Navigation]}
               slidesPerView={3}
-              width={610}
               loop
               navigation
             >
               {
                   secKillList ? secKillList.map((item) => (
-                    <SwiperSlide key={item.id}>
-                      <a className={classes.seckill_item} href={item.link}>
+                    <SwiperSlide>
+                      <a className={classes.seckill_item} href={item.link} key={item.id}>
                         <img src={item.imgSrc} alt="img" />
                         <h6>{item.name}</h6>
                         <span>{item.price}</span>

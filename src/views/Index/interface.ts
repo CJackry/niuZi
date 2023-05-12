@@ -2,6 +2,7 @@ export interface NavItem {
   name: string;
   link: string;
 }
+export type NavList = Array<NavItem>;
 
 export interface ServiceItem {
   name: string;
@@ -25,6 +26,6 @@ export interface SecKillItem {
 export interface CommonData {
   hotWords: Array<HotWords>;
   serviceItem: Array<ServiceItem>;
-  navList: Array<Array<NavItem>>;
+  navList: Array<NavList>;
   secKillList: Array<SecKillItem>;
 }

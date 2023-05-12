@@ -8,3 +8,5 @@ export function numToStringDouble(num:number) {
 }
 
 export const getStaticData = async () => clientRequest<CommonData>({ url: '/api/getStaticData' });
+
+export const getWidth = () => (window ? window.innerWidth : null);
