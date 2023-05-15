@@ -132,26 +132,7 @@
   padding: 0 10px;
   margin: 10px 0;
 }
-.chooseAmount{
-  display: flex;
-  justify-content: left;
-  width: 58px;
-  height: 44px;
-  border: 1px solid #ccc;
-}
-.numInput{
-  width: 42px;
-  height: 42px;
-  border: 0;
-  text-align: center;
-  line-height: 42px;
-}
-.changeBtn{
-  width: 16px;
-  height: 22px;
-  border: 1px solid #ccc;
-  background: #f1f1f1;
-}
+
 .addCart{
   display: inline-block;
   width: 140px;
@@ -163,4 +144,8 @@
   font-size: 18px;
   color: #fff;
   background-color: #df3033;
+}
+.addCart:hover{
+  color: #fff;
+  background-color: #e1251b;
 }

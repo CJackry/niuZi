@@ -19,62 +19,6 @@ const staticData = {
 };
 const phones = getJSON('phones');
 
-
-// const resBody = {
-//   data: {},
-//   statusCode: 200,
-//   message: ''
-// }
-
-// app.use( async ctx => {
-//   if (ctx.path === '/hotWords'){
-//     ctx.body = {
-//       data: hotWords,
-//       statusCode: 200,
-//       message: 'succeed'
-//     };
-//   }
-// })
-//
-// app.use( async ctx => {
-//   if (ctx.path === '/navList'){
-//     ctx.body = {
-//       data: navList,
-//       statusCode: 200,
-//       message: 'succeed'
-//     };
-//   }
-// })
-//
-// app.use( async ctx => {
-//   if (ctx.path === '/getStaticData'){
-//     ctx.body = {
-//       data: staticData,
-//       statusCode: 200,
-//       message: 'succeed'
-//     };
-//   }
-// })
-//
-// app.use( async ctx => {
-//   if (ctx.path === '/phones'){
-//     let body = {};
-//     let {page} = ctx.query;
-//     console.log(page);
-//     page = Number(page);
-//     if (!page) {
-//       body.message = 'No part';
-//       page = 1;
-//     }
-//     body.data = Object.create(null)
-//     body.data.records = phones.slice((page - 1) * 10, page * 10);
-//     body.data.total = phones.length;
-//     body.success = true;
-//     ctx.body = body;
-//   }
-// })
-
-
 app.use(async ctx => {
   let body = {code: 200};
   console.log('someone request', ctx.url);

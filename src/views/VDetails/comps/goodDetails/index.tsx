@@ -16,8 +16,8 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   const chooseColor = (e:React.MouseEvent) => {
     console.log(e.target);
   };
-  const handleChange:NumChangeFun = (value) => {
-    console.log(value);
+  const handleChange = (e) => {
+    console.log(e);
   };
   return (
     <div className={classes.root}>
@@ -112,7 +112,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       </div>
       <div className={classes.summaryLine} />
       <div className={classes.chooseBtn}>
-        <NumChange onChange={handleChange} defaultValue={1} />
+        <NumChange onChange={handleChange} defaultValue={1} type="floatRight" />
         <Link className={classes.addCart} href="https://jd.com">加入购物车</Link>
       </div>
     </div>

@@ -1,40 +1,10 @@
 import React from 'react';
 import global from '@/styles/global.module.scss';
 import AddrSelect from '@/src/components/addrSelect';
-import { CartInfo } from '@/src/views/VCart/interface';
-import { nanoid } from 'nanoid';
 import Link from 'next/link';
+import { cartInfo } from '@/src/utils/fakeData';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
-
-const cartInfo:CartInfo = {
-  id: nanoid(),
-  title: 'xiaomi 13',
-  attrs: [
-    {
-      id: nanoid(),
-      name: '白色',
-    },
-    {
-      id: nanoid(),
-      name: '12+512',
-    },
-  ],
-  price: '4999.00',
-  amount: 1,
-  // eslint-disable-next-line max-len
-  imgSrc: 'https://img30.360buyimg.com/n0/s80x80_jfs/t1/154028/32/33653/29617/644b6af1F307f6c98/422054c23c1e58f2.jpg.dpg',
-  gifts: [
-    {
-      name: '小爱音箱',
-      id: nanoid(),
-    },
-    {
-      name: '无忧卡',
-      id: nanoid(),
-    },
-  ],
-};
 
 const VCart:React.FC = () => (
   <div className={classes.root}>
@@ -58,6 +28,7 @@ const VCart:React.FC = () => (
         <span className={classes.tit6}>操作</span>
       </div>
       <div className={classes.goodList}>
+        <CartItem cartInfo={cartInfo} />
         <CartItem cartInfo={cartInfo} />
       </div>
       <div className={classes.listBottom}>

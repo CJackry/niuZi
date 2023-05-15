@@ -1,20 +1,42 @@
-.chooseAmount{
+.root button{
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+.root input {
+  height: 100%;
+  border: 0;
+  text-align: center;
+  line-height: 42px;
+}
+.floatRight{
   display: flex;
   justify-content: left;
   width: 58px;
   height: 44px;
   border: 1px solid #ccc;
 }
-.numInput{
+.floatRight input{
   width: 42px;
-  height: 42px;
-  border: 0;
-  text-align: center;
   line-height: 42px;
 }
-.changeBtn{
+.floatRight button{
   width: 16px;
-  height: 22px;
+  height: 50%;
+}
+
+.center{
+  display: flex;
+  justify-content: left;
+  height: 20px;
   border: 1px solid #ccc;
-  background: #f1f1f1;
+}
+.center input{
+  width: 46px;
+  height: 20px;
+  line-height: 20px;
+}
+.center button {
+  display: inline-block;
+  height: 100%;
+  width: 20px;
 }

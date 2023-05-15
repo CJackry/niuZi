@@ -1,22 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NumChangeProps } from '@/src/components/numChange/interface';
 import clsx from 'clsx';
+import NumInput from '@/src/components/numChange/comps/numInput';
+import NumBtn from './comps/numBtn';
 import classes from './numChange.module.scss';
 
 const NumChange:React.FC<NumChangeProps> = (props) => {
   const {
-    onChange, defaultValue, max, min, customClasses,
+    onChange, defaultValue, max,
+    min, customClasses, type,
   } = props;
   const defaultVal = max && defaultValue >= max ? max : defaultValue;
   const [val, setVal] = useState(defaultVal);
   const [addDisable, setAddDisable] = useState(false);
   const [reduceDisable, setReduceDisable] = useState(false);
-  const numInput = useRef<HTMLInputElement>(null);
 
-  const handleInput = () => {
-    const value = Number(numInput.current?.value) || 1;
-    setVal(value);
-    onChange(value);
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const num = Number((e.target as HTMLInputElement).value) || 1;
+    setVal(num);
+    onChange(e);
   };
   const handleAdd = () => {
     const maxVal = max || 99;
@@ -32,29 +34,24 @@ const NumChange:React.FC<NumChangeProps> = (props) => {
   }, [val]);
 
   return (
-    <div className={clsx(classes.chooseAmount, customClasses?.root)}>
-      <input
-        className={clsx(classes.numInput, customClasses?.input)}
-        value={val}
-        onInput={handleInput}
-        ref={numInput}
-      />
-      <div>
-        <button
-          className={clsx(classes.changeBtn, customClasses?.btn)}
-          onClick={handleAdd}
-          disabled={addDisable}
-        >
-          +
-        </button>
-        <button
-          className={clsx(classes.changeBtn, customClasses?.btn)}
-          onClick={handleReduce}
-          disabled={reduceDisable}
-        >
-          -
-        </button>
-      </div>
+    <div className={clsx(classes.root, customClasses?.root)}>
+      {
+        type === 'floatRight' ? (
+          <div className={classes.floatRight}>
+            <NumInput val={val} onInput={handleInput} />
+            <div>
+              <NumBtn type="+" onClick={handleAdd} disabled={addDisable} />
+              <NumBtn type="-" onClick={handleReduce} disabled={reduceDisable} />
+            </div>
+          </div>
+        ) : (
+          <div className={classes.center}>
+            <NumBtn type="+" onClick={handleAdd} disabled={addDisable} />
+            <NumInput val={val} onInput={handleInput} />
+            <NumBtn type="-" onClick={handleReduce} disabled={reduceDisable} />
+          </div>
+        )
+      }
     </div>
   );
 };

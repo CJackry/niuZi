@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { CartInfo } from '@/src/views/VCart/interface';
 import Link from 'next/link';
 import GoodLim from '@/src/views/VCart/comps/goodLim';
+import NumChange from '@/src/components/numChange';
+import cart from '@/src/pages/cart';
 import classes from './cartItem.module.scss';
 
 type Props = {
@@ -9,9 +11,13 @@ type Props = {
 }
 
 const CartItem:React.FC<Props> = ({ cartInfo }) => {
-  const numChange = () => {
-    console.log('numChange');
+  const [totalPrice, setTotalPrice] = useState<number>(Number(cartInfo.price) * cartInfo.amount);
+  const handleChange = (e) => {
+    const num = Number((e.target as HTMLInputElement).value) || 1;
+    const total = Number(cartInfo.price) * num;
+    setTotalPrice(total);
   };
+
   return (
     <div className={classes.root}>
       <input className={classes.checkOpt} type="checkbox" />
@@ -35,14 +41,10 @@ const CartItem:React.FC<Props> = ({ cartInfo }) => {
           <GoodLim isLimit isReduce reducePrice={800} />
         </div>
         <div className={classes.quantity}>
-          <div className={classes.numChange}>
-            <button className={classes.quantityChange}>-</button>
-            <input className={classes.count} value={1} onChange={numChange} />
-            <button className={classes.quantityChange}>+</button>
-          </div>
+          <NumChange type="center" onChange={handleChange} defaultValue={1} />
           <span className={classes.isEnough}>有货</span>
         </div>
-        <strong className={classes.sum}>{(Number(cartInfo.price) * cartInfo.amount).toFixed(2)}</strong>
+        <strong className={classes.sum}>{totalPrice.toFixed(2)}</strong>
         <div className={classes.options}>
           <Link href="https://jd.com">删除</Link>
           <Link href="https://jd.com">移入关注</Link>
