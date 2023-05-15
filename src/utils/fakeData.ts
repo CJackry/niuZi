@@ -93,7 +93,7 @@ export const goodInfo:GoodInfo = {
   ],
 };
 
-export const cartInfo:CartInfo = {
+export const cartList:Array<CartInfo> = [{
   id: nanoid(),
   title: 'xiaomi 13',
   attrs: [
@@ -120,4 +120,32 @@ export const cartInfo:CartInfo = {
       id: nanoid(),
     },
   ],
-};
+},
+  {
+    id: nanoid(),
+    title: 'xiaomi 13',
+    attrs: [
+      {
+        id: nanoid(),
+        name: '白色',
+      },
+      {
+        id: nanoid(),
+        name: '12+512',
+      },
+    ],
+    price: '4999.00',
+    amount: 1,
+    // eslint-disable-next-line max-len
+    imgSrc: 'https://img30.360buyimg.com/n0/s80x80_jfs/t1/154028/32/33653/29617/644b6af1F307f6c98/422054c23c1e58f2.jpg.dpg',
+    gifts: [
+      {
+        name: '小爱音箱',
+        id: nanoid(),
+      },
+      {
+        name: '无忧卡',
+        id: nanoid(),
+      },
+    ],
+  }];

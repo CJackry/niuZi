@@ -18,7 +18,7 @@ const NumChange:React.FC<NumChangeProps> = (props) => {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const num = Number((e.target as HTMLInputElement).value) || 1;
     setVal(num);
-    onChange(e);
+    console.log('numChange ', num);
   };
   const handleAdd = () => {
     const maxVal = max || 99;
@@ -31,8 +31,8 @@ const NumChange:React.FC<NumChangeProps> = (props) => {
   useEffect(() => {
     if (max && val >= max) setAddDisable(true);
     if (min && val <= min) setReduceDisable(true);
+    if (onChange) onChange(val);
   }, [val]);
-
   return (
     <div className={clsx(classes.root, customClasses?.root)}>
       {

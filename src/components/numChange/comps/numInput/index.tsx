@@ -8,7 +8,6 @@ type Props = {
 const NumInput:React.FC<Props> = (props) => {
   const { val, onInput } = props;
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const num = Number((e.target as HTMLInputElement).value) || 1;
     onInput(e);
   };
   return (

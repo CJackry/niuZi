@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface NumChangeFun{
   (value: number): void;
 }
@@ -12,7 +10,7 @@ export interface CustomClasses{
 
 export interface NumChangeProps{
   type: 'floatRight' | 'center';
-  onChange: React.ChangeEventHandler;
+  onChange?: (num:number)=>void;
   defaultValue: number;
   min?: number | 1;
   max?: number;

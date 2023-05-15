@@ -51,6 +51,17 @@
 .tit5{
   margin-right: 60px;
 }
+.listBottomFix{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+}
+.flexBet{
+  display: flex;
+  justify-content: space-between;
+}
 .listBottom{
   display: flex;
   justify-content: space-between;
