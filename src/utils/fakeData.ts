@@ -120,6 +120,7 @@ export const cartList:Array<CartInfo> = [{
       id: nanoid(),
     },
   ],
+  isChecked: false,
 },
   {
     id: nanoid(),
@@ -148,4 +149,5 @@ export const cartList:Array<CartInfo> = [{
         id: nanoid(),
       },
     ],
+    isChecked: false
   }];

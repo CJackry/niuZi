@@ -3,7 +3,6 @@ import { GoodInfo } from '@/src/views/VDetails/interface';
 import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
-import { NumChangeFun } from '@/src/components/numChange/interface';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 

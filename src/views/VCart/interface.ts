@@ -12,5 +12,6 @@ export interface CartInfo{
   price: string,
   amount: number,
   imgSrc: string,
-  gifts: Array<Gift>
+  gifts: Array<Gift>,
+  isChecked: boolean
 }
