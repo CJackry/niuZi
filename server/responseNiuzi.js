@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path')
 const app = new koa();
 const port = 3002;
+const router = require('koa-router');
 
 function getJSON(fileName) {
   const data = fs.readFileSync(path.join(__dirname, `/JSON/${fileName}.json`), 'utf-8')
@@ -53,6 +54,9 @@ app.use(async ctx => {
   }
   ctx.status = 200;
   ctx.body = body;
+})
+router.get('/check', async (ctx) => {
+
 })
 
 app.listen(port, () => {

@@ -2,14 +2,16 @@ import React, { useRef, useState } from 'react';
 import clientRequest from '@/src/utils/http-client';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReturnInter } from '@/src/utils';
 import NzBtn from '@/src/components/NzBtn';
 import Notice from '@/src/components/Notice';
+import { useUserContext } from '@/src/stores/context';
+import { LoginResponse } from '@/src/pages/api/login';
 import classes from './login.module.scss';
 
 function VLogin() {
   const nameEl = useRef<HTMLInputElement>(null);
   const pwdEl = useRef<HTMLInputElement>(null);
+  const { store: { name }, dispatch } = useUserContext();
   const router = useRouter();
   const [isFinish, setIsFinish] = useState(true);
   const handleLogin = async (): Promise<void> => {
@@ -19,13 +21,18 @@ function VLogin() {
     };
     if (user.name && user.password) {
       setIsFinish(true);
-      const result = await clientRequest<ReturnInter>({
+      const result = await clientRequest<LoginResponse>({
         url: 'api/login',
         method: 'get',
         params: user,
       });
-      if (result.code === 200) await router.push('/');
-      else setIsFinish(false);
+      if (result.success) {
+        const username = result.name || '';
+        console.log(result.data);
+        await dispatch({ type: 'login', name: username });
+        console.log(name);
+        await router.push('/');
+      } else setIsFinish(false);
     } else {
       setIsFinish(false);
     }

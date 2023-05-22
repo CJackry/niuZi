@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 
 interface UserState {
-  name: string
+  name: string | undefined
 }
 
 interface Props {
@@ -14,14 +14,14 @@ interface Props {
 type Action = {
   type: string,
   id?: string,
-  username?: string,
+  name?: string,
 }
 // 规定Reducer的类型
 type ExpandReducer = React.Reducer<UserState, Action>
 
 // 初始化Context
 const initialStore:UserState = {
-  name: '',
+  name: undefined,
 };
 const initialDispatch: React.Dispatch<Action> = () => null;
 const UserContext = createContext({
@@ -31,11 +31,12 @@ const UserContext = createContext({
 
 const userReducer = (preState:UserState, action:Action) => {
   switch (action.type) {
-    case 'getName': {
-      return { ...preState };
+    case 'login': {
+      console.log('reducer', action.name);
+      return { ...preState, name: action.name };
     }
     case 'logout': {
-      return { ...preState, name: '' };
+      return { ...preState, name: undefined };
     }
     default: {
       return { ...preState };
