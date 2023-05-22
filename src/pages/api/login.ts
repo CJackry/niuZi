@@ -30,11 +30,15 @@ export default async function handler(
 ):Promise<void> {
   const token = 'token';
   const { name, password } = req.query;
-  if (name === '123' && password === '123') {
-    const loginInfo:loginData = { token, name };
-    await loginSaveRedis(res, loginInfo).then((r) => console.log(r));
-    res.status(200).send(successReturnObj());
-  } else {
-    res.status(403).send(errorReturnObj('login fail!'));
-  }
+  // 模拟网络请求延迟2s
+  setTimeout(async () => {
+    console.log('发送login请求');
+    if (name === '123' && password === '123') {
+      const loginInfo: loginData = { token, name };
+      await loginSaveRedis(res, loginInfo).then((r) => console.log(r));
+      res.status(200).send(successReturnObj());
+    } else {
+      res.status(203).send(errorReturnObj('login fail!'));
+    }
+  }, 2000);
 }

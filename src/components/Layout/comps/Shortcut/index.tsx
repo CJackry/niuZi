@@ -15,11 +15,12 @@ function Shortcut() {
     });
     if (res.success) {
       dispatch({ type: 'logout' });
-      await router.push('/');
+      await router.reload();
     }
   };
+  console.log(username);
   return (
-    <div className={classes.root}>
+    <div className={classes.root} key={router.asPath}>
       <div className={classes.w}>
         <div className={classes.addr}>
           <span>addr</span>
@@ -28,6 +29,7 @@ function Shortcut() {
           {name ? (
             <span>
               <Link href="/login">{username}</Link>
+              {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
               <span onClick={handleLogout}>退出登录</span>
             </span>
           )

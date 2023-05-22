@@ -6,6 +6,7 @@ import { cartList } from '@/src/utils/fakeData';
 
 interface CartState{
   cartList: Array<CartInfo>;
+  total: number;
 }
 
 interface Action{
@@ -16,7 +17,7 @@ interface Action{
 
 type Dispatch = React.Dispatch<Action>;
 
-const initialCart: CartState = { cartList };
+const initialCart: CartState = { cartList, total: cartList.length };
 const initialDispatch: Dispatch = () => null;
 
 const CartContext = createContext({
@@ -36,6 +37,7 @@ const CartReducer = (preState: CartState, action: Action) => {
       return {
         ...preState,
         cartList: cartList.filter((cart) => cart.id !== action.id),
+        total: cartList.length,
       };
     }
     default: {

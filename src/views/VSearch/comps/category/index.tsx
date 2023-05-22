@@ -1,7 +1,7 @@
 import React from 'react';
-import AttrCategory from '@/src/views/VSearch/comps/category/attrCategory';
+import AttrCategory from './comps/attrCategory';
 import classes from './category.module.scss';
-import BrandCategory from './brandCategory';
+import BrandCategory from './comps/brandCategory';
 
 const Category:React.FC = () => {
   const cateName = '分类';

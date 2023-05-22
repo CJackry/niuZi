@@ -4,6 +4,7 @@ import { UserProvider } from '@/src/stores/context';
 import Layout from '../components/Layout';
 
 function NiuZiApp({ Component, pageProps }:AppProps) {
+  console.log(pageProps);
   return (
     <UserProvider initialUser={pageProps}>
       <Layout>
@@ -29,7 +30,7 @@ NiuZiApp.getInitialProps = async ({ ctx }:AppContext) => {
   } else {
     name = undefined;
   }
-
+  console.log('getInitialProps', name);
   return {
     pageProps: {
       name,

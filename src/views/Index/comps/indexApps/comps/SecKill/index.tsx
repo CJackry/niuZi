@@ -108,8 +108,8 @@ const SecKill:React.FC<Props> = ({ secKillList }) => {
             >
               {
                   secKillList ? secKillList.map((item) => (
-                    <SwiperSlide>
-                      <a className={classes.seckill_item} href={item.link} key={item.id}>
+                    <SwiperSlide key={item.id}>
+                      <a className={classes.seckill_item} href={item.link}>
                         <img src={item.imgSrc} alt="img" />
                         <h6>{item.name}</h6>
                         <span>{item.price}</span>

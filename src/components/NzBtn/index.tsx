@@ -4,7 +4,7 @@ import { NzBtnProps } from '@/src/components/NzBtn/interface';
 import originClasses from './NzBtn.module.scss';
 
 const NzBtn:React.FC<NzBtnProps> = (props) => {
-  const { onClick, classes } = props;
+  const { onClick, classes, children } = props;
   const [loading, setLoading] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
   const btn = useRef(null);
@@ -39,7 +39,7 @@ const NzBtn:React.FC<NzBtnProps> = (props) => {
       onClick={handleClick}
       disabled={disabled}
     >
-      {loading ? 'loading' : 'NzBtn'}
+      {loading ? 'loading' : children}
     </button>
 
   );
