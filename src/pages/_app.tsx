@@ -21,7 +21,7 @@ NiuZiApp.getInitialProps = async ({ ctx }:AppContext) => {
     // @ts-ignore
     const { id } = ctx.req.cookies;
     if (typeof window === 'undefined') {
-      name = await fetch(`http://localhost:3000/api/getRedis?id=${id}&t=${Date().valueOf()}`);
+      name = await fetch(`http://localhost:8801/api/getRedis?id=${id}&t=${Date().valueOf()}`);
       const res = await name.json();
       name = res.name;
     } else {
