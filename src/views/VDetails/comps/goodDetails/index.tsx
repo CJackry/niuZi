@@ -3,6 +3,7 @@ import { GoodInfo } from '@/src/views/VDetails/interface';
 import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
+import clientRequest from '@/src/utils/http-client';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
@@ -17,6 +18,13 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   };
   const handleChange = (e) => {
     console.log(e);
+  };
+  const handleAddCart = () => {
+    const result = clientRequest({
+      url: '/api/goods/addCart',
+      params: { goodInfo },
+    });
+    console.log(result);
   };
   return (
     <div className={classes.root}>
@@ -112,7 +120,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       <div className={classes.summaryLine} />
       <div className={classes.chooseBtn}>
         <NumChange onChange={handleChange} defaultValue={1} type="floatRight" />
-        <Link className={classes.addCart} href="https://jd.com">加入购物车</Link>
+        <Link className={classes.addCart} href="#" onClick={handleAddCart}>加入购物车</Link>
       </div>
     </div>
 

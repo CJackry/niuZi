@@ -1,33 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import global from '@/styles/global.module.scss';
 import AddrSelect from '@/src/components/addrSelect';
 import Link from 'next/link';
-import { cartList } from '@/src/utils/fakeData';
 import { useScroll } from 'ahooks';
 import clsx from 'clsx';
+import { useCartContext } from '@/src/stores/cartContext';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
 const VCart:React.FC = () => {
   const scroll = useScroll();
   const top = scroll?.top || scroll?.left || 0;
-  const fixTop = (cartList.length - 1) * 270;
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [checkNum, setCheckNum] = useState(0);
-  const handleCheck = (price:number, check: boolean, num: number) => {
-    let total = totalPrice;
-    let totalCheck = checkNum;
-    total = check ? total + price : total - price;
-    totalCheck = check ? totalCheck + num : totalCheck - num;
-    setTotalPrice(total);
-    setCheckNum(totalCheck);
+  const { store: { cartList }, dispatch } = useCartContext();
+  const fixTop = (cartList.length - 1) * 270;
+  // const handleCheck = (price:number, check: boolean, num: number) => {
+  //   let total = totalPrice;
+  //   let totalCheck = checkNum;
+  //   total = check ? total + price : total - price;
+  //   totalCheck = check ? totalCheck + num : totalCheck - num;
+  //   setTotalPrice(total);
+  //   setCheckNum(totalCheck);
+  // };
+  const handleCheck = (check: boolean, id: string, num?: number) => {
+    if (num) {
+      dispatch({
+        type: 'numChange', check, id, num,
+      });
+    } else {
+      dispatch({ type: 'checked', check, id });
+    }
+    const sum = cartList.reduce((prev, item) => prev + (item.isChecked ? 1 : 0), 0);
+    setCheckNum(sum);
   };
+  useEffect(() => {
+    const sum = cartList.reduce((prev, item) => {
+      const itemPrice = item.isChecked ? Number(item.price) * item.amount : 0;
+      return prev + itemPrice;
+    }, 0);
+    setCheckNum(sum);
+  }, [checkNum]);
   return (
     <div className={classes.root}>
       <div className={global.w}>
         <div className={classes.topTitle}>
           <div className={classes.chooseNum}>
-            <span>全部商品 14</span>
+            <span>{`全部商品 ${cartList.length}`}</span>
           </div>
           <div className={classes.express}>
             <span>配送至: </span>

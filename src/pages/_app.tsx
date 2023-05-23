@@ -1,15 +1,19 @@
 import '@/styles/globals.css';
 import type { AppContext, AppProps } from 'next/app';
 import { UserProvider } from '@/src/stores/context';
+import { CartProvider } from '@/src/stores/cartContext';
+import { cartList } from '@/src/utils/fakeData';
 import Layout from '../components/Layout';
 
 function NiuZiApp({ Component, pageProps }:AppProps) {
-  // console.log(pageProps);
+  const initialCart = { cartList, total: cartList.length };
   return (
     <UserProvider initialUser={pageProps}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <CartProvider initialVal={initialCart}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </CartProvider>
     </UserProvider>
   );
 }

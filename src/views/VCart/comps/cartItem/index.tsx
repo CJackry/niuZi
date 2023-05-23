@@ -1,31 +1,38 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { CartInfo } from '@/src/views/VCart/interface';
 import Link from 'next/link';
 import GoodLim from '@/src/views/VCart/comps/goodLim';
 import NumChange from '@/src/components/numChange';
+import { useCartContext } from '@/src/stores/cartContext';
 import classes from './cartItem.module.scss';
 
 type Props = {
   cartInfo: CartInfo,
   isChecked?: boolean,
-  onChange: (total: number, check: boolean, num: number)=>void,
+  onChange: (check: boolean, id: string, num?: number)=>void,
 }
 
 const CartItem:React.FC<Props> = (props) => {
   const { cartInfo, isChecked, onChange } = props;
   const [totalPrice, setTotalPrice] = useState<number>(Number(cartInfo.price) * cartInfo.amount);
   const [checked, setChecked] = useState(isChecked || false);
+  const checkBox = useRef<HTMLInputElement>(null);
+  const { dispatch } = useCartContext();
   const handleNumChange = (num:number) => {
     const newTotal = Number(cartInfo.price) * num;
-    const diff = newTotal - totalPrice;
+    // const diff = newTotal - totalPrice;
     setTotalPrice(newTotal);
-    onChange(diff, true, num);
+    // onChange(diff, true,);
+    const check = checkBox.current?.checked || false;
+    onChange(check, cartInfo.id, num);
   };
-  const handleCheckChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const check = e.target.checked;
-    const num = totalPrice / Number(cartInfo.price);
+  const handleCheckChange = () => {
+    const check = checkBox.current?.checked || false;
+    // const num = totalPrice / Number(cartInfo.price);
+    // setChecked(check);
+    // onChange(totalPrice, check, num);
+    onChange(check, cartInfo.id);
     setChecked(check);
-    onChange(totalPrice, check, num);
   };
 
   return (
@@ -34,7 +41,8 @@ const CartItem:React.FC<Props> = (props) => {
         className={classes.checkOpt}
         type="checkbox"
         checked={checked || false}
-        onChange={(e) => { handleCheckChange(e); }}
+        ref={checkBox}
+        onChange={handleCheckChange}
       />
       <div className={classes.good}>
         <div className={classes.goodCell1}>

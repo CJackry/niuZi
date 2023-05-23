@@ -13,6 +13,7 @@ interface Action{
   type: string;
   id: string;
   check?: boolean;
+  num?:number;
 }
 
 type Dispatch = React.Dispatch<Action>;
@@ -28,9 +29,18 @@ const CartContext = createContext({
 const CartReducer = (preState: CartState, action: Action) => {
   switch (action.type) {
     case 'checked': {
+      console.log('checked option');
       return {
         ...preState,
         cartList: cartList.map((cart) => (cart.id === action.id ? { ...cart, isCheck: action.check } : cart)),
+      };
+    }
+    case 'numChange': {
+      console.log('numChange option');
+      return {
+        ...preState,
+        cartList: cartList.map((cart) => (cart.id === action.id
+          ? { ...cart, isCheck: action.check, amount: action.num } : cart)),
       };
     }
     case 'del': {
@@ -55,6 +65,7 @@ type ExpandReducer = React.Reducer<CartState, Action>;
 
 export const CartProvider:React.FC<Props> = ({ children, initialVal }) => {
   const [store, dispatch] = useReducer<ExpandReducer>(
+    // @ts-ignore
     CartReducer,
     initialVal,
   );

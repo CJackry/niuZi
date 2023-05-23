@@ -42,7 +42,7 @@ const Header: React.FC<Props> = ({ isShowFloat }) => {
             <div className={classes.dropdown}>
               <div className={classes.cw_icon}>
                 <i className={classes.iconfont}>&#xe70b;</i>
-                <Link href="https://jd.com">我的购物车</Link>
+                <Link href="/cart">我的购物车</Link>
                 {/* 此处的数据需要动态加载 */}
                 <i className={classes.ci_count}>0</i>
               </div>
