@@ -7,14 +7,17 @@ export interface ReturnInter{
   success: boolean,
   msg: string
 }
-export const successReturnObj = (data = null):ReturnInter => ({
-  data,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type SuccessReturnObj<DATA = any> = (data:DATA)=>ReturnInter;
+
+export const successReturnObj:SuccessReturnObj = (data):ReturnInter => ({
+  data: data || null,
   code: 200,
   success: true,
   msg: 'ok',
 });
 
-export const errorReturnObj = (data: null| string = null):ReturnInter => ({
+export const errorReturnObj = (data: null | string = null):ReturnInter => ({
   data,
   code: 500,
   success: false,

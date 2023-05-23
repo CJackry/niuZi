@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import redisClient from '@/src/utils/redis';
 import { nanoid } from 'nanoid';
 import nookies from 'nookies';
-import { errorReturnObj, ReturnInter } from '@/src/utils';
+import { errorReturnObj, ReturnInter, successReturnObj } from '@/src/utils';
 
 type loginData = {
     token:string,
@@ -10,8 +10,7 @@ type loginData = {
 }
 
 export interface LoginResponse{
-  success: boolean
-  name?: null | string
+  username: string
 }
 
 const loginSaveRedis = async (res:NextApiResponse, loginInfo:loginData) => {
@@ -31,7 +30,7 @@ const loginSaveRedis = async (res:NextApiResponse, loginInfo:loginData) => {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<LoginResponse>,
+  res: NextApiResponse<ReturnInter>,
 ):Promise<void> {
   const token = 'token';
   const { name, password } = req.query;
@@ -41,11 +40,9 @@ export default async function handler(
     if (name === '123' && password === '123') {
       const loginInfo: loginData = { token, name };
       await loginSaveRedis(res, loginInfo).then((r) => console.log(r));
-      res.status(200).send({
-        success: true, name,
-      });
+      res.status(200).send(successReturnObj({ username: name }));
     } else {
-      res.status(203).send({ success: false });
+      res.status(203).send(errorReturnObj());
     }
   }, 2000);
 }

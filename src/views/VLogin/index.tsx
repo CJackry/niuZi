@@ -5,8 +5,11 @@ import { useRouter } from 'next/router';
 import NzBtn from '@/src/components/NzBtn';
 import Notice from '@/src/components/Notice';
 import { useUserContext } from '@/src/stores/context';
-import { LoginResponse } from '@/src/pages/api/login';
 import classes from './login.module.scss';
+
+type LoginResponse = {
+  username?: string
+}
 
 function VLogin() {
   const nameEl = useRef<HTMLInputElement>(null);
@@ -27,8 +30,8 @@ function VLogin() {
         params: user,
       });
       if (result.success) {
-        const username = result.name || '';
-        console.log(result.data);
+        const { username } = result.data || '';
+        console.log('username', result.data);
         await dispatch({ type: 'login', name: username });
         console.log(name);
         await router.push('/');

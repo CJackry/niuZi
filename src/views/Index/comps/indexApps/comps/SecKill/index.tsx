@@ -116,11 +116,7 @@ const SecKill:React.FC<Props> = ({ secKillList }) => {
                       </a>
                     </SwiperSlide>
                   )) : (
-                    <SwiperSlide>
-                      <a className={classes.seckill_item} href="https://wallhaven.cc/">
-                        没有收到牛子轮播图，去看点牛子图吧
-                      </a>
-                    </SwiperSlide>
+                    <div />
                   )
                 }
             </Swiper>
