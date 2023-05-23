@@ -20,7 +20,7 @@ const serverRequest: Instance = serverInstance.request;
  * 代理转发
  * */
 serverInstance.interceptors.request.use((request) => {
-  const targetUrl = 'http://localhost:3002';
+  const targetUrl = 'http://localhost:8802';
   if (request.url?.startsWith('/api')) {
     request.url = request.url.replace('/api', '');
     request.baseURL = targetUrl;
