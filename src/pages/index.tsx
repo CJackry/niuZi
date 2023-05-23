@@ -14,9 +14,11 @@ export const getServerSideProps: GetServerSideProps<{ staticData: CommonData }> 
     url: '/api/getStaticData',
   });
   const staticData = res.data.data;
-  staticData.secKillList.forEach((item) => {
-    Object.defineProperty(item, 'id', { value: nanoid() });
-  });
+
+  staticData.secKillList = staticData.secKillList.map((item) => ({
+    id: nanoid(),
+    ...item,
+  }));
   return {
     props: {
       staticData,
