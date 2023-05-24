@@ -114,12 +114,12 @@
 .attrVal img{
   width: 40px;
 }
-.attrVal i{
-  display: inline-block;
-  margin: 0 8px;
-  line-height: 40px;
-  color: #666;
-}
+//.attrVal i{
+//  display: inline-block;
+//  margin: 0 8px;
+//  line-height: 40px;
+//  color: #666;
+//}
 .attrVal span{
   display: inline-block;
   margin: 0 8px;
@@ -132,12 +132,15 @@
   padding: 0 10px;
   margin: 10px 0;
 }
+.addBtn{
+  margin-left: 10px;
+  border: 0;
+}
 
 .addCart{
   display: inline-block;
   width: 140px;
   height: 46px;
-  margin-left: 10px;
   padding: 0 26px;
   text-align: center;
   line-height: 46px;

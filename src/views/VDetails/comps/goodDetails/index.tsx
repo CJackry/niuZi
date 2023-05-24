@@ -1,38 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoodInfo } from '@/src/views/VDetails/interface';
 import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
 import clientRequest from '@/src/utils/http-client';
+import { useUserContext } from '@/src/stores/context';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
 type Props = {
     goodInfo: GoodInfo,
 }
+type Attr = {
+  id: string,
+  title: string,
+  color: string,
+  version: string,
+  price: string,
+  isCheck: boolean,
+  amount: number
+}
+
 // https://item.jd.com/100049486783.html#crumb-wrap
 const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
-  const goodTit = goodInfo.title + goodInfo.attr[0].attrName + goodInfo.attr[0].color[0].name;
-  const chooseColor = (e:React.MouseEvent) => {
-    console.log(e.target);
+  const { price } = goodInfo.attr[0].color[0];
+  const { store: { name } } = useUserContext();
+  const [amount, setAmount] = useState(1);
+  const [attr, setAttr] = useState<Attr>({
+    id: goodInfo.attr[0].color[0].id,
+    title: goodInfo.title,
+    color: goodInfo.attr[0].color[0].name,
+    version: goodInfo.attr[0].attrName,
+    price,
+    isCheck: false,
+    amount,
+  });
+  const chooseColor = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const color = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
+    let p: string = price;
+    goodInfo.attr.forEach((attrItem) => {
+      if (attrItem.attrName === attr?.version) {
+        attrItem.color.forEach((c) => {
+          if (c.name === color) p = c.price;
+        });
+      }
+    });
+    setAttr({ ...attr, price: p, color });
   };
-  const handleChange = (e) => {
-    console.log(e);
+  const chooseVersion = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const version = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
+    let p: string = price;
+    goodInfo.attr.forEach((a) => {
+      if (a.attrName === version) {
+        a.color.forEach((c) => {
+          if (c.name === attr?.color) p = c.price;
+        });
+      }
+    });
+    setAttr({ ...attr, version, price: p });
+  };
+  const handleChange = (num: number) => {
+    setAmount(num);
+    setAttr({ ...attr, amount: num });
   };
   const handleAddCart = () => {
-    const result = clientRequest({
-      url: '/api/goods/addCart',
-      params: { goodInfo },
-    });
-    console.log(result);
+    console.log(name);
+    if (name) {
+      const result = clientRequest({
+        url: '/api/goods/addCart',
+        params: { ...attr, user: name },
+      });
+      console.log(result);
+    }
   };
   return (
     <div className={classes.root}>
       <div className={classes.top}>
         <span className={classes.specialTag}>门店有售</span>
-        <span className={classes.title}>{goodTit}</span>
+        <span className={classes.title}>{`${attr?.title} ${attr?.version} ${attr?.color}`}</span>
       </div>
-      <GoodPrice price="4999.00" gifts={goodInfo.gifts} />
+      <GoodPrice price={attr?.price || price} gifts={goodInfo.gifts} />
       <div className={classes.cate}>
         <span className={classes.cateName}>增值业务</span>
         <div className={classes.cateVal}>
@@ -92,14 +139,14 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
             {goodInfo.attr[0].color.map((item) => (
               // eslint-disable-next-line jsx-a11y/anchor-is-valid
               <Link
-                href="#"
+                href=""
                 className={classes.attrVal}
                 key={item.id}
                 onClick={(e) => { chooseColor(e); }}
                 title={item.name}
               >
                 <img src={item.imgSrc} alt={item.name} />
-                <i>{item.name}</i>
+                <span>{item.name}</span>
               </Link>
             ))}
           </div>
@@ -110,7 +157,14 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
         <div className={classes.cateVal}>
           <div className={classes.goodAttr}>
             {goodInfo.attr.map((item) => (
-              <Link className={classes.attrVal} href="https://jd.com" key={item.id}>
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <Link
+                className={classes.attrVal}
+                href=""
+                key={item.id}
+                onClick={(e) => chooseVersion(e)}
+                title={item.attrName}
+              >
                 <span>{item.attrName}</span>
               </Link>
             ))}
@@ -120,7 +174,10 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       <div className={classes.summaryLine} />
       <div className={classes.chooseBtn}>
         <NumChange onChange={handleChange} defaultValue={1} type="floatRight" />
-        <Link className={classes.addCart} href="#" onClick={handleAddCart}>加入购物车</Link>
+        <button className={classes.addBtn} onClick={handleAddCart}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <Link className={classes.addCart} href="">加入购物车</Link>
+        </button>
       </div>
     </div>
 

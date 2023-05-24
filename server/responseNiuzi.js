@@ -5,12 +5,12 @@ const app = new koa();
 const port = 8802;
 const Router = require('koa-router');
 const router = new Router();
-const redisStore = require('koa-redis');
 const Redis = require('ioredis');
 
 const redisClient = new Redis({
   host: 'localhost',
   port: 6379,
+  db: 1,
 })
 
 function getJSON(fileName) {
@@ -28,20 +28,15 @@ const staticData = {
 };
 const phones = getJSON('phones');
 
-app.use(async ctx => {
-  let body = {code: 200};
-  console.log('someone request', ctx.url);
-  switch (ctx.path) {
-    case '/hotWords': {
-      body.data = hotWords;
-      break;
-    }
-    case '/getStaticData': {
-      body.data = staticData;
-      break;
-    }
-    /*phones太长，不应该一次性给完，可以通过携带query参数来指明需要哪一段，将phones进行分割*/
-    case '/phones': {
+router
+    .get('/hotWords', async ctx => {
+      ctx.body={code: 200, success: true, data: hotWords};
+    })
+    .get('/getStaticData', async ctx => {
+      ctx.body={code: 200, success: true, data: staticData};
+    })
+    .get('/phones', async ctx => {
+      let body = {};
       let {page} = ctx.query;
       console.log('query', ctx.query);
       console.log(page);
@@ -54,20 +49,15 @@ app.use(async ctx => {
       body.data.records = phones.slice((page - 1) * 10, page * 10);
       body.data.total = phones.length;
       body.success = true;
-      break;
-    }
-    default: {
-      body.message = 'nothing to return!';
-    }
-  }
-  ctx.status = 200;
-  ctx.body = body;
-})
+      ctx.body = body;
+    })
+    .get('/addCart', async ctx => {
+      const {user} = ctx.query;
 
-router.get('/addCart', async ctx => {
-  console.log(ctx.query);
-  ctx.body={msg: 'addCart'};
-})
+      console.log(ctx.query);
+      await redisClient.set(user, JSON.stringify(ctx.query));
+      ctx.body={msg: 'addCart', data: ctx.query};
+    })
 
 app.use(router.routes());
 
