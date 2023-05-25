@@ -55,7 +55,7 @@ const CartReducer = (preState: CartState, action: Action) => {
       let newCartList;
       if (preState.cartList) {
         newCartList = preState.cartList.map((cart) => (cart.id === action.id
-          ? { ...cart, isCheck: action.check, amount: action.num } : cart));
+          ? { ...cart, amount: action.num } : cart));
       } else newCartList = null;
       return {
         ...preState,
