@@ -1,51 +1,52 @@
 import React, { useState } from 'react';
-import { GoodInfo } from '@/src/views/VDetails/interface';
+import { GoodInfo, CartAttr } from '@/src/views/VDetails/interface';
 import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
-import clientRequest from '@/src/utils/http-client';
 import { useUserContext } from '@/src/stores/context';
+import { useCartContext } from '@/src/stores/cartContext';
+import clientRequest from '@/src/utils/http-client';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
 type Props = {
     goodInfo: GoodInfo,
 }
-type Attr = {
-  id: string,
-  title: string,
-  color: string,
-  version: string,
-  price: string,
-  isCheck: boolean,
-  amount: number
-}
 
 // https://item.jd.com/100049486783.html#crumb-wrap
 const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   const { price } = goodInfo.attr[0].color[0];
   const { store: { name } } = useUserContext();
+  const { store: { cartList }, dispatch } = useCartContext();
   const [amount, setAmount] = useState(1);
-  const [attr, setAttr] = useState<Attr>({
+  const [attr, setAttr] = useState<CartAttr>({
     id: goodInfo.attr[0].color[0].id,
+    imgSrc: goodInfo.attr[0].color[0].imgSrc,
     title: goodInfo.title,
     color: goodInfo.attr[0].color[0].name,
     version: goodInfo.attr[0].attrName,
     price,
     isCheck: false,
     amount,
+    gifts: goodInfo.gifts,
   });
   const chooseColor = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const color = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
     let p: string = price;
+    let imgSrc = '';
     goodInfo.attr.forEach((attrItem) => {
       if (attrItem.attrName === attr?.version) {
         attrItem.color.forEach((c) => {
-          if (c.name === color) p = c.price;
+          if (c.name === color) {
+            p = c.price;
+            imgSrc = c.imgSrc;
+          }
         });
       }
     });
-    setAttr({ ...attr, price: p, color });
+    setAttr({
+      ...attr, price: p, color, imgSrc,
+    });
   };
   const chooseVersion = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const version = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
@@ -63,12 +64,14 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
     setAmount(num);
     setAttr({ ...attr, amount: num });
   };
-  const handleAddCart = () => {
+  const handleAddCart = async () => {
     console.log(name);
     if (name) {
-      const result = clientRequest({
+      await dispatch({ type: 'addCart', cart: attr, id: attr.id });
+      const result = await clientRequest({
         url: '/api/goods/addCart',
-        params: { ...attr, user: name },
+        data: { cart: cartList, user: name },
+        method: 'post',
       });
       console.log(result);
     }
@@ -176,7 +179,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
         <NumChange onChange={handleChange} defaultValue={1} type="floatRight" />
         <button className={classes.addBtn} onClick={handleAddCart}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <Link className={classes.addCart} href="">加入购物车</Link>
+          <Link className={classes.addCart} href="/cart">加入购物车</Link>
         </button>
       </div>
     </div>

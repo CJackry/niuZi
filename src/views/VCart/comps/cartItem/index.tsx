@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { CartInfo } from '@/src/views/VCart/interface';
 import Link from 'next/link';
 import GoodLim from '@/src/views/VCart/comps/goodLim';
 import NumChange from '@/src/components/numChange';
 import { useCartContext } from '@/src/stores/cartContext';
+import { CartAttr } from '@/src/views/VDetails/interface';
 import classes from './cartItem.module.scss';
 
 type Props = {
-  cartInfo: CartInfo,
+  cartInfo: CartAttr,
   isChecked?: boolean,
   onChange: (check: boolean, id: string, num?: number)=>void,
 }
@@ -55,9 +55,8 @@ const CartItem:React.FC<Props> = (props) => {
           </div>
         </div>
         <div className={classes.goodAttrs}>
-          {cartInfo.attrs.map((attr) => (
-            <span key={attr.id}>{attr.name}</span>
-          ))}
+          <span>{cartInfo.color}</span>
+          <span>{cartInfo.version}</span>
         </div>
         <div className={classes.goodPrice}>
           <span className={classes.goodPriceCount}>{`￥${cartInfo.price}`}</span>
@@ -74,13 +73,13 @@ const CartItem:React.FC<Props> = (props) => {
         </div>
       </div>
       <div className={classes.gifts}>
-        {cartInfo.gifts.map((gift) => (
+        {cartInfo.gifts ? cartInfo.gifts.map((gift) => (
           <div className={classes.giftInfo} key={gift.id}>
             <Link href="https://jd.com" className={classes.giftTit}>{`【赠品】${gift.name}`}</Link>
             <span className={classes.giftNum}>X1</span>
             <Link href="https://jd.com" className={classes.priceView}>查看价格</Link>
           </div>
-        ))}
+        )) : <div />}
       </div>
     </div>
   );

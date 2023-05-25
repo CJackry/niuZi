@@ -9,10 +9,6 @@ type loginData = {
     name: string
 }
 
-export interface LoginResponse{
-  username: string
-}
-
 const loginSaveRedis = async (res:NextApiResponse, loginInfo:loginData) => {
   const id = nanoid();
   await redisClient.set(
@@ -22,6 +18,7 @@ const loginSaveRedis = async (res:NextApiResponse, loginInfo:loginData) => {
       name: loginInfo.name,
     }),
   );
+  // 初始化用户的购物车
   nookies.set({ res }, 'id', id, {
     maxAge: 24 * 60 * 60,
     path: '/',

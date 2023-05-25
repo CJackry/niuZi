@@ -6,6 +6,7 @@ import clientRequest from '@/src/utils/http-client';
 import { useScroll } from 'ahooks';
 import FloatSearch from '@/src/components/Layout/comps/floatSearch';
 import global from '@/styles/global.module.scss';
+import { useCartContext } from '@/src/stores/cartContext';
 import classes from './Header.module.scss';
 
 type Props = {
@@ -14,6 +15,7 @@ type Props = {
 
 const Header: React.FC<Props> = ({ isShowFloat }) => {
   const [hotWords, setHotWords] = useState<Array<HotWords>|null>(null);
+  const { store: { total } } = useCartContext();
   useEffect(() => {
     clientRequest<Array<HotWords>>({ url: '/api/hotWords' }).then((r) => setHotWords(r.data));
   }, []);
@@ -43,8 +45,7 @@ const Header: React.FC<Props> = ({ isShowFloat }) => {
               <div className={classes.cw_icon}>
                 <i className={classes.iconfont}>&#xe70b;</i>
                 <Link href="/cart">我的购物车</Link>
-                {/* 此处的数据需要动态加载 */}
-                <i className={classes.ci_count}>0</i>
+                <i className={classes.ci_count}>{total}</i>
               </div>
             </div>
           </div>

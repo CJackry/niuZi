@@ -5,13 +5,6 @@ const app = new koa();
 const port = 8802;
 const Router = require('koa-router');
 const router = new Router();
-const Redis = require('ioredis');
-
-const redisClient = new Redis({
-  host: 'localhost',
-  port: 6379,
-  db: 1,
-})
 
 function getJSON(fileName) {
   const data = fs.readFileSync(path.join(__dirname, `/JSON/${fileName}.json`), 'utf-8')
@@ -27,6 +20,8 @@ const staticData = {
   navList, serviceItem, secKillList
 };
 const phones = getJSON('phones');
+
+app.use(bodyParser());
 
 router
     .get('/hotWords', async ctx => {
@@ -50,13 +45,6 @@ router
       body.data.total = phones.length;
       body.success = true;
       ctx.body = body;
-    })
-    .get('/addCart', async ctx => {
-      const {user} = ctx.query;
-
-      console.log(ctx.query);
-      await redisClient.set(user, JSON.stringify(ctx.query));
-      ctx.body={msg: 'addCart', data: ctx.query};
     })
 
 app.use(router.routes());

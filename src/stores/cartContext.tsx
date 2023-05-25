@@ -1,11 +1,10 @@
 import React, {
   createContext, ReactNode, useContext, useMemo, useReducer,
 } from 'react';
-import { CartInfo } from '@/src/views/VCart/interface';
-import { cartList } from '@/src/utils/fakeData';
+import { CartAttr } from '@/src/views/VDetails/interface';
 
-interface CartState{
-  cartList: Array<CartInfo>;
+export interface CartState{
+  cartList: Array<CartAttr>;
   total: number;
 }
 
@@ -14,11 +13,12 @@ interface Action{
   id: string;
   check?: boolean;
   num?:number;
+  cart?: CartAttr;
 }
 
 type Dispatch = React.Dispatch<Action>;
 
-const initialCart: CartState = { cartList, total: cartList.length };
+const initialCart: CartState = { cartList: [], total: 0 };
 const initialDispatch: Dispatch = () => null;
 
 const CartContext = createContext({
@@ -28,26 +28,48 @@ const CartContext = createContext({
 
 const CartReducer = (preState: CartState, action: Action) => {
   switch (action.type) {
-    case 'checked': {
-      console.log('checked option');
+    case 'addCart': {
+      console.log('addCart', action.cart, preState.cartList, typeof preState.cartList);
+      if (action.cart) preState.cartList.push(action.cart);
       return {
         ...preState,
-        cartList: cartList.map((cart) => (cart.id === action.id ? { ...cart, isCheck: action.check } : cart)),
+        total: preState.cartList?.length,
+      };
+    }
+    case 'checked': {
+      console.log('checked option');
+      let newCartList;
+      if (preState.cartList) {
+        newCartList = preState.cartList.map((cart) => (cart.id === action.id
+          ? { ...cart, isCheck: action.check } : cart));
+      } else newCartList = null;
+      return {
+        ...preState,
+        cartList: newCartList,
+        total: newCartList ? newCartList.length : 0,
       };
     }
     case 'numChange': {
       console.log('numChange option');
+      let newCartList;
+      if (preState.cartList) {
+        newCartList = preState.cartList.map((cart) => (cart.id === action.id
+          ? { ...cart, isCheck: action.check, amount: action.num } : cart));
+      } else newCartList = null;
       return {
         ...preState,
-        cartList: cartList.map((cart) => (cart.id === action.id
-          ? { ...cart, isCheck: action.check, amount: action.num } : cart)),
+        cartList: newCartList,
+        total: newCartList ? newCartList.length : 0,
       };
     }
     case 'del': {
+      let newCartList;
+      if (preState.cartList) newCartList = preState.cartList.filter((cart) => cart.id !== action.id);
+      else newCartList = null;
       return {
         ...preState,
-        cartList: cartList.filter((cart) => cart.id !== action.id),
-        total: cartList.length,
+        cartList: newCartList,
+        total: newCartList ? newCartList.length : 0,
       };
     }
     default: {
@@ -63,9 +85,8 @@ type Props = {
 
 type ExpandReducer = React.Reducer<CartState, Action>;
 
-export const CartProvider:React.FC<Props> = ({ children, initialVal }) => {
-  const [store, dispatch] = useReducer<ExpandReducer>(
-    // @ts-ignore
+export const CartProvider:React.FC<Props> = ({ children, initialVal = { cartList: null, total: 0 } }) => {
+  const [store, dispatch] = useReducer<ExpandReducer>(// @ts-ignore
     CartReducer,
     initialVal,
   );

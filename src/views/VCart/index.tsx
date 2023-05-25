@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import global from '@/styles/global.module.scss';
 import AddrSelect from '@/src/components/addrSelect';
 import Link from 'next/link';
@@ -13,40 +13,15 @@ const VCart:React.FC = () => {
   const top = scroll?.top || scroll?.left || 0;
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [checkNum, setCheckNum] = useState(0);
-  const { store: { cartList }, dispatch } = useCartContext();
-  const fixTop = (cartList.length - 1) * 270;
-  // const handleCheck = (price:number, check: boolean, num: number) => {
-  //   let total = totalPrice;
-  //   let totalCheck = checkNum;
-  //   total = check ? total + price : total - price;
-  //   totalCheck = check ? totalCheck + num : totalCheck - num;
-  //   setTotalPrice(total);
-  //   setCheckNum(totalCheck);
-  // };
-  const handleCheck = (check: boolean, id: string, num?: number) => {
-    if (num) {
-      dispatch({
-        type: 'numChange', check, id, num,
-      });
-    } else {
-      dispatch({ type: 'checked', check, id });
-    }
-    const sum = cartList.reduce((prev, item) => prev + (item.isChecked ? 1 : 0), 0);
-    setCheckNum(sum);
-  };
-  useEffect(() => {
-    const sum = cartList.reduce((prev, item) => {
-      const itemPrice = item.isChecked ? Number(item.price) * item.amount : 0;
-      return prev + itemPrice;
-    }, 0);
-    setCheckNum(sum);
-  }, [checkNum]);
+  const { store: { cartList, total }, dispatch } = useCartContext();
+  const fixTop = (total - 1) * 270;
+  const handleCheck = () => {};
   return (
     <div className={classes.root}>
       <div className={global.w}>
         <div className={classes.topTitle}>
           <div className={classes.chooseNum}>
-            <span>{`全部商品 ${cartList.length}`}</span>
+            <span>{`全部商品 ${total}`}</span>
           </div>
           <div className={classes.express}>
             <span>配送至: </span>
@@ -64,12 +39,12 @@ const VCart:React.FC = () => {
         </div>
         <div className={classes.goodList}>
           {
-            cartList.map((cartInfo) => (
+            total !== 0 ? cartList.map((cartInfo) => (
               <CartItem cartInfo={cartInfo} key={cartInfo.id} onChange={handleCheck} />
-            ))
+            )) : <span>还没有添加商品</span>
           }
         </div>
-        <div className={clsx(classes.listBottom, { [classes.listBottomFix]: top <= fixTop })}>
+        <div className={clsx(classes.listBottom, { [classes.listBottomFix]: (top <= fixTop && total >= 0) })}>
           <div className={`${global.w} ${classes.flexBet}`}>
             <div className={classes.cartCarOpts}>
               <input type="checkbox" className={classes.checkAll} />

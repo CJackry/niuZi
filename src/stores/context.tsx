@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 
 interface UserState {
-  name: string | undefined
+  name: string | undefined,
 }
 
 interface Props {
@@ -32,7 +32,6 @@ const UserContext = createContext({
 const userReducer = (preState:UserState, action:Action) => {
   switch (action.type) {
     case 'login': {
-      console.log('reducer', action.name);
       return { ...preState, name: action.name };
     }
     case 'logout': {

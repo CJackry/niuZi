@@ -23,3 +23,20 @@ export interface GoodInfo{
     attr: Array<GoodAttr>,
     gifts: Array<Gift>
 }
+
+export interface CartAttr{
+    id: string,
+    imgSrc: string,
+    title: string,
+    color: string,
+    version: string,
+    price: string,
+    isCheck: boolean,
+    amount: number,
+    gifts: Array<Gift> | null,
+}
+
+export interface AddCartInfo {
+    cart: Array<CartAttr>;
+    user: string,
+}
