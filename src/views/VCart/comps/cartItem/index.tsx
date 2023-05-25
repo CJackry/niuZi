@@ -8,40 +8,43 @@ import classes from './cartItem.module.scss';
 
 type Props = {
   cartInfo: CartAttr,
-  isChecked?: boolean,
-  onChange: (check: boolean, id: string, num?: number)=>void,
+  isChecked: boolean,
+  onChange?: ()=>void,
 }
 
 const CartItem:React.FC<Props> = (props) => {
-  const { cartInfo, isChecked, onChange } = props;
-  const [totalPrice, setTotalPrice] = useState<number>(Number(cartInfo.price) * cartInfo.amount);
-  const [checked, setChecked] = useState(isChecked || false);
-  const checkBox = useRef<HTMLInputElement>(null);
+  const { cartInfo, onChange, isChecked } = props;
+  console.log(isChecked);
+  const [totalPrice, setTotalPrice] = useState<number>(cartInfo.price * cartInfo.amount);
   const { dispatch } = useCartContext();
+  const cartCheck = useRef<HTMLInputElement>(null);
   const handleNumChange = (num:number) => {
-    const newTotal = Number(cartInfo.price) * num;
-    // const diff = newTotal - totalPrice;
-    setTotalPrice(newTotal);
-    // onChange(diff, true,);
-    const check = checkBox.current?.checked || false;
-    onChange(check, cartInfo.id, num);
+    dispatch({
+      type: 'numChange', cart: cartInfo, num, id: cartInfo.id,
+    });
+    setTotalPrice(num * cartInfo.price);
+    if (onChange) {
+      onChange();
+    }
   };
-  const handleCheckChange = () => {
-    const check = checkBox.current?.checked || false;
-    // const num = totalPrice / Number(cartInfo.price);
-    // setChecked(check);
-    // onChange(totalPrice, check, num);
-    onChange(check, cartInfo.id);
-    setChecked(check);
+  const handleCheckChange = async () => {
+    const check = cartCheck.current?.checked || false;
+    console.log('isChecked', check);
+    dispatch({
+      type: 'changeChecked', check, id: cartInfo.id,
+    });
+    if (onChange) {
+      onChange();
+    }
   };
 
   return (
-    <div className={classes.root} style={checked ? { background: '#fff4e8' } : {}}>
+    <div className={classes.root} style={cartInfo.isCheck ? { background: '#fff4e8' } : {}}>
       <input
         className={classes.checkOpt}
         type="checkbox"
-        checked={checked || false}
-        ref={checkBox}
+        checked={isChecked || false}
+        ref={cartCheck}
         onChange={handleCheckChange}
       />
       <div className={classes.good}>

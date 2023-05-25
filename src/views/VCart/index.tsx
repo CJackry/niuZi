@@ -5,17 +5,41 @@ import Link from 'next/link';
 import { useScroll } from 'ahooks';
 import clsx from 'clsx';
 import { useCartContext } from '@/src/stores/cartContext';
+import clientRequest from '@/src/utils/http-client';
+import { useUserContext } from '@/src/stores/context';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
 const VCart:React.FC = () => {
   const scroll = useScroll();
   const top = scroll?.top || scroll?.left || 0;
-  const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [checkNum, setCheckNum] = useState(0);
-  const { store: { cartList, total }, dispatch } = useCartContext();
+  const { store: { cartList, total } } = useCartContext();
+  const { store: { name } } = useUserContext();
+  const sumPrice = cartList.reduce(
+    (prev, cartItem) => prev + (cartItem.isCheck ? cartItem.price * cartItem.amount : 0),
+    0,
+  );
+  const sumCheck = cartList.reduce((prev, cartItem) => prev + (cartItem.isCheck ? cartItem.amount : 0), 0);
+  const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
+  const [checkNum, setCheckNum] = useState(sumCheck);
   const fixTop = (total - 1) * 270;
-  const handleCheck = () => {};
+  console.log(cartList);
+  const handleCheck = async () => {
+    console.log(cartList);
+    const sumP = cartList.reduce(
+      (prev, cartItem) => prev + (cartItem.isCheck ? cartItem.price * cartItem.amount : 0),
+      0,
+    );
+    const sumC = cartList.reduce((prev, cartItem) => prev + (cartItem.isCheck ? cartItem.amount : 0), 0);
+    setTotalPrice(sumP);
+    setCheckNum(sumC);
+    await clientRequest({
+      url: '/api/goods/addCart',
+      data: { cart: cartList, user: name },
+      method: 'post',
+    });
+    console.log(cartList);
+  };
   return (
     <div className={classes.root}>
       <div className={global.w}>
@@ -40,7 +64,7 @@ const VCart:React.FC = () => {
         <div className={classes.goodList}>
           {
             total !== 0 ? cartList.map((cartInfo) => (
-              <CartItem cartInfo={cartInfo} key={cartInfo.id} onChange={handleCheck} />
+              <CartItem cartInfo={cartInfo} isChecked={cartInfo.isCheck} key={cartInfo.id} onChange={handleCheck} />
             )) : <span>还没有添加商品</span>
           }
         </div>

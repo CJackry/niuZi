@@ -4,7 +4,7 @@ import { Gift } from '@/src/views/VDetails/interface';
 import classes from './goodPrice.module.scss';
 
 type Props = {
-    price: string,
+    price: number,
     gifts: Array<Gift>
 }
 

@@ -29,20 +29,21 @@ const CartContext = createContext({
 const CartReducer = (preState: CartState, action: Action) => {
   switch (action.type) {
     case 'addCart': {
-      console.log('addCart', action.cart, preState.cartList, typeof preState.cartList);
+      console.log('addCart', action.cart, preState.cartList);
       if (action.cart) preState.cartList.push(action.cart);
       return {
         ...preState,
         total: preState.cartList?.length,
       };
     }
-    case 'checked': {
-      console.log('checked option');
+    case 'changeChecked': {
+      console.log('checked option', action.check);
       let newCartList;
       if (preState.cartList) {
         newCartList = preState.cartList.map((cart) => (cart.id === action.id
           ? { ...cart, isCheck: action.check } : cart));
       } else newCartList = null;
+      console.log('newCartList', newCartList);
       return {
         ...preState,
         cartList: newCartList,
@@ -50,7 +51,7 @@ const CartReducer = (preState: CartState, action: Action) => {
       };
     }
     case 'numChange': {
-      console.log('numChange option');
+      console.log('numChange option', action.num);
       let newCartList;
       if (preState.cartList) {
         newCartList = preState.cartList.map((cart) => (cart.id === action.id

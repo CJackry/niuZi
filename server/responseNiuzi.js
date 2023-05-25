@@ -21,8 +21,6 @@ const staticData = {
 };
 const phones = getJSON('phones');
 
-app.use(bodyParser());
-
 router
     .get('/hotWords', async ctx => {
       ctx.body={code: 200, success: true, data: hotWords};

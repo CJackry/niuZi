@@ -7,7 +7,7 @@ export interface Color{
     id: string,
     name: string,
     imgSrc: string,
-    price: string
+    price: number
 }
 export interface GoodAttr{
     id: string,
@@ -30,7 +30,7 @@ export interface CartAttr{
     title: string,
     color: string,
     version: string,
-    price: string,
+    price: number,
     isCheck: boolean,
     amount: number,
     gifts: Array<Gift> | null,

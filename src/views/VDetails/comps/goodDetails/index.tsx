@@ -32,7 +32,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   });
   const chooseColor = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const color = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
-    let p: string = price;
+    let p: number = price;
     let imgSrc = '';
     goodInfo.attr.forEach((attrItem) => {
       if (attrItem.attrName === attr?.version) {
@@ -50,7 +50,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   };
   const chooseVersion = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const version = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
-    let p: string = price;
+    let p: number = price;
     goodInfo.attr.forEach((a) => {
       if (a.attrName === version) {
         a.color.forEach((c) => {
