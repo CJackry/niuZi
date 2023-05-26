@@ -31,7 +31,7 @@ export interface CartAttr{
     color: string,
     version: string,
     price: number,
-    isCheck: boolean,
+    isChecked: boolean,
     amount: number,
     gifts: Array<Gift> | null,
 }

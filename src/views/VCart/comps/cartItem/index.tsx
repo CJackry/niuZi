@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import GoodLim from '@/src/views/VCart/comps/goodLim';
 import NumChange from '@/src/components/numChange';
-import { useCartContext } from '@/src/stores/cartContext';
+import { useCartAction, useCartContext } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
 import classes from './cartItem.module.scss';
 
@@ -18,6 +18,7 @@ const CartItem:React.FC<Props> = (props) => {
   const [totalPrice, setTotalPrice] = useState<number>(cartInfo.price * cartInfo.amount);
   const { dispatch } = useCartContext();
   const cartCheck = useRef<HTMLInputElement>(null);
+  const { handleCheck } = useCartAction();
   const handleNumChange = (num:number) => {
     dispatch({
       type: 'numChange', cart: cartInfo, num, id: cartInfo.id,
@@ -30,16 +31,17 @@ const CartItem:React.FC<Props> = (props) => {
   const handleCheckChange = async () => {
     const check = cartCheck.current?.checked || false;
     console.log('isChecked', check);
-    dispatch({
-      type: 'changeChecked', check, id: cartInfo.id,
-    });
+    // dispatch({
+    //   type: 'changeChecked', check, id: cartInfo.id,
+    // });
+    await handleCheck(cartInfo.id, check);
     if (onChange) {
       onChange();
     }
   };
 
   return (
-    <div className={classes.root} style={cartInfo.isCheck ? { background: '#fff4e8' } : {}}>
+    <div className={classes.root} style={cartInfo.isChecked ? { background: '#fff4e8' } : {}}>
       <input
         className={classes.checkOpt}
         type="checkbox"

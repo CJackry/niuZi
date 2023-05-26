@@ -26,7 +26,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
     color: goodInfo.attr[0].color[0].name,
     version: goodInfo.attr[0].attrName,
     price,
-    isCheck: false,
+    isChecked: false,
     amount,
     gifts: goodInfo.gifts,
   });

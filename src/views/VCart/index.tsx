@@ -16,28 +16,26 @@ const VCart:React.FC = () => {
   const { store: { cartList, total } } = useCartContext();
   const { store: { name } } = useUserContext();
   const sumPrice = cartList.reduce(
-    (prev, cartItem) => prev + (cartItem.isCheck ? cartItem.price * cartItem.amount : 0),
+    (prev, cartItem) => prev + (cartItem.isChecked ? cartItem.price * cartItem.amount : 0),
     0,
   );
-  const sumCheck = cartList.reduce((prev, cartItem) => prev + (cartItem.isCheck ? cartItem.amount : 0), 0);
+  const sumCheck = cartList.reduce((prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0), 0);
   const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
   const [checkNum, setCheckNum] = useState(sumCheck);
   const fixTop = (total - 1) * 270;
-  console.log(cartList);
-  const handleCheck = async () => {
-    console.log(cartList);
-    const sumP = cartList.reduce(
-      (prev, cartItem) => prev + (cartItem.isCheck ? cartItem.price * cartItem.amount : 0),
-      0,
-    );
-    const sumC = cartList.reduce((prev, cartItem) => prev + (cartItem.isCheck ? cartItem.amount : 0), 0);
-    setTotalPrice(sumP);
-    setCheckNum(sumC);
+  const handleChange = async () => {
     await clientRequest({
       url: '/api/goods/addCart',
       data: { cart: cartList, user: name },
       method: 'post',
     });
+    const sumP = cartList.reduce(
+      (prev, cartItem) => prev + (cartItem.isChecked ? cartItem.price * cartItem.amount : 0),
+      0,
+    );
+    const sumC = cartList.reduce((prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0), 0);
+    setTotalPrice(sumP);
+    setCheckNum(sumC);
     console.log(cartList);
   };
   return (
@@ -64,7 +62,7 @@ const VCart:React.FC = () => {
         <div className={classes.goodList}>
           {
             total !== 0 ? cartList.map((cartInfo) => (
-              <CartItem cartInfo={cartInfo} isChecked={cartInfo.isCheck} key={cartInfo.id} onChange={handleCheck} />
+              <CartItem cartInfo={cartInfo} isChecked={cartInfo.isChecked} key={cartInfo.id} onChange={handleChange} />
             )) : <span>还没有添加商品</span>
           }
         </div>
