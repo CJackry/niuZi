@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NumChangeProps } from '@/src/components/numChange/interface';
 import clsx from 'clsx';
 import NumInput from '@/src/components/numChange/comps/numInput';
+// import { useWhyDidYouUpdate } from 'ahooks';
 import NumBtn from './comps/numBtn';
 import classes from './numChange.module.scss';
 
@@ -14,7 +15,7 @@ const NumChange:React.FC<NumChangeProps> = (props) => {
   const [val, setVal] = useState(defaultVal);
   const [addDisable, setAddDisable] = useState(false);
   const [reduceDisable, setReduceDisable] = useState(false);
-
+  // useWhyDidYouUpdate('NumChange', props);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const num = Number((e.target as HTMLInputElement).value) || 1;
     setVal(num);

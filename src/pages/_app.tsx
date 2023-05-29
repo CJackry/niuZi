@@ -31,6 +31,7 @@ NiuZiApp.getInitialProps = async ({ ctx }:AppContext) => {
       name = res.name;
       const cartRes = await fetch(`http://localhost:8801/api/getRedis?id=${name}`);
       cartList = cartRes.status === 401 ? [] : await cartRes.json();
+      console.log(cartList);
     } else {
       console.log('getInitialProps running on server');
     }

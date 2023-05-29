@@ -4,9 +4,7 @@ import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
 import { useUserContext } from '@/src/stores/context';
-import { useCartAction, useCartContext } from '@/src/stores/cartContext';
-import clientRequest from '@/src/utils/http-client';
-import { updateCartList } from '@/src/utils/commonFuns';
+import { useCartAction } from '@/src/stores/cartContext';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
@@ -18,7 +16,6 @@ type Props = {
 const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   const { price } = goodInfo.attr[0].color[0];
   const { store: { name } } = useUserContext();
-  const { store: { cartList } } = useCartContext();
   const { handleAddCart } = useCartAction();
   const [amount, setAmount] = useState(1);
   const [attr, setAttr] = useState<CartAttr>({

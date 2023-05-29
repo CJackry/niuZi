@@ -5,7 +5,7 @@ import { CartAttr } from '@/src/views/VDetails/interface';
 import { updateCartList } from '@/src/utils/commonFuns';
 
 export interface CartState{
-  cartList: Array<CartAttr>;
+  cartList: Array<CartAttr> | null;
   total: number;
 }
 
@@ -25,9 +25,7 @@ const CartContext = createContext({
   dispatch: initialDispatch,
 });
 
-const CartReducer = async (preState: CartState, action: Action) => {
-  const result = await updateCartList(action.newCartList, action.name);
-  if (result.success) console.log('添加成功');
+const CartReducer = (preState: CartState, action: Action) => {
   switch (action.type) {
     case 'addCart': {
       console.log('addCart');
@@ -67,7 +65,7 @@ type Props = {
 type ExpandReducer = React.Reducer<CartState, Action>;
 
 export const CartProvider:React.FC<Props> = ({ children, initialVal = { cartList: null, total: 0 } }) => {
-  const [store, dispatch] = useReducer<ExpandReducer>(// @ts-ignore
+  const [store, dispatch] = useReducer<ExpandReducer>(
     CartReducer,
     initialVal,
   );
@@ -83,7 +81,8 @@ export const useCartContext = () => useContext(CartContext);
 
 // 自定义hooks
 export const useCartAction = () => {
-  const { store: { cartList }, dispatch } = useCartContext();
+  const { store, dispatch } = useCartContext();
+  const cartList = store.cartList ? store.cartList : [];
   return {
     handleAddCart: async (newCart: CartAttr, name: string) => {
       let isSameId = false;
@@ -98,6 +97,7 @@ export const useCartAction = () => {
         newCartList,
         name,
       });
+      await updateCartList(newCartList, name);
       return Promise.resolve();
     },
     handleCheck: async (id: string, isChecked: boolean, name: string) => {
@@ -108,6 +108,7 @@ export const useCartAction = () => {
         newCartList,
         name,
       });
+      await updateCartList(newCartList, name);
       return Promise.resolve();
     },
     handleNum: async (id: string, num: number, name: string) => {
@@ -117,6 +118,7 @@ export const useCartAction = () => {
         newCartList,
         name,
       });
+      await updateCartList(newCartList, name);
       return Promise.resolve();
     },
     handleDel: async (id: string, name: string) => {
@@ -126,6 +128,8 @@ export const useCartAction = () => {
         newCartList,
         name,
       });
+      await updateCartList(newCartList, name);
+      return Promise.resolve();
     },
   };
 };
