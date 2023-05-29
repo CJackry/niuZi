@@ -67,7 +67,13 @@ const VCart:React.FC = () => {
           {
             total !== 0 && cartList ? cartList.map((cartInfo) => (
               <CartItem cartInfo={cartInfo} isChecked={cartInfo.isChecked} key={cartInfo.id} onChange={handleChange} />
-            )) : <span>还没有添加商品</span>
+            )) : (
+              <div className={classes.noGoods}>
+                还没有添加商品, 前往
+                <Link href="/search">手机</Link>
+                页面选购
+              </div>
+            )
           }
         </div>
         <div className={clsx(classes.listBottom, { [classes.listBottomFix]: (top <= fixTop && total >= 0) })}>

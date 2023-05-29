@@ -13,7 +13,7 @@ const phoneImg = 'https://img11.360buyimg.com/n7/jfs/t1/99542/29/27716/49463/635
 const ResultItem:React.FC<Props> = ({ phone }) => (
   <div className={classes.goodsItem}>
     <div className={classes.goodsWarp}>
-      <Link href="https://jd.com" className={classes.goodsImg}>
+      <Link href="/details" className={classes.goodsImg}>
         <img src={phone.color[0].img_link ? phone.color[0].img_link : phoneImg} alt="phone" />
       </Link>
       <div className={classes.phoneScroll}>

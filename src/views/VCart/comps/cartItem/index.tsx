@@ -17,7 +17,7 @@ const CartItem:React.FC<Props> = (props) => {
   const { cartInfo, onChange, isChecked } = props;
   const [totalPrice, setTotalPrice] = useState<number>(cartInfo.price * cartInfo.amount);
   const cartCheck = useRef<HTMLInputElement>(null);
-  const { handleCheck, handleNum } = useCartAction();
+  const { handleCheck, handleNum, handleDel } = useCartAction();
   const { store: { name } } = useUserContext();
   const handleNumChange = async (num: number) => {
     const newCart:CartAttr = { ...cartInfo, amount: num };
@@ -35,7 +35,9 @@ const CartItem:React.FC<Props> = (props) => {
       onChange(newCart);
     }
   };
-
+  const handleCartDel = async () => {
+    await handleDel(cartInfo.id, name || '');
+  };
   return (
     <div className={classes.root} style={cartInfo.isChecked ? { background: '#fff4e8' } : {}}>
       <input
@@ -69,8 +71,10 @@ const CartItem:React.FC<Props> = (props) => {
         </div>
         <strong className={classes.sum}>{totalPrice.toFixed(2)}</strong>
         <div className={classes.options}>
-          <Link href="https://jd.com">删除</Link>
-          <Link href="https://jd.com">移入关注</Link>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <Link href="" onClick={handleCartDel}>删除</Link>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <Link href="">移入关注</Link>
         </div>
       </div>
       <div className={classes.gifts}>
