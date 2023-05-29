@@ -38,7 +38,7 @@ NiuZiApp.getInitialProps = async ({ ctx }:AppContext) => {
   } else {
     name = undefined;
   }
-  console.log('getInitialProps', name, cartList);
+  console.log('getInitialProps');
   return {
     pageProps: {
       name,
