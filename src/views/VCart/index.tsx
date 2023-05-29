@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { useCartContext } from '@/src/stores/cartContext';
 import clientRequest from '@/src/utils/http-client';
 import { useUserContext } from '@/src/stores/context';
+import { CartAttr } from '@/src/views/VDetails/interface';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
@@ -15,28 +16,38 @@ const VCart:React.FC = () => {
   const top = scroll?.top || scroll?.left || 0;
   const { store: { cartList, total } } = useCartContext();
   const { store: { name } } = useUserContext();
-  const sumPrice = cartList.reduce(
+  const sumPrice = cartList ? cartList.reduce(
     (prev, cartItem) => prev + (cartItem.isChecked ? cartItem.price * cartItem.amount : 0),
     0,
-  );
-  const sumCheck = cartList.reduce((prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0), 0);
+  ) : 0;
+  const sumCheck = cartList ? cartList.reduce(
+    (prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0),
+    0,
+  ) : 0;
   const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
   const [checkNum, setCheckNum] = useState(sumCheck);
   const fixTop = (total - 1) * 270;
-  const handleChange = async () => {
-    await clientRequest({
-      url: '/api/goods/addCart',
-      data: { cart: cartList, user: name },
-      method: 'post',
+
+  console.log(cartList);
+  const handleChange = async (newCart: CartAttr) => {
+    const newCartList:Array<CartAttr> = cartList.map((cart) => {
+      let newItem;
+      if (cart.id === newCart.id) newItem = { ...newCart };
+      else newItem = { ...cart };
+      return newItem;
     });
-    const sumP = cartList.reduce(
+    // await clientRequest({
+    //   url: '/api/goods/addCart',
+    //   data: { cart: newCartList, user: name },
+    //   method: 'post',
+    // });
+    const sumP = newCartList.reduce(
       (prev, cartItem) => prev + (cartItem.isChecked ? cartItem.price * cartItem.amount : 0),
       0,
     );
-    const sumC = cartList.reduce((prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0), 0);
+    const sumC = newCartList.reduce((prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0), 0);
     setTotalPrice(sumP);
     setCheckNum(sumC);
-    console.log(cartList);
   };
   return (
     <div className={classes.root}>
@@ -61,7 +72,7 @@ const VCart:React.FC = () => {
         </div>
         <div className={classes.goodList}>
           {
-            total !== 0 ? cartList.map((cartInfo) => (
+            total !== 0 && cartList ? cartList.map((cartInfo) => (
               <CartItem cartInfo={cartInfo} isChecked={cartInfo.isChecked} key={cartInfo.id} onChange={handleChange} />
             )) : <span>还没有添加商品</span>
           }

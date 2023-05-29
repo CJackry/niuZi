@@ -4,8 +4,9 @@ import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
 import { useUserContext } from '@/src/stores/context';
-import { useCartContext } from '@/src/stores/cartContext';
+import { useCartAction, useCartContext } from '@/src/stores/cartContext';
 import clientRequest from '@/src/utils/http-client';
+import { updateCartList } from '@/src/utils/commonFuns';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
@@ -17,7 +18,8 @@ type Props = {
 const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   const { price } = goodInfo.attr[0].color[0];
   const { store: { name } } = useUserContext();
-  const { store: { cartList }, dispatch } = useCartContext();
+  const { store: { cartList } } = useCartContext();
+  const { handleAddCart } = useCartAction();
   const [amount, setAmount] = useState(1);
   const [attr, setAttr] = useState<CartAttr>({
     id: goodInfo.attr[0].color[0].id,
@@ -32,20 +34,20 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   });
   const chooseColor = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const color = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
-    let p: number = price;
-    let imgSrc = '';
+    // let p: number = price;
+    // let imgSrc = '';
     goodInfo.attr.forEach((attrItem) => {
       if (attrItem.attrName === attr?.version) {
         attrItem.color.forEach((c) => {
           if (c.name === color) {
-            p = c.price;
-            imgSrc = c.imgSrc;
+            // p = c.price;
+            // imgSrc = c.imgSrc;
+            setAttr({
+              ...attr, price: c.price, color, imgSrc: c.imgSrc, id: c.id,
+            });
           }
         });
       }
-    });
-    setAttr({
-      ...attr, price: p, color, imgSrc,
     });
   };
   const chooseVersion = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -54,7 +56,9 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
     goodInfo.attr.forEach((a) => {
       if (a.attrName === version) {
         a.color.forEach((c) => {
-          if (c.name === attr?.color) p = c.price;
+          if (c.name === attr?.color) {
+            p = c.price;
+          }
         });
       }
     });
@@ -64,16 +68,9 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
     setAmount(num);
     setAttr({ ...attr, amount: num });
   };
-  const handleAddCart = async () => {
-    console.log(name);
+  const handleAdd = async () => {
     if (name) {
-      await dispatch({ type: 'addCart', cart: attr, id: attr.id });
-      const result = await clientRequest({
-        url: '/api/goods/addCart',
-        data: { cart: cartList, user: name },
-        method: 'post',
-      });
-      console.log(result);
+      await handleAddCart(attr, name || '');
     }
   };
   return (
@@ -177,7 +174,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       <div className={classes.summaryLine} />
       <div className={classes.chooseBtn}>
         <NumChange onChange={handleChange} defaultValue={1} type="floatRight" />
-        <button className={classes.addBtn} onClick={handleAddCart}>
+        <button className={classes.addBtn} onClick={handleAdd}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <Link className={classes.addCart} href="/cart">加入购物车</Link>
         </button>

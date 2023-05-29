@@ -7,7 +7,6 @@ import Layout from '../components/Layout';
 function NiuZiApp({ Component, pageProps }:AppProps) {
   const cartList: CartState = pageProps.cartList
     ? { cartList: pageProps.cartList, total: pageProps.cartList.length } : { cartList: [], total: 0 };
-  console.log(cartList);
   return (
     <UserProvider initialUser={pageProps}>
       <CartProvider initialVal={cartList}>

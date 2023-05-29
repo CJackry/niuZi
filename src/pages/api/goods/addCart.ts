@@ -16,6 +16,6 @@ export default async function handler(
   res: NextApiResponse<ReturnInter>,
 ):Promise<void> {
   const addCartInfo = req.body;
-  await addCartSaveRedis(res, addCartInfo).then((r) => console.log(r));
+  await addCartSaveRedis(res, addCartInfo);
   res.status(200).send(successReturnObj('add successful!'));
 }

@@ -2,6 +2,7 @@ import React, {
   createContext, ReactNode, useContext, useMemo, useReducer,
 } from 'react';
 import { CartAttr } from '@/src/views/VDetails/interface';
+import { updateCartList } from '@/src/utils/commonFuns';
 
 export interface CartState{
   cartList: Array<CartAttr>;
@@ -10,10 +11,8 @@ export interface CartState{
 
 interface Action{
   type: string;
-  id: string;
-  isChecked?: boolean;
-  num?:number;
-  cart?: CartAttr;
+  name: string;
+  newCartList: Array<CartAttr>,
 }
 
 type Dispatch = React.Dispatch<Action>;
@@ -26,51 +25,32 @@ const CartContext = createContext({
   dispatch: initialDispatch,
 });
 
-const CartReducer = (preState: CartState, action: Action) => {
+const CartReducer = async (preState: CartState, action: Action) => {
+  const result = await updateCartList(action.newCartList, action.name);
+  if (result.success) console.log('添加成功');
   switch (action.type) {
     case 'addCart': {
-      console.log('addCart', action.cart, preState.cartList);
-      if (action.cart) preState.cartList.push(action.cart);
+      console.log('addCart');
       return {
-        ...preState,
-        total: preState.cartList?.length,
+        ...preState, cartList: action.newCartList, total: action.newCartList.length,
       };
     }
     case 'changeChecked': {
-      console.log('checked option', action.isChecked);
-      let newCartList;
-      if (preState.cartList) {
-        newCartList = preState.cartList.map((cart) => (cart.id === action.id
-          ? { ...cart, isChecked: action.isChecked } : cart));
-      } else newCartList = null;
-      console.log('newCartList', newCartList);
-      return {
-        ...preState,
-        cartList: newCartList,
-        total: newCartList ? newCartList.length : 0,
-      };
+      console.log('checked option');
+      return { ...preState, cartList: action.newCartList, total: action.newCartList.length };
     }
     case 'numChange': {
-      console.log('numChange option', action.num);
-      let newCartList;
-      if (preState.cartList) {
-        newCartList = preState.cartList.map((cart) => (cart.id === action.id
-          ? { ...cart, amount: action.num } : cart));
-      } else newCartList = null;
+      console.log('numChange option');
       return {
-        ...preState,
-        cartList: newCartList,
-        total: newCartList ? newCartList.length : 0,
+        ...preState, cartList: action.newCartList, total: action.newCartList.length,
       };
     }
     case 'del': {
-      let newCartList;
-      if (preState.cartList) newCartList = preState.cartList.filter((cart) => cart.id !== action.id);
-      else newCartList = null;
+      console.log('del option');
       return {
         ...preState,
-        cartList: newCartList,
-        total: newCartList ? newCartList.length : 0,
+        cartList: action.newCartList,
+        total: action.newCartList.length,
       };
     }
     default: {
@@ -103,15 +83,49 @@ export const useCartContext = () => useContext(CartContext);
 
 // 自定义hooks
 export const useCartAction = () => {
-  const { dispatch } = useCartContext();
+  const { store: { cartList }, dispatch } = useCartContext();
   return {
-    handleCheck: async (id: string, isChecked: boolean) => {
-      dispatch({
-        type: 'changeChecked',
-        id,
-        isChecked,
+    handleAddCart: async (newCart: CartAttr, name: string) => {
+      let isSameId = false;
+      const newCartList:Array<CartAttr> = cartList.map((cart) => {
+        isSameId = cart.id === newCart.id;
+        const amount = isSameId ? cart.amount + newCart.amount : cart.amount;
+        return { ...cart, amount };
+      });
+      if (!isSameId) newCartList.push(newCart);
+      await dispatch({
+        type: 'addCart',
+        newCartList,
+        name,
       });
       return Promise.resolve();
+    },
+    handleCheck: async (id: string, isChecked: boolean, name: string) => {
+      const newCartList = cartList.map((cart) => (cart.id === id
+        ? { ...cart, isChecked } : cart));
+      await dispatch({
+        type: 'changeChecked',
+        newCartList,
+        name,
+      });
+      return Promise.resolve();
+    },
+    handleNum: async (id: string, num: number, name: string) => {
+      const newCartList = cartList.map((cart) => (cart.id === id ? { ...cart, amount: num } : cart));
+      await dispatch({
+        type: 'numChange',
+        newCartList,
+        name,
+      });
+      return Promise.resolve();
+    },
+    handleDel: async (id: string, name: string) => {
+      const newCartList = cartList.filter((cart) => cart.id !== id);
+      dispatch({
+        type: 'del',
+        newCartList,
+        name,
+      });
     },
   };
 };

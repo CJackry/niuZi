@@ -2,41 +2,37 @@ import React, { useRef, useState } from 'react';
 import Link from 'next/link';
 import GoodLim from '@/src/views/VCart/comps/goodLim';
 import NumChange from '@/src/components/numChange';
-import { useCartAction, useCartContext } from '@/src/stores/cartContext';
+import { useCartAction } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
+import { useUserContext } from '@/src/stores/context';
 import classes from './cartItem.module.scss';
 
 type Props = {
   cartInfo: CartAttr,
   isChecked: boolean,
-  onChange?: ()=>void,
+  onChange?: (newCart: CartAttr)=>void,
 }
 
 const CartItem:React.FC<Props> = (props) => {
   const { cartInfo, onChange, isChecked } = props;
-  console.log(isChecked);
   const [totalPrice, setTotalPrice] = useState<number>(cartInfo.price * cartInfo.amount);
-  const { dispatch } = useCartContext();
   const cartCheck = useRef<HTMLInputElement>(null);
-  const { handleCheck } = useCartAction();
-  const handleNumChange = (num:number) => {
-    dispatch({
-      type: 'numChange', cart: cartInfo, num, id: cartInfo.id,
-    });
+  const { handleCheck, handleNum } = useCartAction();
+  const { store: { name } } = useUserContext();
+  const handleNumChange = async (num: number) => {
+    const newCart:CartAttr = { ...cartInfo, amount: num };
+    await handleNum(cartInfo.id, num, name || '');
     setTotalPrice(num * cartInfo.price);
     if (onChange) {
-      onChange();
+      onChange(newCart);
     }
   };
   const handleCheckChange = async () => {
     const check = cartCheck.current?.checked || false;
-    console.log('isChecked', check);
-    // dispatch({
-    //   type: 'changeChecked', check, id: cartInfo.id,
-    // });
-    await handleCheck(cartInfo.id, check);
+    const newCart:CartAttr = { ...cartInfo, isChecked: check };
+    await handleCheck(cartInfo.id, check, name || '');
     if (onChange) {
-      onChange();
+      onChange(newCart);
     }
   };
 
@@ -68,7 +64,7 @@ const CartItem:React.FC<Props> = (props) => {
           <GoodLim isLimit isReduce reducePrice={800} />
         </div>
         <div className={classes.quantity}>
-          <NumChange type="center" onChange={handleNumChange} defaultValue={1} />
+          <NumChange type="center" onChange={handleNumChange} defaultValue={cartInfo.amount} />
           <span className={classes.isEnough}>有货</span>
         </div>
         <strong className={classes.sum}>{totalPrice.toFixed(2)}</strong>
