@@ -5,6 +5,7 @@ import NumChange from '@/src/components/numChange';
 import { useCartAction } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
 import { useUserContext } from '@/src/stores/context';
+import Notice from '@/src/components/Notice';
 import classes from './cartItem.module.scss';
 
 type Props = {
@@ -19,6 +20,7 @@ const CartItem:React.FC<Props> = (props) => {
   const cartCheck = useRef<HTMLInputElement>(null);
   const { handleCheck, handleNum, handleDel } = useCartAction();
   const { store: { name } } = useUserContext();
+  const [isDel, setIsDel] = useState(false);
   const handleNumChange = async (num: number) => {
     const newCart:CartAttr = { ...cartInfo, amount: num };
     await handleNum(cartInfo.id, num, name || '');
@@ -36,7 +38,11 @@ const CartItem:React.FC<Props> = (props) => {
     }
   };
   const handleCartDel = async () => {
-    await handleDel(cartInfo.id, name || '');
+    // eslint-disable-next-line no-alert
+    if (window.confirm('确认删除吗?')) {
+      const result = await handleDel(cartInfo.id, name || '');
+      if (result.succeed) setIsDel(true);
+    }
   };
   return (
     <div className={classes.root} style={cartInfo.isChecked ? { background: '#fff4e8' } : {}}>
@@ -86,6 +92,11 @@ const CartItem:React.FC<Props> = (props) => {
           </div>
         )) : <div />}
       </div>
+      {isDel ? (
+        <Notice type="success" handleClose={() => setIsDel(false)}>
+          删除成功
+        </Notice>
+      ) : <div />}
     </div>
   );
 };

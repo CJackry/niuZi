@@ -27,28 +27,10 @@ const CartContext = createContext({
 
 const CartReducer = (preState: CartState, action: Action) => {
   switch (action.type) {
-    case 'addCart': {
-      console.log('addCart');
+    case 'update': {
+      console.log('update');
       return {
         ...preState, cartList: action.newCartList, total: action.newCartList.length,
-      };
-    }
-    case 'changeChecked': {
-      console.log('checked option');
-      return { ...preState, cartList: action.newCartList, total: action.newCartList.length };
-    }
-    case 'numChange': {
-      console.log('numChange option');
-      return {
-        ...preState, cartList: action.newCartList, total: action.newCartList.length,
-      };
-    }
-    case 'del': {
-      console.log('del option');
-      return {
-        ...preState,
-        cartList: action.newCartList,
-        total: action.newCartList.length,
       };
     }
     default: {
@@ -93,7 +75,7 @@ export const useCartAction = () => {
       });
       if (!isSameId) newCartList.push(newCart);
       await dispatch({
-        type: 'addCart',
+        type: 'update',
         newCartList,
         name,
       });
@@ -104,7 +86,7 @@ export const useCartAction = () => {
       const newCartList = cartList.map((cart) => (cart.id === id
         ? { ...cart, isChecked } : cart));
       await dispatch({
-        type: 'changeChecked',
+        type: 'update',
         newCartList,
         name,
       });
@@ -114,7 +96,7 @@ export const useCartAction = () => {
     handleNum: async (id: string, num: number, name: string) => {
       const newCartList = cartList.map((cart) => (cart.id === id ? { ...cart, amount: num } : cart));
       await dispatch({
-        type: 'numChange',
+        type: 'update',
         newCartList,
         name,
       });
@@ -124,12 +106,30 @@ export const useCartAction = () => {
     handleDel: async (id: string, name: string) => {
       const newCartList = cartList.filter((cart) => cart.id !== id);
       dispatch({
-        type: 'del',
+        type: 'update',
         newCartList,
         name,
       });
       await updateCartList(newCartList, name);
-      return Promise.resolve();
+      return Promise.resolve({ succeed: true });
+    },
+    handleAllCheck: async (isChecked: boolean, name: string) => {
+      const newCartList = cartList.map((cart) => ({ ...cart, isChecked }));
+      await dispatch({
+        type: 'update',
+        newCartList,
+        name,
+      });
+      await updateCartList(newCartList, name);
+    },
+    handleCheckDel: async (name: string) => {
+      const newCartList = cartList.filter((cart) => (cart.isChecked !== true));
+      await dispatch({
+        type: 'update',
+        newCartList,
+        name,
+      });
+      await updateCartList(newCartList, name);
     },
   };
 };

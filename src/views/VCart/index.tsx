@@ -4,8 +4,9 @@ import AddrSelect from '@/src/components/addrSelect';
 import Link from 'next/link';
 import { useScroll, useWhyDidYouUpdate } from 'ahooks';
 import clsx from 'clsx';
-import { useCartContext } from '@/src/stores/cartContext';
+import { useCartAction, useCartContext } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
+import { useUserContext } from '@/src/stores/context';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
@@ -14,7 +15,10 @@ const VCart:React.FC = () => {
   const top = scroll?.top || scroll?.left || 0;
   const { store } = useCartContext();
   const cartList = store.cartList ? store.cartList : [];
+  const { store: { name } } = useUserContext();
+  const { handleAllCheck, handleCheckDel } = useCartAction();
   const { total } = store;
+  const isDisabled = total === 0;
   const sumPrice = cartList.reduce(
     (prev, cartItem) => prev + (cartItem.isChecked ? cartItem.price * cartItem.amount : 0),
     0,
@@ -25,7 +29,13 @@ const VCart:React.FC = () => {
   );
   const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
   const [checkNum, setCheckNum] = useState(sumCheck);
+  const [isAllCheck, setIsAllCheck] = useState((sumCheck === total && total !== 0));
   const fixTop = (total - 1) * 270;
+  const changeAllCheck = async () => {
+    const check = !isAllCheck;
+    setIsAllCheck(check);
+    await handleAllCheck(check, name || '');
+  };
   const handleChange = async (newCart: CartAttr) => {
     const newCartList:Array<CartAttr> = cartList.map((cart) => {
       let newItem;
@@ -40,6 +50,11 @@ const VCart:React.FC = () => {
     const sumC = newCartList.reduce((prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0), 0);
     setTotalPrice(sumP);
     setCheckNum(sumC);
+    if (sumC === total && total !== 0) setIsAllCheck(true);
+    else setIsAllCheck(false);
+  };
+  const checkDel = async () => {
+    await handleCheckDel(name || '');
   };
   useWhyDidYouUpdate('VCart', cartList);
   return (
@@ -55,7 +70,13 @@ const VCart:React.FC = () => {
           </div>
         </div>
         <div className={classes.cartTop}>
-          <input type="checkbox" className={classes.checkAll} />
+          <input
+            type="checkbox"
+            className={classes.checkAll}
+            checked={isAllCheck}
+            onChange={changeAllCheck}
+            disabled={isDisabled}
+          />
           <span className={classes.tit1}>全选</span>
           <span className={classes.tit2}>商品</span>
           <span className={classes.tit3}>单价</span>
@@ -79,11 +100,20 @@ const VCart:React.FC = () => {
         <div className={clsx(classes.listBottom, { [classes.listBottomFix]: (top <= fixTop && total >= 0) })}>
           <div className={`${global.w} ${classes.flexBet}`}>
             <div className={classes.cartCarOpts}>
-              <input type="checkbox" className={classes.checkAll} />
+              <input
+                type="checkbox"
+                className={classes.checkAll}
+                checked={isAllCheck}
+                onChange={changeAllCheck}
+                disabled={isDisabled}
+              />
               <span className={classes.tit1}>全选</span>
-              <Link href="https://jd.com">删除选中的商品</Link>
-              <Link href="https://jd.com">移入关注</Link>
-              <Link href="https://jd.com" className={classes.cleanCart}>清理购物车</Link>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link href="" onClick={checkDel}>删除选中的商品</Link>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link href="">移入关注</Link>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link href="" className={classes.cleanCart}>清理购物车</Link>
             </div>
             <div className={classes.settlement}>
               <div className={classes.goodSelection}>

@@ -4,7 +4,7 @@ import classes from './notice.module.scss';
 type Props = {
   children: ReactNode,
   type: 'success'|'fail',
-  handleClose: React.MouseEventHandler,
+  handleClose?: React.MouseEventHandler,
 }
 
 const typeClass = {
