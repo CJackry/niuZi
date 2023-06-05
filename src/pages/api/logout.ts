@@ -11,5 +11,5 @@ export default async function handler(
   if (id !== undefined) await redisClient.destroy(id);
   else { res.status(400).send(errorReturnObj('notLogin')); }
   nookies.destroy({ res }, 'id');
-  res.status(200).send(successReturnObj());
+  res.status(200).send(successReturnObj('succeed'));
 }

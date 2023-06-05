@@ -6,8 +6,11 @@ type Props = {
     imgList: Array<Color>,
 }
 
-const ImgPreview:React.FC<Props> = ({ imgList }) => (
-  <div className={classes.root} />
-);
+const ImgPreview:React.FC<Props> = ({ imgList }) => {
+  console.log(imgList);
+  return (
+    <div className={classes.root} />
+  );
+};
 
 export default ImgPreview;
