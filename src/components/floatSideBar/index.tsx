@@ -1,18 +1,15 @@
 import React from 'react';
 import { useScroll } from 'ahooks';
+import clsx from 'clsx';
 import classes from './floatSideBar.module.scss';
 
 const FloatSideBar:React.FC = () => {
   const scroll = useScroll();
   const top = scroll?.top || scroll?.left;
-  const style: React.CSSProperties = (top ? top > 660 : false) ? {
-    position: 'fixed',
-    top: '75px',
-  } : { display: 'block' };
+  const isFix = top ? top > 660 : false;
   return (
     <div
-      className={classes.root}
-      style={style}
+      className={clsx(classes.root, { [classes.displayFix]: isFix })}
     >
       <div className={classes.sideItems}>
         <div className={classes.item}>NiuZi秒杀</div>

@@ -11,6 +11,7 @@ export function numToStringDouble(num:number) {
 export const getStaticData = async () => clientRequest<CommonData>({ url: '/api/getStaticData' });
 
 export const getWidth = () => (window ? window.innerWidth : null);
+
 export const updateCartList = (cartList: Array<CartAttr>, user: string) => clientRequest({
   url: '/api/goods/addCart',
   data: { cart: cartList, user },

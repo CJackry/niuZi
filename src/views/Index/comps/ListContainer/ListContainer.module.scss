@@ -115,6 +115,23 @@
   left: 74px;
   right: 10px;
 }
+.plusC{
+  width: 152px;
+  height: 25px;
+  background: #fff;
+  padding: 0 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  border-radius: 13px;
+  text-align: center;
+  line-height: 25px;
+  color: #e1251b;
+  transition: background .3s ease,color .3s ease;
+  cursor: pointer;
+}
+.plusC:hover{
+  background: #e1251b;
+  color: #fff;
+}
 .user_show a{
   font-size: 8px;
 }

@@ -13,6 +13,8 @@ import 'swiper/scss/autoplay';
 import { nanoid } from 'nanoid';
 import { NavItem, ServiceItem } from '@/src/views/Index/interface';
 import { useUserContext } from '@/src/stores/context';
+import clientRequest from '@/src/utils/http-client';
+import { useRouter } from 'next/router';
 import classes from './ListContainer.module.scss';
 
 type Props = {
@@ -21,7 +23,17 @@ type Props = {
 }
 
 const ListContainer: React.FC<Props> = ({ navList, serviceItem }) => {
-  const { store: { name } } = useUserContext();
+  const { store: { name }, dispatch } = useUserContext();
+  const router = useRouter();
+  const handleLogout = async () => {
+    const res = await clientRequest({
+      url: '/api/logout',
+    });
+    if (res.success) {
+      dispatch({ type: 'logout' });
+      await router.reload();
+    }
+  };
   return (
     <div className={classes.root}>
       <div className={`${classes.grid_c1} ${classes.fs_inner}`}>
@@ -79,38 +91,48 @@ const ListContainer: React.FC<Props> = ({ navList, serviceItem }) => {
         <div className={classes.fs_col3}>
           <div className={`${classes.user}`}>
             <div className={classes.user_inner}>
-              <div className={classes.user_avatar}>
-                <Link className={classes.user_avatar_lk} href="/login">
-                  <img src="/avatar.png" alt="avator" />
-                </Link>
-              </div>
               {name ? (
-                <div className={classes.user_show}>
-                  <Link className={classes.user_tip} href="https://www.jd.com">{name}</Link>
-                  <p>
-                    <Link className={classes.user_login} href="/login">登录</Link>
-                    |
-                    <Link className={classes.user_reg} href="/register">注册</Link>
-                  </p>
+                <div>
+                  <div className={classes.user_avatar}>
+                    <Link className={classes.user_avatar_lk} href="/login">
+                      <img src="/avatar.png" alt="avator" />
+                    </Link>
+                  </div>
+                  <div className={classes.user_show}>
+                    <span>Hi, </span>
+                    <Link className={classes.user_tip} href="https://www.jd.com">{`${name}`}</Link>
+                    <div>
+                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,jsx-a11y/no-static-element-interactions */}
+                      <a onClick={handleLogout}>退出</a>
+                    </div>
+                  </div>
+                  <div className={classes.plusC}>PLUS会员冲冲冲</div>
                 </div>
               ) : (
                 <div>
-                  <div className={classes.user_show}>
-                    <Link className={classes.user_tip} href="https://www.jd.com">Hi~欢迎逛京东！</Link>
-                    <p>
-                      <Link className={classes.user_login} href="/login">登录</Link>
-                      |
-                      <Link className={classes.user_reg} href="/register">注册</Link>
-                    </p>
-                  </div>
-                  <div className={classes.user_profit}>
-                    <Link className={classes.user_profit_lk} href="https://www.jd.com">新人福利</Link>
-                    <Link
-                      className={`${classes.user_profit_lk} ${classes.user_profit_lk_plus}`}
-                      href="https://www.jd.com"
-                    >
-                      PLUS
+                  <div className={classes.user_avatar}>
+                    <Link className={classes.user_avatar_lk} href="/login">
+                      <img src="/avatar.png" alt="avator" />
                     </Link>
+                  </div>
+                  <div>
+                    <div className={classes.user_show}>
+                      <Link className={classes.user_tip} href="https://www.jd.com">Hi~欢迎逛京东！</Link>
+                      <p>
+                        <Link className={classes.user_login} href="/login">登录</Link>
+                        |
+                        <Link className={classes.user_reg} href="/register">注册</Link>
+                      </p>
+                    </div>
+                    <div className={classes.user_profit}>
+                      <Link className={classes.user_profit_lk} href="https://www.jd.com">新人福利</Link>
+                      <Link
+                        className={`${classes.user_profit_lk} ${classes.user_profit_lk_plus}`}
+                        href="https://www.jd.com"
+                      >
+                        PLUS
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}

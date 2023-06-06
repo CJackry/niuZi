@@ -5,6 +5,11 @@
   margin-left: 505px;
   width: 58px;
 }
+.displayFix {
+  position: fixed;
+  top: 75px;
+  animation: eleShow .5s ease both;
+}
 .sideItems{
   width: 58px;
 }
@@ -28,6 +33,15 @@
 }
 .backTop{
   display: none;
+}
+
+@keyframes eleShow {
+  from {
+    top: 0;
+  }
+  to {
+    top: 75px;
+  }
 }
 
 @font-face {

@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import global from '@/styles/global.module.scss';
 import AddrSelect from '@/src/components/addrSelect';
 import Link from 'next/link';
-import { useScroll, useWhyDidYouUpdate } from 'ahooks';
+import { useScroll } from 'ahooks';
 import clsx from 'clsx';
 import { useCartAction, useCartContext } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
 import { useUserContext } from '@/src/stores/context';
+import Header from '@/src/components/Layout/comps/Header';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
@@ -56,10 +57,11 @@ const VCart:React.FC = () => {
   const checkDel = async () => {
     await handleCheckDel(name || '');
   };
-  useWhyDidYouUpdate('VCart', cartList);
+  // useWhyDidYouUpdate('VCart', cartList);
   return (
     <div className={classes.root}>
       <div className={global.w}>
+        <Header isShowFloat />
         <div className={classes.topTitle}>
           <div className={classes.chooseNum}>
             <span>{`全部商品 ${total}`}</span>
