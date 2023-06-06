@@ -30,13 +30,13 @@ export default async function handler(
   res: NextApiResponse<ReturnInter>,
 ):Promise<void> {
   const token = 'token';
-  const { name, password } = req.query;
+  const { name, password } = req.body;
   // 模拟网络请求延迟2s
   setTimeout(async () => {
     console.log('发送login请求');
     if (name === '123' && password === '123') {
       const loginInfo: loginData = { token, name };
-      await loginSaveRedis(res, loginInfo).then((r) => console.log(r));
+      await loginSaveRedis(res, loginInfo);
       res.status(200).send(successReturnObj({ username: name }));
     } else {
       res.status(203).send(errorReturnObj());

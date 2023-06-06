@@ -26,8 +26,8 @@ function VLogin() {
       setIsFinish(true);
       const result = await clientRequest<LoginResponse>({
         url: 'api/login',
-        method: 'get',
-        params: user,
+        method: 'post',
+        data: user,
       });
       if (result.success) {
         const { username } = result.data || '';
