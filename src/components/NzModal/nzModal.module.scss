@@ -17,6 +17,10 @@
   top: 0;
   right: 0;
   padding-right: 5px;
+  cursor: pointer;
+}
+.header span:hover{
+  color: #e1251b;
 }
 .overlay{
   position: fixed;

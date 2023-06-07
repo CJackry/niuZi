@@ -7,6 +7,7 @@ interface CustomClasses{
   root?: string;
   overlay?: string;
   content?: string;
+  header?: string;
 }
 
 type Props = {
@@ -25,15 +26,21 @@ const NzModal:React.FC<Props> = (props) => {
     children, title,
     footerCom, handleClose,
   } = props;
+  const closeClick = () => {
+    if (handleClose) {
+      handleClose();
+    }
+  };
   return (
     <ReactModal
       className={clsx(classes.content, customClasses?.content)}
       isOpen={isOpen}
       overlayClassName={clsx(classes.overlay, customClasses?.overlay)}
     >
-      <div className={classes.header}>
+      <div className={clsx(classes.header, customClasses?.header)}>
         {title}
-        {handleClose ? <span>x</span> : ''}
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        {handleClose ? <span onClick={closeClick}>x</span> : ''}
       </div>
       {children}
       {footerCom}

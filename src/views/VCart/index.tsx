@@ -29,7 +29,7 @@ const VCart:React.FC = () => {
   );
   const { store: { name } } = useUserContext();
   const { handleAllCheck, handleCheckDel, handleDel } = useCartAction();
-  const [isDel, setIsDel] = useState(true);
+  const [isDel, setIsDel] = useState(false);
   const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
   const [checkNum, setCheckNum] = useState(sumCheck);
   const [isAllCheck, setIsAllCheck] = useState((sumCheck === total && total !== 0));
@@ -56,16 +56,22 @@ const VCart:React.FC = () => {
     if (sumC === total && total !== 0) setIsAllCheck(true);
     else setIsAllCheck(false);
   };
-  const delCartItem = async (id: string) => {
+  const noticeDel = () => {
     setIsDel(true);
-    console.log('del');
-    await handleDel(id, name || '');
+  };
+  const handleClose = () => {
+    setIsDel(false);
   };
   const checkDel = async () => {
     await handleCheckDel(name || '');
+    handleClose();
   };
-  const handleClose = () => {
-    console.log('handleClose');
+  const delCartItem = async (id: string) => {
+    await handleDel(id, name || '');
+  };
+  const handleConfirm = async () => {
+    setIsDel(true);
+    await checkDel();
   };
   // useWhyDidYouUpdate('VCart', cartList);
   return (
@@ -127,7 +133,7 @@ const VCart:React.FC = () => {
               />
               <span className={classes.tit1}>全选</span>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link href="" onClick={checkDel}>删除选中的商品</Link>
+              <Link href="" onClick={noticeDel}>删除选中的商品</Link>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="">移入关注</Link>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -146,28 +152,32 @@ const VCart:React.FC = () => {
                   {totalPrice.toFixed(2)}
                 </span>
               </div>
-              <Link href="https://jd.com" className={classes.goSett}>去结算</Link>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link href="#" className={classes.goSett}>去结算</Link>
             </div>
           </div>
         </div>
       </div>
-      <NzModal
-        isOpen
-        footerCom={
-         (
-           <div className={classes.closeFooter}>
-             <button>确认</button>
-             <button>取消</button>
-           </div>
-         )
-       }
-        handleClose={handleClose}
-      >
-        <div className={classes.modalContent}>
-          <img src="/notice.png" alt="del" />
-          <span>删除商品</span>
-        </div>
-      </NzModal>
+      {isDel
+        ? (
+          <NzModal
+            isOpen
+            footerCom={
+            (
+              <div className={classes.closeFooter}>
+                <button onClick={handleConfirm}>确认</button>
+                <button onClick={handleClose}>取消</button>
+              </div>
+            )
+          }
+            handleClose={handleClose}
+          >
+            <div className={classes.modalContent}>
+              <img src="/notice.png" alt="del" />
+              <span>删除商品</span>
+            </div>
+          </NzModal>
+        ) : <div />}
     </div>
   );
 };
