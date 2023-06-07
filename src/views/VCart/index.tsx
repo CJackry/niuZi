@@ -8,6 +8,7 @@ import { useCartAction, useCartContext } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
 import { useUserContext } from '@/src/stores/context';
 import Header from '@/src/components/Layout/comps/Header';
+import NzModal from '@/src/components/NzModal';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
@@ -16,8 +17,6 @@ const VCart:React.FC = () => {
   const top = scroll?.top || scroll?.left || 0;
   const { store } = useCartContext();
   const cartList = store.cartList ? store.cartList : [];
-  const { store: { name } } = useUserContext();
-  const { handleAllCheck, handleCheckDel } = useCartAction();
   const { total } = store;
   const isDisabled = total === 0;
   const sumPrice = cartList.reduce(
@@ -28,6 +27,9 @@ const VCart:React.FC = () => {
     (prev, cartItem) => prev + (cartItem.isChecked ? cartItem.amount : 0),
     0,
   );
+  const { store: { name } } = useUserContext();
+  const { handleAllCheck, handleCheckDel, handleDel } = useCartAction();
+  const [isDel, setIsDel] = useState(true);
   const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
   const [checkNum, setCheckNum] = useState(sumCheck);
   const [isAllCheck, setIsAllCheck] = useState((sumCheck === total && total !== 0));
@@ -54,8 +56,16 @@ const VCart:React.FC = () => {
     if (sumC === total && total !== 0) setIsAllCheck(true);
     else setIsAllCheck(false);
   };
+  const delCartItem = async (id: string) => {
+    setIsDel(true);
+    console.log('del');
+    await handleDel(id, name || '');
+  };
   const checkDel = async () => {
     await handleCheckDel(name || '');
+  };
+  const handleClose = () => {
+    console.log('handleClose');
   };
   // useWhyDidYouUpdate('VCart', cartList);
   return (
@@ -89,7 +99,13 @@ const VCart:React.FC = () => {
         <div className={classes.goodList}>
           {
             total !== 0 && cartList ? cartList.map((cartInfo) => (
-              <CartItem cartInfo={cartInfo} isChecked={cartInfo.isChecked} key={cartInfo.id} onChange={handleChange} />
+              <CartItem
+                cartInfo={cartInfo}
+                isChecked={cartInfo.isChecked}
+                key={cartInfo.id}
+                onChange={handleChange}
+                handleDel={delCartItem}
+              />
             )) : (
               <div className={classes.noGoods}>
                 还没有添加商品, 前往
@@ -135,6 +151,23 @@ const VCart:React.FC = () => {
           </div>
         </div>
       </div>
+      <NzModal
+        isOpen
+        footerCom={
+         (
+           <div className={classes.closeFooter}>
+             <button>确认</button>
+             <button>取消</button>
+           </div>
+         )
+       }
+        handleClose={handleClose}
+      >
+        <div className={classes.modalContent}>
+          <img src="/notice.png" alt="del" />
+          <span>删除商品</span>
+        </div>
+      </NzModal>
     </div>
   );
 };

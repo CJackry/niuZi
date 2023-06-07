@@ -1,0 +1,29 @@
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #f3f3f3;
+  padding: 5px;
+  border-radius: 5px;
+  border: 4px solid rgba(0,0,0,.1);
+}
+.header{
+  position: relative;
+  height: 20px;
+}
+.header span{
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 5px;
+}
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9999;
+}

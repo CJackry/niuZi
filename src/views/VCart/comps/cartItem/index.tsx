@@ -5,22 +5,23 @@ import NumChange from '@/src/components/numChange';
 import { useCartAction } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
 import { useUserContext } from '@/src/stores/context';
-import Notice from '@/src/components/Notice';
 import classes from './cartItem.module.scss';
 
 type Props = {
   cartInfo: CartAttr,
   isChecked: boolean,
   onChange?: (newCart: CartAttr)=>void,
+  handleDel?: (id: string)=>void;
 }
 
 const CartItem:React.FC<Props> = (props) => {
-  const { cartInfo, onChange, isChecked } = props;
+  const {
+    cartInfo, onChange, isChecked, handleDel,
+  } = props;
   const [totalPrice, setTotalPrice] = useState<number>(cartInfo.price * cartInfo.amount);
   const cartCheck = useRef<HTMLInputElement>(null);
-  const { handleCheck, handleNum, handleDel } = useCartAction();
+  const { handleCheck, handleNum } = useCartAction();
   const { store: { name } } = useUserContext();
-  const [isDel, setIsDel] = useState(false);
   const handleNumChange = async (num: number) => {
     const newCart:CartAttr = { ...cartInfo, amount: num };
     await handleNum(cartInfo.id, num, name || '');
@@ -37,11 +38,9 @@ const CartItem:React.FC<Props> = (props) => {
       onChange(newCart);
     }
   };
-  const handleCartDel = async () => {
-    // eslint-disable-next-line no-alert
-    if (window.confirm('确认删除吗?')) {
-      const result = await handleDel(cartInfo.id, name || '');
-      if (result.succeed) setIsDel(true);
+  const handleCartDel = () => {
+    if (handleDel) {
+      handleDel(cartInfo.id);
     }
   };
   return (
@@ -92,11 +91,6 @@ const CartItem:React.FC<Props> = (props) => {
           </div>
         )) : <div />}
       </div>
-      {isDel ? (
-        <Notice type="success" handleClose={() => setIsDel(false)}>
-          删除成功
-        </Notice>
-      ) : <div />}
     </div>
   );
 };

@@ -39,7 +39,7 @@ const Header: React.FC<Props> = ({ isShowFloat }) => {
               <span className={classes.photo_search_btn}>
                 <span className={`${classes.upload_bg} ${classes.iconfont}`}>&#xe63c;</span>
               </span>
-              <button className={classes.iconfont}>&#xe62d;</button>
+              <Link className={classes.iconfont} href="/search">&#xe62d;</Link>
             </div>
             <div className={classes.dropdown}>
               <div className={classes.cw_icon}>

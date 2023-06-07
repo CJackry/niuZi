@@ -121,3 +121,40 @@
   background: #df3033;
   color: #fff;
 }
+.modalContent{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 100px;
+  width: 440px;
+  text-align: center;
+}
+.modalContent img{
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+}
+.modalContent span{
+  margin-top: 10px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+}
+.closeFooter{
+  height: 36px;
+  text-align: center;
+}
+.closeFooter button{
+  height: 36px;
+  width: 100px;
+  border: 1px solid #e1251b;
+}
+.closeFooter button:first-child{
+  margin-right: 10px;
+  background-color: #e1251b;
+  color: #fff;
+}
+.closeFooter button:last-child{
+  color: #e1251b;
+}

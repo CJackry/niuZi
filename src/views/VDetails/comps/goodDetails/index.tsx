@@ -5,6 +5,7 @@ import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
 import { useUserContext } from '@/src/stores/context';
 import { useCartAction } from '@/src/stores/cartContext';
+import clsx from 'clsx';
 import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
@@ -31,14 +32,10 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
   });
   const chooseColor = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const color = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
-    // let p: number = price;
-    // let imgSrc = '';
     goodInfo.attr.forEach((attrItem) => {
       if (attrItem.attrName === attr?.version) {
         attrItem.color.forEach((c) => {
           if (c.name === color) {
-            // p = c.price;
-            // imgSrc = c.imgSrc;
             setAttr({
               ...attr, price: c.price, color, imgSrc: c.imgSrc, id: c.id,
             });
@@ -137,7 +134,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
               // eslint-disable-next-line jsx-a11y/anchor-is-valid
               <Link
                 href=""
-                className={classes.attrVal}
+                className={clsx(classes.attrVal, { [classes.attrValCheck]: item.name === attr.color })}
                 key={item.id}
                 onClick={(e) => { chooseColor(e); }}
                 title={item.name}
@@ -156,7 +153,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
             {goodInfo.attr.map((item) => (
               // eslint-disable-next-line jsx-a11y/anchor-is-valid
               <Link
-                className={classes.attrVal}
+                className={clsx(classes.attrVal, { [classes.attrValCheck]: item.attrName === attr.version })}
                 href=""
                 key={item.id}
                 onClick={(e) => chooseVersion(e)}
