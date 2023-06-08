@@ -7,8 +7,8 @@ import clsx from 'clsx';
 import { useCartAction, useCartContext } from '@/src/stores/cartContext';
 import { CartAttr } from '@/src/views/VDetails/interface';
 import { useUserContext } from '@/src/stores/context';
-import Header from '@/src/components/Layout/comps/Header';
 import NzModal from '@/src/components/NzModal';
+import SearchComps from '@/src/components/searchComps';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
@@ -66,10 +66,6 @@ const VCart:React.FC = () => {
     setIsDel(false);
     setIsCheckDel(false);
   };
-  // const checkDel = async () => {
-  //   await handleCheckDel(name || '');
-  //   handleClose();
-  // };
   const delCartItem = async (id: string) => {
     setNeedDelId(id);
     noticeDel('delItem');
@@ -89,7 +85,7 @@ const VCart:React.FC = () => {
   return (
     <div className={classes.root}>
       <div className={global.w}>
-        <Header isShowFloat />
+        <SearchComps type="withCart" withCart={false} withHotWords={false} />
         <div className={classes.topTitle}>
           <div className={classes.chooseNum}>
             <span>{`全部商品 ${total}`}</span>

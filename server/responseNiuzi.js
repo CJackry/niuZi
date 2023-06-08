@@ -17,7 +17,7 @@ const secKillList = getJSON('secKillList');
 const serviceItem = getJSON('serviceItem');
 
 const staticData = {
-  navList, serviceItem, secKillList
+  navList, serviceItem, secKillList, hotWords
 };
 const phones = getJSON('phones');
 

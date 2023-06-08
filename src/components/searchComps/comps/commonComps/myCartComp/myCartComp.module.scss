@@ -1,0 +1,43 @@
+.myCartCar{
+  position: relative;
+  width: 132px;
+  height: 35px;
+  margin-top: 8px;
+  line-height: 36px;
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #eee;
+  color: #e2231a;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.myCartCar i{
+  font-weight: 700;
+  margin-right: 15px;
+}
+.cartNum{
+  display: inline-block;
+  height: 12px;
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  padding: 1px 3px;
+  line-height: 12px;
+  color: #fff;
+  border-radius: 7px;
+  background-color: #e1251b;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* Project id 3994610 */
+  src: url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.woff2?t=1680525011779') format('woff2'),
+  url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.woff?t=1680525011779') format('woff'),
+  url('//at.alicdn.com/t/c/font_3994610_gylp4sdbk3.ttf?t=1680525011779') format('truetype');
+}
+.iconfont{
+  font-family: "iconfont", serif !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
