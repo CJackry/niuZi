@@ -36,6 +36,7 @@ const NzModal:React.FC<Props> = (props) => {
       className={clsx(classes.content, customClasses?.content)}
       isOpen={isOpen}
       overlayClassName={clsx(classes.overlay, customClasses?.overlay)}
+      ariaHideApp={false}
     >
       <div className={clsx(classes.header, customClasses?.header)}>
         {title}

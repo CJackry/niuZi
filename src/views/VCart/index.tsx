@@ -30,6 +30,8 @@ const VCart:React.FC = () => {
   const { store: { name } } = useUserContext();
   const { handleAllCheck, handleCheckDel, handleDel } = useCartAction();
   const [isDel, setIsDel] = useState(false);
+  const [isCheckDel, setIsCheckDel] = useState(false);
+  const [needDelId, setNeedDelId] = useState('');
   const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
   const [checkNum, setCheckNum] = useState(sumCheck);
   const [isAllCheck, setIsAllCheck] = useState((sumCheck === total && total !== 0));
@@ -56,22 +58,32 @@ const VCart:React.FC = () => {
     if (sumC === total && total !== 0) setIsAllCheck(true);
     else setIsAllCheck(false);
   };
-  const noticeDel = () => {
-    setIsDel(true);
+  const noticeDel = (type: string) => {
+    if (type === 'delItem') setIsDel(true);
+    else setIsCheckDel(true);
   };
   const handleClose = () => {
     setIsDel(false);
+    setIsCheckDel(false);
   };
-  const checkDel = async () => {
-    await handleCheckDel(name || '');
-    handleClose();
-  };
+  // const checkDel = async () => {
+  //   await handleCheckDel(name || '');
+  //   handleClose();
+  // };
   const delCartItem = async (id: string) => {
-    await handleDel(id, name || '');
+    setNeedDelId(id);
+    noticeDel('delItem');
   };
   const handleConfirm = async () => {
-    setIsDel(true);
-    await checkDel();
+    if (isDel) {
+      console.log(needDelId);
+      await handleDel(needDelId, name || '');
+      setNeedDelId('');
+      setIsDel(false);
+    } else if (isCheckDel) {
+      await handleCheckDel(name || '');
+      setIsCheckDel(false);
+    }
   };
   // useWhyDidYouUpdate('VCart', cartList);
   return (
@@ -133,7 +145,7 @@ const VCart:React.FC = () => {
               />
               <span className={classes.tit1}>全选</span>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link href="" onClick={noticeDel}>删除选中的商品</Link>
+              <Link href="" onClick={() => { noticeDel('checkDel'); }}>删除选中的商品</Link>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="">移入关注</Link>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -158,7 +170,7 @@ const VCart:React.FC = () => {
           </div>
         </div>
       </div>
-      {isDel
+      {isDel || isCheckDel
         ? (
           <NzModal
             isOpen
