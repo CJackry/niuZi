@@ -3,7 +3,6 @@ import Link from 'next/link';
 import global from '@/styles/global.module.scss';
 import { nanoid } from 'nanoid';
 import type { Phone } from '@/src/views/VSearch/interface';
-import { useWhyDidYouUpdate } from 'ahooks';
 import Category from '@/src/views/VSearch/comps/category';
 import AttrFilter from '@/src/views/VSearch/comps/attrFilter';
 import ResultItem from '@/src/views/VSearch/comps/resultItem';
@@ -17,14 +16,14 @@ type Props = {
   totalNum: number,
 }
 
-const VSearch: React.FC<Props> = ({ phones, totalNum }) => {
+const VSearchResultResult: React.FC<Props> = ({ phones, totalNum }) => {
   const [phoneInfo, setPhoneInfo] = useState<Array<Phone>>(phones);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [pageInfo, setPageInfo] = React.useState({
     total: totalNum,
     pageSize: PAGE_SIZE,
   });
-  useWhyDidYouUpdate('VSearch', { phoneInfo });
+  // useWhyDidYouUpdate('VSearchResult', { phoneInfo });
 
   const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
     console.log(value);
@@ -82,4 +81,4 @@ const VSearch: React.FC<Props> = ({ phones, totalNum }) => {
   );
 };
 
-export default VSearch;
+export default VSearchResultResult;
