@@ -1,13 +1,11 @@
 .root {
-  background-color: #f4f4f4;
-}
-.w{
-  width: 990px;
-  margin: 0 auto;
+  background-color: #fafcfc;
 }
 .welcome{
-  height: 60px;
+  width: 990px;
+  height: 70px;
   font-size: 0;
+  margin: 0 auto;
 }
 .welcome img{
   padding-top: 10px;
@@ -22,9 +20,11 @@
 }
 .mid{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 475px;
-  background-color: #f4f4f4;
+  //background-color: #f4f4f4;
+  background-image: url("~@/public/loginBackground.png");
+  background-size: 100%;
 }
 .imgShow{
   width: 600px;
@@ -43,6 +43,8 @@
   margin-top: 80px;
   margin-right: 50px;
   background-color: white;
+  box-shadow: 0 6px 12px 0 rgba(138,153,150,0.15);
+  border-radius: 5px;
 }
 .loginTab{
   margin: 0 auto;
@@ -67,6 +69,11 @@
   width: 250px;
   height: 30px;
   margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #f3f3f3;
+}
+.loginBox input:hover{
+  border-color: #e1251b;
 }
 .forget{
   display: block;
