@@ -1,3 +1,4 @@
+@import "styles/theme/light.module";
 .root{
   z-index: 9;
   margin-bottom: 30px;
@@ -51,7 +52,7 @@
   transition: color .2s ease;
 }
 .cate_menu_lk:hover{
-  color: #e1251b;
+  color: $light--base--color--red;
 }
 .cate_menu_line{
   padding: 0 2px;
@@ -79,7 +80,7 @@
 }
 .user{
   height: 102px;
-  background-color: #fff;
+  background-color: $light--base--color--while;
   margin-top: 10px;
   overflow: hidden;
 }
@@ -101,7 +102,7 @@
   height: 40px;
 }
 .user_avatar_lk{
-  border: 2px solid #fff;
+  border: 2px solid $light--base--color--while;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -124,14 +125,14 @@
   border-radius: 13px;
   text-align: center;
   line-height: 25px;
-  color: #e1251b;
+  color: $light--base--color--red;
   transition: background .3s ease,color .3s ease;
   cursor: pointer;
   margin: 0 auto;
 }
 .plusC:hover{
-  background: #e1251b;
-  color: #fff;
+  background: $light--base--color--deepRed;
+  color: $light--base--color--while;
 }
 .user_show a{
   font-size: 8px;
@@ -146,7 +147,11 @@
   color: #666;
 }
 .user_login, .user_reg{
-  color: #333;
+  padding:{
+    left: 5px;
+    right: 5px;
+  }
+  color: $light--base--color--black;
 }
 .user_profit{
   height: 25px;
@@ -169,6 +174,10 @@
 .user_profit_lk_plus{
   background: #363634;
   color: #e5d790;
+}
+.user_profit_lk:hover{
+  color: $light--base--color--while;
+  background: $light--base--color--deepRed;
 }
 .news, .news2{
   width: 190px;

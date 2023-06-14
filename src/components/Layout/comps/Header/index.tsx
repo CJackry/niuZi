@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { useScroll } from 'ahooks';
-import global from '@/styles/global.module.scss';
 import SearchComps from '@/src/components/searchComps';
 import classes from './Header.module.scss';
 
@@ -14,7 +13,7 @@ const Header: React.FC<Props> = ({ isShowFloat }) => {
   return (
     <div className={classes.root}>
       {(scroll?.top && isShowFloat ? scroll?.top > 660 : false) ? <SearchComps type="float" /> : <div />}
-      <div className={`${global.w} ${classes.header_box}`}>
+      <div className={classes.header_box}>
         <SearchComps
           type="withCart"
           withCart

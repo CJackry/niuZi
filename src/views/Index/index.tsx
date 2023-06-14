@@ -12,8 +12,8 @@ type Props = {
 
 const Index:React.FC<Props> = ({ staticData }) => (
   <div className={classes.root}>
+    <Header isShowFloat />
     <div className={global.w}>
-      <Header isShowFloat />
       <ListContainer navList={staticData?.navList || []} serviceItem={staticData?.serviceItem || []} />
       <IndexApps staticData={staticData} />
     </div>

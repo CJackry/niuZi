@@ -1,3 +1,4 @@
+@import "styles/theme/light.module";
 .root {
   background-color: #fafcfc;
 }
@@ -72,7 +73,7 @@
   border: 1px solid #f3f3f3;
 }
 .loginBox input:hover{
-  border-color: #e1251b;
+  border-color: $light--base--color--red;
 }
 .forget{
   display: block;
