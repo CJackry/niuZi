@@ -1,0 +1,30 @@
+@import "styles/theme/light.module";
+.root{
+  padding-bottom: 20px;
+}
+.title{
+  height: 42px;
+  line-height: 42px;
+  font-size: 16px;
+  font-family: "Microsoft YaHei", serif;
+}
+.checkout{
+  background-color: $light--base--color--while;
+  padding: 0 20px;
+  border: 1px solid $light--base--color--gray;
+}
+.checkBox{
+
+}
+.checkTitle{
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  line-height: 40px;
+}
+.checkTitle h5{
+  color: $light--base--color--black;
+}
+.checkTitle span{
+  color: $light--base--color--link--blue;
+}

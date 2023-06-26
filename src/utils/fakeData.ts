@@ -2,6 +2,7 @@
 import { GoodInfo } from '@/src/views/VDetails/interface';
 import { nanoid } from 'nanoid';
 import {CartInfo} from "@/src/views/VCart/interface";
+import {UserAddress} from "@/src/views/VPay/interface";
 
 // 在这里使用函数来返回以防调用goodInfo的时候，只调用一次nanoid导致所有的id都是一样的。
 const genNanoid = ()=>nanoid();
@@ -155,3 +156,18 @@ export const cartList:Array<CartInfo> = [
     ],
     isChecked: false
   }];
+
+export const addrList:Array<UserAddress> = [
+  {
+    label: '夏亚',
+    name: '夏亚',
+    address: {
+      province: '湖南',
+      city: '长沙',
+      area: '岳麓区',
+      street: '坪塘街道',
+      detail: '岳麓大道569号湖南工商大学贤德10栋'
+    },
+    isDefault: true,
+  }
+]

@@ -1,0 +1,43 @@
+@import "styles/theme/light.module";
+.addrInfo{
+  display: flex;
+  justify-content: left;
+}
+.addrLabel{
+  display: inline-block;
+  text-align: center;
+  width: 140px;
+  height: 18px;
+  //border: 2px solid $light--base--color--red;
+  padding: 4px 10px;
+  @include border-red();
+}
+.address{
+  display: flex;
+  justify-content: space-between;
+  line-height: 30px;
+  height: 30px;
+  width: 100%;
+  padding-left: 10px;
+}
+.address:hover{
+  background-color: $light--base--color--lightRed;
+}
+.consigneeName{
+  margin-right: 20px;
+}
+.defaultAddrLabel{
+  width: 48px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 3px;
+  margin: 5px 10px;
+  background-color: rgb(153, 153, 153);
+  color: $light--base--color--while;
+}
+.opt{
+  display: none;
+  float: right;
+  color: $light--base--color--link--blue;
+  padding-right: 5px;
+}

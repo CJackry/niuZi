@@ -1,6 +1,7 @@
 $light--base--color--while: #fff;
 $light--base--color--gray: #f3f3f3;
 $light--base--color--deepGray: #e3e4e5;
+$light--base--color--lightRed: #fff3f3;
 $light--base--color--red: #e1251b;
 $light--base--color--deepRed: #c81623;
 $background--color--gray: #f4f4f4;
@@ -9,3 +10,9 @@ $light--link--font--color: #999;
 $light--base--color--black: #333;
 $light--base--color--green: #caecb6;
 $light--base--color--deepGreen: #7bbd55;
+$light--base--color--link--blue: #005ea7;
+$light--base--color--lightBlack: #666;
+
+@mixin border-red($size: 2px, $color: $light--base--color--red) {
+  border: $size solid $color;
+}
