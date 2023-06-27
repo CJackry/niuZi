@@ -1,6 +1,7 @@
-$light--base--color--while: #fff;
+$light--base--color--white: #fff;
 $light--base--color--gray: #f3f3f3;
 $light--base--color--deepGray: #e3e4e5;
+$light--hr--color--gray: #e6e6e6;
 $light--base--color--lightRed: #fff3f3;
 $light--base--color--red: #e1251b;
 $light--base--color--deepRed: #c81623;
@@ -13,6 +14,18 @@ $light--base--color--deepGreen: #7bbd55;
 $light--base--color--link--blue: #005ea7;
 $light--base--color--lightBlack: #666;
 
+
 @mixin border-red($size: 2px, $color: $light--base--color--red) {
   border: $size solid $color;
+}
+
+@mixin Dividing-line($height, $color: $light--base--color--white){
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: $height; //高度为子项的高度，即seckill_item的高度
+  background: linear-gradient(180deg,$color,#eeeeee,$color);
 }

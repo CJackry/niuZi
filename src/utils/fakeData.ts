@@ -161,13 +161,79 @@ export const addrList:Array<UserAddress> = [
   {
     label: '夏亚',
     name: '夏亚',
+    phone: 1564815323,
     address: {
-      province: '湖南',
-      city: '长沙',
-      area: '岳麓区',
-      street: '坪塘街道',
-      detail: '岳麓大道569号湖南工商大学贤德10栋'
+      province: '省份',
+      city: '城市',
+      area: '地区',
+      street: '街道',
+      detail: '三附件是当年饭卡里说的'
     },
     isDefault: true,
+  },
+  {
+    label: '学校',
+    name: '阿姆罗',
+    phone: 11761519958,
+    address: {
+      province: '省份',
+      city: '城市',
+      area: '地区',
+      street: '街道',
+      detail: '德纳省的NSA看到啦'
+    },
+    isDefault: false,
+  },
+  {
+    label: '学校',
+    name: '阿姆罗',
+    phone: 11761519958,
+    address: {
+      province: '省份',
+      city: '城市',
+      area: '地区',
+      street: '街道',
+      detail: '德纳省的NSA看到啦'
+    },
+    isDefault: false,
+  },
+  {
+    label: '学校',
+    name: '阿姆罗',
+    phone: 11761519958,
+    address: {
+      province: '省份',
+      city: '城市',
+      area: '地区',
+      street: '街道',
+      detail: '德纳省的NSA看到啦'
+    },
+    isDefault: false,
+  },
+  {
+    label: '学校',
+    name: '阿姆罗',
+    phone: 11761519958,
+    address: {
+      province: '省份',
+      city: '城市',
+      area: '地区',
+      street: '街道',
+      detail: '德纳省的NSA看到啦'
+    },
+    isDefault: false,
+  },
+  {
+    label: '学校',
+    name: '阿姆罗',
+    phone: 11761519958,
+    address: {
+      province: '省份',
+      city: '城市',
+      area: '地区',
+      street: '街道',
+      detail: '德纳省的NSA看到啦'
+    },
+    isDefault: false,
   }
 ]

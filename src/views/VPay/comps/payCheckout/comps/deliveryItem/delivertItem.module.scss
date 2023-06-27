@@ -1,0 +1,62 @@
+@import "styles/theme/light.module";
+.ps{
+  width: 300px;
+  min-height: 200px;
+  padding: {
+    left: 20px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+  };
+  background-color: $light--base--color--gray;
+}
+.psTit{
+  height: 20px;
+  line-height: 20px;
+  padding: 2px 0;
+  color: $light--base--color--lightBlack;
+}
+.psWay{
+  margin-bottom: 20px;
+}
+.psWayClasses{
+  background-color: $light--base--color--gray;
+  @include border-red(2px, $light--base--color--deepGray);
+  width: 120px;
+  height: 18px;
+  line-height: 18px;
+}
+.ygTime span{
+  display: inline-block;
+}
+.ygTit{
+  height: 22px;
+  min-width: 60px;
+  text-align: justify;
+  color: $light--link--font--color;
+}
+.ygVal{
+
+}
+.ygOpt{
+  float: right;
+  color: $light--base--color--link--blue;
+  margin-right: 5px;
+}
+.dgColor{
+  background-color: $light--base--color--deepGray;
+}
+.weight{
+  margin: 10px 0;
+}
+.weight h4{
+  display: inline-block;
+}
+.weightVal{
+  display: inline-block;
+  font-family: Verdana, serif;
+  color: $light--link--font--color;
+}
+.good{
+
+}

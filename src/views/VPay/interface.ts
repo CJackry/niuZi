@@ -9,6 +9,7 @@ export interface Address{
 export interface UserAddress{
     label: string,
     name: string,
+    phone: number,
     address: Address,
     isDefault: boolean;
 }

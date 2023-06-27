@@ -1,0 +1,15 @@
+@import "styles/theme/light.module";
+.root{
+  display: inline-block;
+  margin-right: 5px;
+  padding: 5px 10px;
+  text-align: center;
+  @include border-red(2px, $light--base--color--gray);
+  cursor: pointer;
+}
+.root:hover{
+  @include border-red();
+}
+.selected{
+  @include border-red();
+}

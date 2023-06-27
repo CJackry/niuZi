@@ -2,6 +2,7 @@
 .addrInfo{
   display: flex;
   justify-content: left;
+  padding: 5px 0;
 }
 .addrLabel{
   display: inline-block;
@@ -10,6 +11,12 @@
   height: 18px;
   //border: 2px solid $light--base--color--red;
   padding: 4px 10px;
+  @include border-red(2px, $light--base--color--gray);
+}
+.addrLabel:hover{
+  @include border-red();
+}
+.selected{
   @include border-red();
 }
 .address{
@@ -33,10 +40,9 @@
   padding: 0 3px;
   margin: 5px 10px;
   background-color: rgb(153, 153, 153);
-  color: $light--base--color--while;
+  color: $light--base--color--white;
 }
 .opt{
-  display: none;
   float: right;
   color: $light--base--color--link--blue;
   padding-right: 5px;

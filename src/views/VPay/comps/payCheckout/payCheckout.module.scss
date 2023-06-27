@@ -9,7 +9,7 @@
   font-family: "Microsoft YaHei", serif;
 }
 .checkout{
-  background-color: $light--base--color--while;
+  background-color: $light--base--color--white;
   padding: 0 20px;
   border: 1px solid $light--base--color--gray;
 }
@@ -27,4 +27,18 @@
 }
 .checkTitle span{
   color: $light--base--color--link--blue;
+}
+.hr{
+  border-bottom: 1px solid $light--hr--color--gray;
+  height: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ps{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.payWay i{
+  margin-left: 10px;
 }

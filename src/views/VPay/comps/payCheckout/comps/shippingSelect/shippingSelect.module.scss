@@ -4,3 +4,12 @@
   color: $light--base--color--lightBlack;
   margin-left: 20px;
 }
+.addrs{
+  width: 100%;
+  max-height: 120px;
+  overflow: auto;
+}
+.moreBtn{
+  margin-top: 10px;
+  cursor: pointer;
+}
