@@ -21,7 +21,8 @@ export interface Price{
 export interface GoodInfo{
     title: string,
     attr: Array<GoodAttr>,
-    gifts: Array<Gift>
+    gifts: Array<Gift>,
+    weight: number,
 }
 
 export interface CartAttr{
@@ -34,6 +35,7 @@ export interface CartAttr{
     isChecked: boolean,
     amount: number,
     gifts: Array<Gift> | null,
+    weight: number,
 }
 
 export interface AddCartInfo {

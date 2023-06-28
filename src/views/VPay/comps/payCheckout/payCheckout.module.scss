@@ -42,3 +42,19 @@
 .payWay i{
   margin-left: 10px;
 }
+.deliveryItem{
+  display: flex;
+  justify-content: left;
+}
+.fp{
+  margin-bottom: 10px;
+}
+.fp span{
+  margin-right: 20px;
+}
+.fpType{
+  padding-left: 20px;
+}
+.fp span:last-child{
+  color: $light--base--color--link--blue;
+}

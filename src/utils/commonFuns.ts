@@ -17,3 +17,10 @@ export const updateCartList = (cartList: Array<CartAttr>, user: string) => clien
   data: { cart: cartList, user },
   method: 'post',
 });
+
+export const priceToString = (price: number) => String(price.toFixed(2));
+
+export const phoneModal = (phone: number) => {
+  const p = String(phone);
+  return `${p.slice(0, 3)}****${p.slice(7, 11)}`;
+};

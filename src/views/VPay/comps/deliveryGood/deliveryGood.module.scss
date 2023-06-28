@@ -1,7 +1,7 @@
 @import "styles/theme/light.module";
 .root{
-  min-height: 200px;
-  width: 600px;
+  min-height: 150px;
+  width: 580px;
   padding: {
     left: 20px;
     right: 10px;
@@ -26,15 +26,14 @@
 .goodTit{
   display: inline-block;
   width: 240px;
-  height: 50px;
+  height: 40px;
   text-overflow: ellipsis;
   overflow: hidden;
   color: $light--base--color--lightBlack;
 }
 .psTit{
   display: inline-block;
-  height: 20px;
-  line-height: 20px;
+  height: 15px;
   padding: 2px 0;
   color: $light--base--color--lightBlack;
   margin-bottom: 5px;
@@ -48,6 +47,36 @@
 .afterSale{
   color: $light--base--color--link--blue;
 }
+.goodVal{
+  margin-left: 20px;
+  text-align: right;
+}
 .goodPrice{
   @include price-text();
+}
+.goodWeight{
+  display: block;
+}
+.goodNum{
+  margin-left: 60px;
+}
+.inventory{
+  margin-left: 60px;
+}
+.gifts{
+  margin-top: 5px;
+}
+.giftName{
+  display: inline-block;
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: $light--link--font--gray;
+}
+.gifts a{
+  margin-left: 10px;
+  color: $light--base--color--black;
+}
+.gifts a:hover{
+  color: $light--base--color--red;
 }

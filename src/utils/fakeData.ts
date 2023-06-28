@@ -1,11 +1,10 @@
 /* eslint-disable */
-import { GoodInfo } from '@/src/views/VDetails/interface';
-import { nanoid } from 'nanoid';
-import {CartInfo} from "@/src/views/VCart/interface";
-import {UserAddress} from "@/src/views/VPay/interface";
+import {CartAttr, GoodInfo} from '@/src/views/VDetails/interface';
+// import { nanoid } from 'nanoid';
+import {PayInfo, UserAddress} from "@/src/views/VPay/interface";
 
 // 在这里使用函数来返回以防调用goodInfo的时候，只调用一次nanoid导致所有的id都是一样的。
-const genNanoid = ()=>nanoid();
+// const genNanoid = ()=>nanoid();
 
 export const goodInfo:GoodInfo = {
   title: '小米13 徕卡光学镜头 第二代骁龙8处理器 超窄边屏幕 120Hz高刷 67W快充',
@@ -83,6 +82,7 @@ export const goodInfo:GoodInfo = {
       ],
     },
   ],
+  weight: 0.54,
   gifts: [
     {
       id: 'r8ny4fw8e7q9y8ew7',
@@ -97,68 +97,69 @@ export const goodInfo:GoodInfo = {
   ],
 };
 
-export const cartList:Array<CartInfo> = [
-    {
-  id: genNanoid(),
-  title: 'xiaomi 13',
-  attrs: [
-    {
-      id: genNanoid(),
-      name: '白色',
-    },
-    {
-      id: genNanoid(),
-      name: '12+512',
-    },
-  ],
-  price: '4999.00',
-  amount: 1,
-  // eslint-disable-next-line max-len
-  imgSrc: 'https://img30.360buyimg.com/n0/s80x80_jfs/t1/154028/32/33653/29617/644b6af1F307f6c98/422054c23c1e58f2.jpg.dpg',
-  gifts: [
-    {
-      name: '小爱音箱',
-      id: genNanoid(),
-    },
-    {
-      name: '无忧卡',
-      id: genNanoid(),
-    },
-  ],
-  isChecked: false,
-},
-  {
-    id: genNanoid(),
-    title: 'xiaomi 13',
-    attrs: [
-      {
-        id: genNanoid(),
-        name: '白色',
-      },
-      {
-        id: genNanoid(),
-        name: '12+512',
-      },
-    ],
-    price: '4999.00',
-    amount: 1,
-    // eslint-disable-next-line max-len
-    imgSrc: 'https://img30.360buyimg.com/n0/s80x80_jfs/t1/154028/32/33653/29617/644b6af1F307f6c98/422054c23c1e58f2.jpg.dpg',
-    gifts: [
-      {
-        name: '小爱音箱',
-        id: genNanoid(),
-      },
-      {
-        name: '无忧卡',
-        id: genNanoid(),
-      },
-    ],
-    isChecked: false
-  }];
+// export const cartList:Array<CartInfo> = [
+//     {
+//   id: genNanoid(),
+//   title: 'xiaomi 13',
+//   attrs: [
+//     {
+//       id: genNanoid(),
+//       name: '白色',
+//     },
+//     {
+//       id: genNanoid(),
+//       name: '12+512',
+//     },
+//   ],
+//   price: 4999,
+//   amount: 1,
+//   // eslint-disable-next-line max-len
+//   imgSrc: 'https://img30.360buyimg.com/n0/s80x80_jfs/t1/154028/32/33653/29617/644b6af1F307f6c98/422054c23c1e58f2.jpg.dpg',
+//   gifts: [
+//     {
+//       name: '小爱音箱',
+//       id: genNanoid(),
+//     },
+//     {
+//       name: '无忧卡',
+//       id: genNanoid(),
+//     },
+//   ],
+//   isChecked: false,
+// },
+//   {
+//     id: genNanoid(),
+//     title: 'xiaomi 13',
+//     attrs: [
+//       {
+//         id: genNanoid(),
+//         name: '白色',
+//       },
+//       {
+//         id: genNanoid(),
+//         name: '12+512',
+//       },
+//     ],
+//     price: '4999.00',
+//     amount: 1,
+//     // eslint-disable-next-line max-len
+//     imgSrc: 'https://img30.360buyimg.com/n0/s80x80_jfs/t1/154028/32/33653/29617/644b6af1F307f6c98/422054c23c1e58f2.jpg.dpg',
+//     gifts: [
+//       {
+//         name: '小爱音箱',
+//         id: genNanoid(),
+//       },
+//       {
+//         name: '无忧卡',
+//         id: genNanoid(),
+//       },
+//     ],
+//     isChecked: false
+//   }];
 
 export const addrList:Array<UserAddress> = [
   {
+    id: 'fjisfhonsoifsmfdlfkvifl',
     label: '夏亚',
     name: '夏亚',
     phone: 1564815323,
@@ -172,6 +173,7 @@ export const addrList:Array<UserAddress> = [
     isDefault: true,
   },
   {
+    id: 'dasfbsdfsnfml',
     label: '学校',
     name: '阿姆罗',
     phone: 11761519958,
@@ -185,6 +187,7 @@ export const addrList:Array<UserAddress> = [
     isDefault: false,
   },
   {
+    id: 'fjsifnflkd',
     label: '学校',
     name: '阿姆罗',
     phone: 11761519958,
@@ -198,6 +201,7 @@ export const addrList:Array<UserAddress> = [
     isDefault: false,
   },
   {
+    id: 'oipjiongfdd',
     label: '学校',
     name: '阿姆罗',
     phone: 11761519958,
@@ -211,6 +215,7 @@ export const addrList:Array<UserAddress> = [
     isDefault: false,
   },
   {
+    id: 'fhduoghdsmkof;dl',
     label: '学校',
     name: '阿姆罗',
     phone: 11761519958,
@@ -224,6 +229,7 @@ export const addrList:Array<UserAddress> = [
     isDefault: false,
   },
   {
+    id: 'uqwiorywhqur',
     label: '学校',
     name: '阿姆罗',
     phone: 11761519958,
@@ -237,3 +243,63 @@ export const addrList:Array<UserAddress> = [
     isDefault: false,
   }
 ]
+
+export const testPayGoods: Array<CartAttr> = [
+  {
+    id: 'fjnaskdfgsdsdddslabfd',
+    imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg',
+    title: '小米13 徕卡光学镜头 第二代骁龙8处理器 超窄边屏幕 120Hz高刷 67W快充',
+    color: '白',
+    version: '8+128',
+    price: 4599,
+    isChecked: false,
+    amount: 1,
+    gifts: [
+      {
+        name: '小米音箱',
+        id: 'hrthhbdsfgvfd',
+        imgSrc: 'demkmdfv;fx',
+      },
+      {
+        name: '无忧卡',
+        id: 'hrthhbdsfgvfd',
+        imgSrc: 'demkmdfv;fx',
+      },
+    ],
+    weight: 0.54,
+  },
+  {
+    id: 'fjnaskdfbdufjklabfd',
+    imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg',
+    title: '小米13 徕卡光学镜头 第二代骁龙8处理器 超窄边屏幕 120Hz高刷 67W快充',
+    color: '白',
+    version: '8+128',
+    price: 4599,
+    isChecked: false,
+    amount: 1,
+    gifts: [
+      {
+        name: '小米音箱',
+        id: 'hrthhbdsfgvfd',
+        imgSrc: 'demkmdfv;fx',
+      },
+      {
+        name: '无忧卡',
+        id: 'hrthhbdsfgvfd',
+        imgSrc: 'demkmdfv;fx',
+      },
+    ],
+    weight: 0.54,
+  },
+];
+
+export const defaultPayInfo: PayInfo = {
+  commodity: [],
+  payment: '在线支付',
+  userInfo: addrList[0],
+  delivery: '京东物流',
+  price:{
+    totalPrice: 9999,
+    express: 999,
+  }
+};

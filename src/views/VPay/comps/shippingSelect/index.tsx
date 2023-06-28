@@ -21,7 +21,7 @@ const ShippingSelect:React.FC<Props> = ({ addrList }) => {
       <div className={classes.addrs}>
         {
           addrList.map((addr) => (
-            addr.isDefault ? <ShippingAddr addr={addr} /> : null
+            addr.isDefault ? <ShippingAddr addr={addr} key={addrList} /> : null
           ))
         }
         {

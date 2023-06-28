@@ -9,9 +9,10 @@ export interface CartInfo{
   id: string,
   title: string,
   attrs: Array<Attrs>,
-  price: string,
+  price: number,
   amount: number,
   imgSrc: string,
   gifts: Array<Gift>,
+  weight: number,
   isChecked: boolean
 }

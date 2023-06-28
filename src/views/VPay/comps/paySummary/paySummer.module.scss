@@ -1,0 +1,66 @@
+@import "styles/theme/light.module";
+.root{
+  overflow: hidden;
+}
+.priceDetails{
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  text-align: right;
+}
+.priceContent span{
+  display: inline-block;
+  text-align: right;
+  width: 100px;
+}
+.priceContent span:first-child{
+  color: $light--base--color--lightBlack;
+  margin-bottom: 10px;
+}
+.priceContent span:last-child{
+  color: $light--base--color--black;
+}
+.footer{
+  height: 50px;
+  padding: 10px 20px;
+  border: 1px solid $light--base--color--deepGray;
+  background-color: $light--base--color--gray;
+  text-align: right;
+}
+.priceSum{
+  margin-bottom: 5px;
+}
+.priceSum span{
+  display: inline-block;
+  width: 100px;
+}
+.priceSum strong{
+  display: inline-block;
+  width: 100px;
+  @include price-text(18px);
+  font-weight: 700;
+}
+.addrInfo span{
+  color: $light--link--font--gray;
+}
+.addrInfo span:first-child{
+  margin-right: 20px;
+}
+.nzClasses{
+  float: right;
+  width: 135px;
+  height: 36px;
+  line-height: 36px;
+  margin: 8px 10px 0 0;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 3px;
+  border-color: $light--base--color--red;
+  cursor: pointer;
+  background-color: $light--base--color--btn--red;
+  color: $light--base--color--white;
+  font-family: Arial, Microsoft YaHei, serif;
+}
+.nzClasses:hover{
+  background-color: $light--base--color--red;
+}

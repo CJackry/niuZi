@@ -29,6 +29,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
     isChecked: false,
     amount,
     gifts: goodInfo.gifts,
+    weight: 0.54,
   });
   const chooseColor = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const color = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
@@ -122,7 +123,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       <div className={classes.cate}>
         <span className={classes.cateName}>重量</span>
         <div className={classes.cateVal}>
-          <span className={classes.support}>0.54kg</span>
+          <span className={classes.support}>{`${goodInfo.weight} kg`}</span>
         </div>
       </div>
       <div className={classes.summaryLine} />
