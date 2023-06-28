@@ -12,6 +12,7 @@ $light--base--color--black: #333;
 $light--base--color--green: #caecb6;
 $light--base--color--deepGreen: #7bbd55;
 $light--base--color--link--blue: #005ea7;
+$light--base--color--lightBlue: #f3fbfe;
 $light--base--color--lightBlack: #666;
 
 
@@ -28,4 +29,19 @@ $light--base--color--lightBlack: #666;
   width: 1px;
   height: $height; //高度为子项的高度，即seckill_item的高度
   background: linear-gradient(180deg,$color,#eeeeee,$color);
+}
+
+@mixin hr(){
+    border-bottom: 1px solid $light--hr--color--gray;
+    height: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@mixin price-text($size: 12px){
+  color: $light--base--color--red;
+  display: inline-block;
+  font-family: Verdana, serif;
+  text-align: center;
+  font-size: $size;
 }

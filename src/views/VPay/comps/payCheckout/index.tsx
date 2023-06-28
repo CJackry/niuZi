@@ -1,8 +1,8 @@
 import React from 'react';
 import { addrList } from '@/src/utils/fakeData';
 import SelectItem from '@/src/components/selectItem';
-import DeliveryItem from '@/src/views/VPay/comps/payCheckout/comps/deliveryItem';
-import ShippingSelect from './comps/shippingSelect';
+import DeliveryItem from '../deliveryItem';
+import ShippingSelect from '../shippingSelect';
 import classes from './payCheckout.module.scss';
 
 const PayCheckout:React.FC = () => {

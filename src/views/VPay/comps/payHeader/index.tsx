@@ -1,6 +1,6 @@
 import React from 'react';
-import TaskProgress from '@/src/views/VPay/comps/payHeader/comps/taskProgress';
-import { DealStatus } from '@/src/views/VPay/comps/payHeader/comps/taskProgress/interface';
+import { DealStatus } from '@/src/views/VPay/comps/taskProgress/interface';
+import TaskProgress from '../taskProgress';
 import classes from './payHeader.module.scss';
 
 const taskStatusArray: Array<DealStatus> = [

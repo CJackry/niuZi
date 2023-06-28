@@ -1,6 +1,6 @@
 import React from 'react';
-import { DealStatus } from '@/src/views/VPay/comps/payHeader/comps/taskProgress/interface';
-import TaskPart from '@/src/views/VPay/comps/payHeader/comps/taskProgress/comps/taskPart';
+import { DealStatus } from '@/src/views/VPay/comps/taskProgress/interface';
+import TaskPart from '../taskPart';
 import classes from './taskProgress.module.scss';
 
 type Props = {

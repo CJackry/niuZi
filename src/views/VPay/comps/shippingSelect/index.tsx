@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { UserAddress } from '@/src/views/VPay/interface';
-import ShippingAddr from './comps/shippingAddr';
+import ShippingAddr from '../shippingAddr';
 import classes from './shippingSelect.module.scss';
 
 type Props = {

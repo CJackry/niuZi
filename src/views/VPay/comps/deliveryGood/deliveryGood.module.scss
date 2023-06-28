@@ -1,0 +1,53 @@
+@import "styles/theme/light.module";
+.root{
+  min-height: 200px;
+  width: 600px;
+  padding: {
+    left: 20px;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+  };
+  background-color: $light--base--color--lightBlue;
+}
+.goodDetails{
+  display: flex;
+  justify-content: left;
+}
+.goodDetails>img{
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+.goodDes{
+
+}
+.goodTit{
+  display: inline-block;
+  width: 240px;
+  height: 50px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: $light--base--color--lightBlack;
+}
+.psTit{
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding: 2px 0;
+  color: $light--base--color--lightBlack;
+  margin-bottom: 5px;
+}
+.attrVal{
+  display: inline;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.afterSale{
+  color: $light--base--color--link--blue;
+}
+.goodPrice{
+  @include price-text();
+}

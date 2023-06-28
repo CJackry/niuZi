@@ -1,5 +1,5 @@
 import React from 'react';
-import { DealStatus } from '@/src/views/VPay/comps/payHeader/comps/taskProgress/interface';
+import { DealStatus } from '@/src/views/VPay/comps/taskProgress/interface';
 import clsx from 'clsx';
 import classes from './taskPart.module.scss';
 
