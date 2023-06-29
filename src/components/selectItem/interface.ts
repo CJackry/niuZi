@@ -5,6 +5,6 @@ export interface SelectItemProps{
   classes?: {
     root?: string,
   },
-  onClick?: (val: unknown) => void;
+  onClick?: (val: string) => void;
   isSelected?: boolean;
 }

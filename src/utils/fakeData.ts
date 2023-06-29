@@ -2,6 +2,7 @@
 import {CartAttr, GoodInfo} from '@/src/views/VDetails/interface';
 // import { nanoid } from 'nanoid';
 import {PayInfo, UserAddress} from "@/src/views/VPay/interface";
+import {DealStatus} from "@/src/views/VPay/comps/taskProgress/interface";
 
 // 在这里使用函数来返回以防调用goodInfo的时候，只调用一次nanoid导致所有的id都是一样的。
 // const genNanoid = ()=>nanoid();
@@ -299,9 +300,27 @@ export const defaultPayInfo: PayInfo = {
   commodity: [],
   payment: '在线支付',
   userInfo: defaultAddr[0]||addrList[0],
-  delivery: '京东物流',
+  delivery: '京东快递',
   price:{
     totalPrice: 9999,
     express: 999,
   }
 };
+
+export const taskStatusArray: Array<DealStatus> = [
+  {
+    name: '我的购物车',
+    partNum: 1,
+    isFinish: 'done',
+  },
+  {
+    name: '填写核对订单信息',
+    partNum: 2,
+    isFinish: 'doing',
+  },
+  {
+    name: '成功提交订单',
+    partNum: 3,
+    isFinish: 'incomplete',
+  },
+];

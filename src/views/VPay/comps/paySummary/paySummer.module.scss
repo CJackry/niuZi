@@ -36,7 +36,7 @@
 }
 .priceSum strong{
   display: inline-block;
-  width: 100px;
+  margin-left: 10px;
   @include price-text(18px);
   font-weight: 700;
 }

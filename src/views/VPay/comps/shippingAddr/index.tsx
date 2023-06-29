@@ -6,9 +6,10 @@ import classes from './shippingAddr.module.scss';
 type Props = {
     addr: UserAddress;
     onClick?: (addr: UserAddress) => void;
+    isSelected?: boolean;
 }
 
-const ShippingAddr:React.FC<Props> = ({ addr, onClick }) => {
+const ShippingAddr:React.FC<Props> = ({ addr, onClick, isSelected }) => {
   const [isMove, setIsMove] = useState(false);
   let addrDetail = '';
   const addresses = Object.values(addr.address);
@@ -28,7 +29,7 @@ const ShippingAddr:React.FC<Props> = ({ addr, onClick }) => {
       <SelectItem
         classes={itemClass}
         onClick={handleClick}
-        isSelected={addr.isDefault}
+        isSelected={isSelected}
       >
         {addr.label}
       </SelectItem>

@@ -4,11 +4,13 @@ import classes from './deliveryWay.module.scss';
 
 type Props = {
   totalWeight: number;
+  delivery: string;
+  onChange?: (delivery: string) => void;
 }
 
-const DeliveryWay:React.FC<Props> = ({ totalWeight }) => {
-  const handleClick = () => {
-    console.log('');
+const DeliveryWay:React.FC<Props> = ({ totalWeight, delivery, onChange }) => {
+  const handleClick = (d: string) => {
+    if (onChange) onChange(d);
   };
   const psWayClasses = {
     root: classes.psWayClasses,
@@ -18,8 +20,20 @@ const DeliveryWay:React.FC<Props> = ({ totalWeight }) => {
       <div className={classes.psHead}>
         <h4 className={classes.psTit}>配送方式</h4>
         <div className={classes.psWay}>
-          <SelectItem onClick={handleClick} classes={psWayClasses} isSelected>京东快递</SelectItem>
-          <SelectItem onClick={handleClick} classes={psWayClasses}>上门自提</SelectItem>
+          <SelectItem
+            onClick={() => handleClick('京东快递')}
+            classes={psWayClasses}
+            isSelected={delivery === '京东快递'}
+          >
+            京东快递
+          </SelectItem>
+          <SelectItem
+            onClick={() => handleClick('上门自提')}
+            classes={psWayClasses}
+            isSelected={delivery === '上门自提'}
+          >
+            上门自提
+          </SelectItem>
         </div>
         <div className={classes.ygTime}>
           <span className={classes.ygTit}>标&nbsp;&nbsp;准&nbsp;&nbsp;达：</span>

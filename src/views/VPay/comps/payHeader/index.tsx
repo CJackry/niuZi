@@ -1,25 +1,8 @@
 import React from 'react';
-import { DealStatus } from '@/src/views/VPay/comps/taskProgress/interface';
+
+import { taskStatusArray } from '@/src/utils/fakeData';
 import TaskProgress from '../taskProgress';
 import classes from './payHeader.module.scss';
-
-const taskStatusArray: Array<DealStatus> = [
-  {
-    name: '我的购物车',
-    partNum: 1,
-    isFinish: 'done',
-  },
-  {
-    name: '填写核对订单信息',
-    partNum: 2,
-    isFinish: 'doing',
-  },
-  {
-    name: '成功提交订单',
-    partNum: 3,
-    isFinish: 'incomplete',
-  },
-];
 
 const PayHeader:React.FC = () => (
   <div className={classes.root}>
