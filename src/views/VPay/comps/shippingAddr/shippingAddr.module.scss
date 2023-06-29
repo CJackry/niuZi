@@ -27,8 +27,10 @@
   width: 100%;
   padding-left: 10px;
 }
-.address:hover{
-  background-color: $light--base--color--lightRed;
+.addrInfo:hover{
+  .address{
+    background-color: $light--base--color--lightRed;
+  }
 }
 .consigneeName{
   margin-right: 20px;

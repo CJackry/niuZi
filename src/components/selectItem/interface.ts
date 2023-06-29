@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export interface SelectItemProps{
   children?: ReactNode;
   classes?: {
     root?: string,
   },
-  onClick: React.MouseEventHandler;
+  onClick?: (val: unknown) => void;
   isSelected?: boolean;
 }

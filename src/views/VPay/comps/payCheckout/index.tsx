@@ -1,5 +1,5 @@
 import React from 'react';
-import { addrList, testPayGoods } from '@/src/utils/fakeData';
+import { addrList } from '@/src/utils/fakeData';
 import SelectItem from '@/src/components/selectItem';
 import DeliveryWay from '@/src/views/VPay/comps/deliveryWay';
 import DeliveryGood from '@/src/views/VPay/comps/deliveryGood';
@@ -16,6 +16,7 @@ const PayCheckout:React.FC<Props> = ({ payInfo }) => {
   const handleClick = () => {
     console.log('click');
   };
+
   const totalW = commodity?.reduce((prev, good) => prev + good.weight, 0);
   return (
     <div className={classes.root}>
@@ -26,7 +27,7 @@ const PayCheckout:React.FC<Props> = ({ payInfo }) => {
             <h5>收货人信息</h5>
             <span>新增收货地址</span>
           </span>
-          <ShippingSelect addrList={addrList} />
+          <ShippingSelect addrList={addrList} addrSelected={payInfo.userInfo} />
           <div className={classes.hr} />
         </div>
         <div className={classes.checkBox}>
@@ -34,8 +35,8 @@ const PayCheckout:React.FC<Props> = ({ payInfo }) => {
             <h5>支付方式</h5>
           </span>
           <div className={classes.payWay}>
-            <SelectItem onClick={handleClick}>货到付款</SelectItem>
-            <SelectItem onClick={handleClick}>在线支付</SelectItem>
+            <SelectItem onClick={handleClick} isSelected={payInfo.payment === '货到付款'}>货到付款</SelectItem>
+            <SelectItem onClick={handleClick} isSelected={payInfo.payment === '在线支付'}>在线支付</SelectItem>
             <i>更多</i>
           </div>
           <div className={classes.hr} />
@@ -49,9 +50,9 @@ const PayCheckout:React.FC<Props> = ({ payInfo }) => {
             <DeliveryWay totalWeight={totalW || 0} />
             <div>
               {
-                testPayGoods.map((good) => (
+                payInfo.commodity ? payInfo.commodity.map((good) => (
                   <DeliveryGood good={good} key={good.id} />
-                ))
+                )) : null
               }
             </div>
           </div>

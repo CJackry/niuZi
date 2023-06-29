@@ -5,15 +5,16 @@ import classes from './shippingAddr.module.scss';
 
 type Props = {
     addr: UserAddress;
+    onClick?: (addr: UserAddress) => void;
 }
 
-const ShippingAddr:React.FC<Props> = ({ addr }) => {
+const ShippingAddr:React.FC<Props> = ({ addr, onClick }) => {
   const [isMove, setIsMove] = useState(false);
   let addrDetail = '';
   const addresses = Object.values(addr.address);
   addresses.forEach((a) => { addrDetail += ` ${a}`; });
   const handleClick = () => {
-    console.log('click');
+    if (onClick) onClick(addr);
   };
   const itemClass = {
     root: classes.addrLabel,
@@ -24,7 +25,13 @@ const ShippingAddr:React.FC<Props> = ({ addr }) => {
       onMouseEnter={() => { setIsMove(true); }}
       onMouseLeave={() => { setIsMove(false); }}
     >
-      <SelectItem classes={itemClass} onClick={handleClick}>{addr.label}</SelectItem>
+      <SelectItem
+        classes={itemClass}
+        onClick={handleClick}
+        isSelected={addr.isDefault}
+      >
+        {addr.label}
+      </SelectItem>
       <div className={classes.address}>
         <div>
           <span className={classes.consigneeName}>{addr.name}</span>

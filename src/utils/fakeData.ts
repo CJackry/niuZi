@@ -246,7 +246,7 @@ export const addrList:Array<UserAddress> = [
 
 export const testPayGoods: Array<CartAttr> = [
   {
-    id: 'fjnaskdfgsdsdddslabfd',
+    id: 'fjnaskdfgsdsfgdfgdddslabfd',
     imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg',
     title: '小米13 徕卡光学镜头 第二代骁龙8处理器 超窄边屏幕 120Hz高刷 67W快充',
     color: '白',
@@ -269,7 +269,7 @@ export const testPayGoods: Array<CartAttr> = [
     weight: 0.54,
   },
   {
-    id: 'fjnaskdfbdufjklabfd',
+    id: 'fjnaskdfbdqwwefsdufjklabfd',
     imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg',
     title: '小米13 徕卡光学镜头 第二代骁龙8处理器 超窄边屏幕 120Hz高刷 67W快充',
     color: '白',
@@ -293,10 +293,12 @@ export const testPayGoods: Array<CartAttr> = [
   },
 ];
 
+const defaultAddr = addrList.filter(addr=>addr.isDefault);
+
 export const defaultPayInfo: PayInfo = {
   commodity: [],
   payment: '在线支付',
-  userInfo: addrList[0],
+  userInfo: defaultAddr[0]||addrList[0],
   delivery: '京东物流',
   price:{
     totalPrice: 9999,

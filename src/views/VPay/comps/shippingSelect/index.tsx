@@ -5,9 +5,10 @@ import classes from './shippingSelect.module.scss';
 
 type Props = {
   addrList: Array<UserAddress>;
+  addrSelected: UserAddress;
 }
 
-const ShippingSelect:React.FC<Props> = ({ addrList }) => {
+const ShippingSelect:React.FC<Props> = ({ addrList, addrSelected }) => {
   const isOnly = addrList.length === 1;
   const [isShowMore, setIsShowMore] = useState(false);
   const handleClickMore = () => {
@@ -21,14 +22,14 @@ const ShippingSelect:React.FC<Props> = ({ addrList }) => {
       <div className={classes.addrs}>
         {
           addrList.map((addr) => (
-            addr.isDefault ? <ShippingAddr addr={addr} key={addrList} /> : null
+            addr === addrSelected ? <ShippingAddr addr={addr} key={addr.id} /> : null
           ))
         }
         {
           isShowMore ? (
             <div className={classes.moreAddr}>
               {addrList.map((addr) => (
-                addr.isDefault ? <div /> : <ShippingAddr addr={addr} />
+                addr !== addrSelected ? <ShippingAddr addr={addr} key={addr.id} /> : null
               ))}
             </div>
           ) : null

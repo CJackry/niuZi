@@ -36,7 +36,7 @@ const DeliveryGood:React.FC<Props> = ({ good }) => (
     </div>
     {
           good.gifts ? good.gifts.map((gift) => (
-            <div className={classes.gifts}>
+            <div className={classes.gifts} key={gift.id}>
               <span className={classes.giftName}>{`${gift.name} x1`}</span>
               <Link href="/details">查看价格</Link>
             </div>

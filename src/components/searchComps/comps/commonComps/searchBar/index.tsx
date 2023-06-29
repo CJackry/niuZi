@@ -19,7 +19,7 @@ const SearchBar:React.FC = () => {
       <Link className={classes.upload_bg} href="https://jd.com">
         <span className={`${classes.iconfont}`}>&#xe63c;</span>
       </Link>
-      <Link className={classes.searchLink} href="https://jd.com">
+      <Link className={classes.searchLink} href="/search">
         <span className={classes.iconfont}>&#xe62d;</span>
       </Link>
     </div>
