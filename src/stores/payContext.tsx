@@ -1,7 +1,7 @@
 import React, {
   createContext, ReactNode, useContext, useMemo, useReducer,
 } from 'react';
-import { PayInfo } from '@/src/views/VPay/interface';
+import { PayInfo } from '@/src/views/VShopping/interface';
 import { defaultPayInfo } from '@/src/utils/fakeData';
 
 export interface PayState{

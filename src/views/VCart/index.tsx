@@ -161,7 +161,7 @@ const VCart:React.FC = () => {
                 </span>
               </div>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link href="/pay" className={classes.goSett}>去结算</Link>
+              <Link href="/Shopping" className={classes.goSett}>去结算</Link>
             </div>
           </div>
         </div>

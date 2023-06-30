@@ -1,5 +1,5 @@
 import React from 'react';
-import { DealStatus } from '@/src/views/VPay/comps/taskProgress/interface';
+import { DealStatus } from '@/src/views/VShopping/comps/taskProgress/interface';
 import { nanoid } from 'nanoid';
 import TaskPart from '../taskPart';
 import classes from './taskProgress.module.scss';

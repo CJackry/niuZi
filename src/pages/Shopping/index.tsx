@@ -1,10 +1,10 @@
 import React from 'react';
-import VPay from '@/src/views/VPay';
 import { PayProvider } from '@/src/stores/payContext';
 import { defaultPayInfo } from '@/src/utils/fakeData';
 import { useCartContext } from '@/src/stores/cartContext';
+import VShopping from '../../views/VShopping';
 
-const Pay:React.FC = () => {
+const Shopping:React.FC = () => {
   const { store: { cartList } } = useCartContext();
   const initialPayInfo = defaultPayInfo;
   const commodity = cartList ? cartList.filter((cart) => cart.isChecked) : [];
@@ -14,9 +14,9 @@ const Pay:React.FC = () => {
   // console.log(initialPayInfo);
   return (
     <PayProvider initialVal={{ payInfo: initialPayInfo }}>
-      <VPay />
+      <VShopping />
     </PayProvider>
   );
 };
 
-export default Pay;
+export default Shopping;

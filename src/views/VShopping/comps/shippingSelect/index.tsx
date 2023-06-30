@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserAddress } from '@/src/views/VPay/interface';
+import { UserAddress } from '@/src/views/VShopping/interface';
 import ShippingAddr from '../shippingAddr';
 import classes from './shippingSelect.module.scss';
 

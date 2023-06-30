@@ -1,8 +1,8 @@
 /* eslint-disable */
 import {CartAttr, GoodInfo} from '@/src/views/VDetails/interface';
 // import { nanoid } from 'nanoid';
-import {PayInfo, UserAddress} from "@/src/views/VPay/interface";
-import {DealStatus} from "@/src/views/VPay/comps/taskProgress/interface";
+import {PayInfo, UserAddress} from "@/src/views/VShopping/interface";
+import {DealStatus} from "@/src/views/VShopping/comps/taskProgress/interface";
 
 // 在这里使用函数来返回以防调用goodInfo的时候，只调用一次nanoid导致所有的id都是一样的。
 // const genNanoid = ()=>nanoid();

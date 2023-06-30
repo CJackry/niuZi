@@ -1,7 +1,7 @@
 import clientRequest from '@/src/utils/http-client';
 import { CommonData } from '@/src/views/Index/interface';
 import { CartAttr } from '@/src/views/VDetails/interface';
-import { PayInfo } from '@/src/views/VPay/interface';
+import { PayInfo } from '@/src/views/VShopping/interface';
 
 // 用于将数值转化为两位字符串，如0->'00'
 export function numToStringDouble(num:number) {

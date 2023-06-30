@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import PayHeader from '@/src/views/VPay/comps/payHeader';
-import PaySummary from '@/src/views/VPay/comps/paySummary';
+import PayHeader from '@/src/views/VShopping/comps/payHeader';
+import PaySummary from '@/src/views/VShopping/comps/paySummary';
 
 type Props = {
     children: ReactNode,

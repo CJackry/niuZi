@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { addrList, defaultPayInfo } from '@/src/utils/fakeData';
 import SelectItem from '@/src/components/selectItem';
-import DeliveryWay from '@/src/views/VPay/comps/deliveryWay';
-import DeliveryGood from '@/src/views/VPay/comps/deliveryGood';
+import DeliveryWay from '@/src/views/VShopping/comps/deliveryWay';
+import DeliveryGood from '@/src/views/VShopping/comps/deliveryGood';
 import { usePayContext } from '@/src/stores/payContext';
-import { UserAddress } from '@/src/views/VPay/interface';
+import { UserAddress } from '@/src/views/VShopping/interface';
 import ShippingSelect from '../shippingSelect';
 import classes from './payCheckout.module.scss';
 

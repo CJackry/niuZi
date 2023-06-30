@@ -3,7 +3,7 @@ import { arrayToString, phoneModal, priceToString } from '@/src/utils/commonFuns
 import NzBtn from '@/src/components/NzBtn';
 import { usePayContext } from '@/src/stores/payContext';
 import { defaultPayInfo } from '@/src/utils/fakeData';
-import { PayInfo } from '@/src/views/VPay/interface';
+import { PayInfo } from '@/src/views/VShopping/interface';
 import classes from './paySummer.module.scss';
 
 const PaySummary:React.FC = () => {
