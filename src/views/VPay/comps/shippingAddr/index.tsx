@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { UserAddress } from '@/src/views/VPay/interface';
 import SelectItem from '@/src/components/selectItem';
+import { arrayToString } from '@/src/utils/commonFuns';
 import classes from './shippingAddr.module.scss';
 
 type Props = {
@@ -11,9 +12,7 @@ type Props = {
 
 const ShippingAddr:React.FC<Props> = ({ addr, onClick, isSelected }) => {
   const [isMove, setIsMove] = useState(false);
-  let addrDetail = '';
   const addresses = Object.values(addr.address);
-  addresses.forEach((a) => { addrDetail += ` ${a}`; });
   const handleClick = () => {
     if (onClick) onClick(addr);
   };
@@ -37,7 +36,7 @@ const ShippingAddr:React.FC<Props> = ({ addr, onClick, isSelected }) => {
         <div>
           <span className={classes.consigneeName}>{addr.name}</span>
           <span className={classes.addrDetails}>
-            {addrDetail}
+            {arrayToString(addresses)}
           </span>
           {addr.isDefault ? <i className={classes.defaultAddrLabel}>默认地址</i> : null}
         </div>

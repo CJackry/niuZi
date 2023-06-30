@@ -1,5 +1,5 @@
 import React from 'react';
-import { phoneModal, priceToString } from '@/src/utils/commonFuns';
+import { arrayToString, phoneModal, priceToString } from '@/src/utils/commonFuns';
 import NzBtn from '@/src/components/NzBtn';
 import { usePayContext } from '@/src/stores/payContext';
 import { defaultPayInfo } from '@/src/utils/fakeData';
@@ -36,7 +36,7 @@ const PaySummary:React.FC = () => {
           <strong>{`￥ ${priceToString(totalPrice + express)}`}</strong>
         </div>
         <div className={classes.addrInfo}>
-          <span>{`寄送至： ${addr}`}</span>
+          <span>{`寄送至： ${arrayToString(addr)}`}</span>
           <span>{`收货人：${newPayInfo.userInfo.name} ${phoneModal(newPayInfo.userInfo.phone)}`}</span>
         </div>
       </div>
