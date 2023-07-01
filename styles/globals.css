@@ -5,6 +5,7 @@
 body{
   color: #666;
   background-color: #fff;
+  min-width: 1150px;
 }
 li{
   list-style: none;
