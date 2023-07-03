@@ -25,6 +25,11 @@ export interface GoodInfo{
     weight: number,
 }
 
+export interface GoodBigImg{
+    name: string,
+    imgSrc: string,
+}
+
 export interface CartAttr{
     id: string,
     imgSrc: string,

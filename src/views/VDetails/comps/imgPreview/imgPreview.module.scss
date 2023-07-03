@@ -1,6 +1,14 @@
+@import "styles/theme/light.module";
 .root{
+  padding: 10px;
+}
+.imgPosition{
+  width: 450px;
+  height: 450px;
+  position: relative;
 }
 .bigImg{
+  display: block;
   width: 450px;
   height: 450px;
 }
@@ -11,10 +19,22 @@
   width: 800px;
   height: 800px;
 }
+.imgList{
+  display: flex;
+  justify-content: center;
+}
 .imgList span{
-   display: inline-block;
+  display: inline-block;
+  width: 58px;
+  height: 58px;
+  border: 1px solid $light--base--color--deepGray;
+  margin: 0 10px;
+}
+.imgList span:hover{
+  border-color: $light--base--color--red;
 }
 .smallImg{
+  display: inline-block;
   height: 58px;
   width: 58px;
 }

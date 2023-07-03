@@ -1,5 +1,5 @@
 /* eslint-disable */
-import {CartAttr, GoodInfo} from '@/src/views/VDetails/interface';
+import {CartAttr, GoodBigImg, GoodInfo} from '@/src/views/VDetails/interface';
 // import { nanoid } from 'nanoid';
 import {PayInfo, UserAddress} from "@/src/views/VShopping/interface";
 import {DealStatus} from "@/src/views/VShopping/comps/taskProgress/interface";
@@ -97,6 +97,25 @@ export const goodInfo:GoodInfo = {
     },
   ],
 };
+
+export const goodBigImgList:Array<GoodBigImg> = [
+  {
+    name: '蓝',
+    imgSrc: 'https://img14.360buyimg.com/n0/jfs/t1/133091/15/29165/55562/6395a670Efc29f537/96d983a9e2c29996.jpg',
+  },
+  {
+    name: '白',
+    imgSrc: 'https://img14.360buyimg.com/n0/jfs/t1/113016/37/29857/14788/6395ab96E48131431/37e17dbc0020a668.jpg',
+  },
+  {
+    name: '黑',
+    imgSrc: 'https://img14.360buyimg.com/n0/jfs/t1/192110/34/31853/13723/6395ab62Ed3266c2b/e7d7f61ca8d1d5ca.jpg',
+  },
+  {
+    name: '绿',
+    imgSrc: 'https://img14.360buyimg.com/n0/jfs/t1/85459/8/31187/17910/6395a615E9b756cd5/a8e25a5302f72b59.jpg',
+  }
+]
 
 // export const cartList:Array<CartInfo> = [
 //     {

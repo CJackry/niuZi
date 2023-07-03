@@ -3,6 +3,7 @@ import { Color } from '@/src/views/VDetails/interface';
 import {
   MagnifierContainer, MagnifierPreview, MagnifierZoom,
 } from 'react-image-magnifiers';
+import { goodBigImgList } from '@/src/utils/fakeData';
 import classes from './imgPreview.module.scss';
 
 type Props = {
@@ -10,16 +11,21 @@ type Props = {
 }
 
 const ImgPreview:React.FC<Props> = ({ imgList }) => {
-  const [imgSrc, setImgSrc] = useState({
+  const [img, setImg] = useState({
     name: imgList[0].name,
     imgSrc: imgList[0].imgSrc,
   });
+  const [bigImg, setBigImg] = useState(goodBigImgList[0].imgSrc);
   const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
+    const { title } = e.currentTarget;
     imgList.forEach((item) => {
-      if (e.currentTarget.title === item.name) {
-        setImgSrc({
+      if (title === item.name) {
+        setImg({
           name: item.name,
           imgSrc: item.imgSrc,
+        });
+        goodBigImgList.forEach((bi) => {
+          if (bi.name === title) setBigImg(bi.imgSrc);
         });
       }
     });
@@ -27,29 +33,26 @@ const ImgPreview:React.FC<Props> = ({ imgList }) => {
   return (
     <div className={classes.root}>
       <MagnifierContainer className={classes.bigImg}>
-        <div className={classes.bigImg}>
-          <MagnifierPreview imageSrc={imgSrc.imgSrc} />
-        </div>
+        <MagnifierPreview
+          imageSrc={img.imgSrc}
+          largeImageSrc={bigImg}
+        />
         <MagnifierZoom
           className={classes.imgPreview}
-          style={{ height: '200px', width: '200px' }}
-          imageSrc={imgSrc.imgSrc}
+          style={{ height: '400px', width: '400px' }}
+          imageSrc={bigImg}
         />
-        {/* <SideBySideMagnifier */}
-        {/*  imageSrc={imgSrc.imgSrc} */}
-        {/* /> */}
       </MagnifierContainer>
-
       <div className={classes.imgList}>
-        {imgList.map((img) => (
+        {imgList.map((imgItem) => (
           <span
             onMouseEnter={(e) => handleClick(e)}
             role="button"
             tabIndex={0}
-            title={img.name}
-            key={img.id}
+            title={imgItem.name}
+            key={imgItem.id}
           >
-            <img className={classes.smallImg} src={img.imgSrc} alt={img.name} />
+            <img className={classes.smallImg} src={imgItem.imgSrc} alt={imgItem.name} />
           </span>
         ))}
       </div>
