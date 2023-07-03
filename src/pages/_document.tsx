@@ -4,7 +4,7 @@ import {
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="cn">
       <Head />
       <body>
         <Main />

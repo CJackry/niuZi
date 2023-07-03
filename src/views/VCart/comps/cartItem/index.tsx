@@ -54,9 +54,9 @@ const CartItem:React.FC<Props> = (props) => {
       />
       <div className={classes.good}>
         <div className={classes.goodCell1}>
-          <a href="https://jd.com" className={classes.goodImg}>
+          <Link href="/details" className={classes.goodImg}>
             <img src={cartInfo.imgSrc} alt={cartInfo.title} />
-          </a>
+          </Link>
           <div className={classes.goodIntro}>
             <span className={classes.goodTit}>{cartInfo.title}</span>
             <span className={classes.goodServer}>选服务</span>
@@ -76,18 +76,14 @@ const CartItem:React.FC<Props> = (props) => {
         </div>
         <strong className={classes.sum}>{totalPrice.toFixed(2)}</strong>
         <div className={classes.options}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <Link href="" onClick={handleCartDel}>删除</Link>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <Link href="">移入关注</Link>
+          <span onClick={handleCartDel} role="button" tabIndex={0}>删除</span>
         </div>
       </div>
       <div className={classes.gifts}>
         {cartInfo.gifts ? cartInfo.gifts.map((gift) => (
           <div className={classes.giftInfo} key={gift.id}>
-            <Link href="https://jd.com" className={classes.giftTit}>{`【赠品】${gift.name}`}</Link>
+            <span className={classes.giftTit}>{`【赠品】${gift.name}`}</span>
             <span className={classes.giftNum}>X1</span>
-            <Link href="https://jd.com" className={classes.priceView}>查看价格</Link>
           </div>
         )) : <div />}
       </div>

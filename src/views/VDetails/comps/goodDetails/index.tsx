@@ -31,12 +31,13 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
     gifts: goodInfo.gifts,
     weight: 0.54,
   });
-  const chooseColor = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const color = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
+  const chooseColor = (e: React.MouseEvent<HTMLDivElement>) => {
+    const color = (e.currentTarget as HTMLDivElement).getAttribute('title') || '';
     goodInfo.attr.forEach((attrItem) => {
       if (attrItem.attrName === attr?.version) {
         attrItem.color.forEach((c) => {
           if (c.name === color) {
+            // console.log(c);
             setAttr({
               ...attr, price: c.price, color, imgSrc: c.imgSrc, id: c.id,
             });
@@ -45,19 +46,20 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       }
     });
   };
-  const chooseVersion = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const version = (e.currentTarget as HTMLAnchorElement).getAttribute('title') || '';
-    let p: number = price;
+  const chooseVersion = (e: React.MouseEvent<HTMLDivElement>) => {
+    const version = (e.currentTarget as HTMLDivElement).getAttribute('title') || '';
     goodInfo.attr.forEach((a) => {
       if (a.attrName === version) {
         a.color.forEach((c) => {
           if (c.name === attr?.color) {
-            p = c.price;
+            setAttr({
+              ...attr, price: c.price, version, imgSrc: c.imgSrc, id: c.id,
+            });
           }
         });
       }
     });
-    setAttr({ ...attr, version, price: p });
+    // setAttr({ ...attr, version, price: p });
   };
   const handleChange = (num: number) => {
     setAmount(num);
@@ -132,17 +134,17 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
         <div className={classes.cateVal}>
           <div className={classes.goodAttr}>
             {goodInfo.attr[0].color.map((item) => (
-              // eslint-disable-next-line jsx-a11y/anchor-is-valid
-              <Link
-                href=""
+              <div
                 className={clsx(classes.attrVal, { [classes.attrValCheck]: item.name === attr.color })}
                 key={item.id}
                 onClick={(e) => { chooseColor(e); }}
                 title={item.name}
+                role="button"
+                tabIndex={0}
               >
                 <img src={item.imgSrc} alt={item.name} />
                 <span>{item.name}</span>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -152,16 +154,16 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
         <div className={classes.cateVal}>
           <div className={classes.goodAttr}>
             {goodInfo.attr.map((item) => (
-              // eslint-disable-next-line jsx-a11y/anchor-is-valid
-              <Link
+              <div
                 className={clsx(classes.attrVal, { [classes.attrValCheck]: item.attrName === attr.version })}
-                href=""
                 key={item.id}
                 onClick={(e) => chooseVersion(e)}
                 title={item.attrName}
+                role="button"
+                tabIndex={0}
               >
                 <span>{item.attrName}</span>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -170,7 +172,6 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
       <div className={classes.chooseBtn}>
         <NumChange onChange={handleChange} defaultValue={1} type="floatRight" />
         <button className={classes.addBtn} onClick={handleAdd}>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <Link className={classes.addCart} href="/cart">加入购物车</Link>
         </button>
       </div>

@@ -7,7 +7,7 @@ import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/scss/scrollbar';
 import 'swiper/css/autoplay';
-import { numToStringDouble } from '@/src/utils/commonFuns';
+import { numToStringDouble, priceToString } from '@/src/utils/commonFuns';
 import { SecKillItem } from '@/src/views/Index/interface';
 import classes from './SecKill.module.scss';
 
@@ -112,7 +112,7 @@ const SecKill:React.FC<Props> = ({ secKillList }) => {
                       <a className={classes.seckill_item} href={item.link}>
                         <img src={item.imgSrc} alt="img" />
                         <h6>{item.name}</h6>
-                        <span>{item.price}</span>
+                        <span>{priceToString(item.price)}</span>
                       </a>
                     </SwiperSlide>
                   )) : (

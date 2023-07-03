@@ -12,7 +12,7 @@ const Header: React.FC<Props> = ({ isShowFloat }) => {
   const scroll = useScroll();
   return (
     <div className={classes.root}>
-      {(scroll?.top && isShowFloat ? scroll?.top > 660 : false) ? <SearchComps type="float" /> : <div />}
+      {(scroll?.top && isShowFloat ? scroll?.top > 141 : false) ? <SearchComps type="float" /> : null}
       <div className={classes.header_box}>
         <SearchComps
           type="withCart"

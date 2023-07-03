@@ -1,4 +1,20 @@
 .root{
-  width: 452px;
-  height: 568px;
+}
+.bigImg{
+  width: 450px;
+  height: 450px;
+}
+.imgPreview{
+  position: absolute;
+  right: -450px;
+  top: -450px;
+  width: 800px;
+  height: 800px;
+}
+.imgList span{
+   display: inline-block;
+}
+.smallImg{
+  height: 58px;
+  width: 58px;
 }

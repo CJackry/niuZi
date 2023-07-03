@@ -3,6 +3,7 @@ import { HotWords } from '@/src/views/Index/interface';
 import { nanoid } from 'nanoid';
 import clientRequest from '@/src/utils/http-client';
 import SearchBar from '@/src/components/searchComps/comps/commonComps/searchBar';
+import Link from 'next/link';
 import MyCartComp from '../commonComps/myCartComp';
 import classes from './searchWithCart.module.scss';
 
@@ -18,9 +19,9 @@ const SearchWithCart:React.FC<Props> = ({ withCart, withHotWords }) => {
   }, []);
   return (
     <div className={classes.root}>
-      <div className={classes.logo}>
+      <Link href="/" className={classes.logo}>
         <img src="/jd_logo.png" alt="logo" />
-      </div>
+      </Link>
       <div className={classes.searchMid}>
         <SearchBar />
         { withHotWords ? (
@@ -29,14 +30,14 @@ const SearchWithCart:React.FC<Props> = ({ withCart, withHotWords }) => {
               <a href={word.link} key={nanoid()}>{word.name}</a>
             )) : <a href="https://jd.com">hotWords is loading</a>}
           </div>
-        ) : <div />}
+        ) : null}
       </div>
       {withCart ? (
         <div className={`${classes.searchMid} ${classes.myCart}`}>
           <MyCartComp />
           <p />
         </div>
-      ) : <div />}
+      ) : null}
     </div>
   );
 };

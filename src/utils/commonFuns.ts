@@ -32,8 +32,6 @@ export const phoneModal = (phone: number) => {
   return `${p.slice(0, 3)}****${p.slice(7, 11)}`;
 };
 
-export const isSelectedCheck = (e: HTMLElement, val: string) => e.title === val;
-
 export const arrayToString = (a: Array<string>) => {
   let aDetails = '';
   a.forEach((s) => { aDetails += `${s} `; });

@@ -6,20 +6,15 @@ import { goodInfo } from '@/src/utils/fakeData';
 import ShopTop from './comps/shopTop';
 import classes from './details.module.scss';
 
-const phoneAttrs = [12];
-
-const VDetails:React.FC = () => {
-  console.log(phoneAttrs);
-  return (
-    <div className={classes.root}>
-      <ShopTop />
-      <PhoneNav />
-      <div className={classes.detail}>
-        <ImgPreview imgList={goodInfo.attr[0].color} />
-        <GoodDetails goodInfo={goodInfo} />
-      </div>
+const VDetails:React.FC = () => (
+  <div className={classes.root}>
+    <ShopTop />
+    <PhoneNav />
+    <div className={classes.detail}>
+      <ImgPreview imgList={goodInfo.attr[0].color} />
+      <GoodDetails goodInfo={goodInfo} />
     </div>
-  );
-};
+  </div>
+);
 
 export default VDetails;

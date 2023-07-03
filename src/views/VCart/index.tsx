@@ -9,12 +9,13 @@ import { CartAttr } from '@/src/views/VDetails/interface';
 import { useUserContext } from '@/src/stores/context';
 import NzModal from '@/src/components/NzModal';
 import SearchComps from '@/src/components/searchComps';
+import useWindowSize from '@/src/utils/use/useWindowSize';
 import CartItem from './comps/cartItem';
 import classes from './vcart.module.scss';
 
 const VCart:React.FC = () => {
   const scroll = useScroll();
-  const top = scroll?.top || scroll?.left || 0;
+  const scrollTop = scroll?.top || scroll?.left || 0;
   const { store } = useCartContext();
   const cartList = store.cartList ? store.cartList : [];
   const { total } = store;
@@ -35,11 +36,18 @@ const VCart:React.FC = () => {
   const [totalPrice, setTotalPrice] = useState<number>(sumPrice);
   const [checkNum, setCheckNum] = useState(sumCheck);
   const [isAllCheck, setIsAllCheck] = useState((sumCheck === total && total !== 0));
-  const fixTop = (total - 1) * 270;
+  // 判断当前窗口大小是否应该使购物车结算底栏浮动
+  // 当前商品数量展示所需的高度
+  const fixTop = (total) * 270 - 54;
+  const { height } = useWindowSize();
+  // 当用户窗口比完整展示商品所需高度小的时候浮动底栏，并且在滚动到最后一个商品时停止浮动
+  const isFix = height < fixTop && scrollTop <= (fixTop - height);
   const changeAllCheck = async () => {
     const check = !isAllCheck;
     setIsAllCheck(check);
     await handleAllCheck(check, name || '');
+    const sumP = check ? cartList.reduce((prev, c) => prev + (c.price * c.amount), 0) : 0;
+    setTotalPrice(sumP);
   };
   const handleChange = async (newCart: CartAttr) => {
     const newCartList:Array<CartAttr> = cartList.map((cart) => {
@@ -129,7 +137,7 @@ const VCart:React.FC = () => {
             )
           }
         </div>
-        <div className={clsx(classes.listBottom, { [classes.listBottomFix]: (top <= fixTop && total >= 0) })}>
+        <div className={clsx(classes.listBottom, { [classes.listBottomFix]: isFix })}>
           <div className={`${global.w} ${classes.flexBet}`}>
             <div className={classes.cartCarOpts}>
               <input
@@ -142,10 +150,6 @@ const VCart:React.FC = () => {
               <span className={classes.tit1}>全选</span>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="" onClick={() => { noticeDel('checkDel'); }}>删除选中的商品</Link>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link href="">移入关注</Link>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link href="" className={classes.cleanCart}>清理购物车</Link>
             </div>
             <div className={classes.settlement}>
               <div className={classes.goodSelection}>

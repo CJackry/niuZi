@@ -15,16 +15,16 @@ export const goodInfo:GoodInfo = {
       attrName: '8+128',
       color: [
         {
-          id: 'fjnaskdfbdufjklabfd', name: '白', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 4599.00,
+          id: 'fjnaskdfbdufjklabfd', name: '白', imgSrc: 'https://img14.360buyimg.com/n1/s450x450_jfs/t1/113016/37/29857/14788/6395ab96E48131431/37e17dbc0020a668.jpg', price: 4599.00,
         },
         {
-          id: 'gsdfgsdfgsdfgs', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 4699.00,
+          id: 'gsdfgsdfgsdfgs', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/192110/34/31853/13723/6395ab62Ed3266c2b/e7d7f61ca8d1d5ca.jpg', price: 4699.00,
         },
         {
           id: 'gsdfghshsfhgsfdg', name: '绿', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 4799.00,
         },
         {
-          id: 'bsfgm45q2345v3', name: '蓝', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 4499.00,
+          id: 'bsfgm45q2345v3', name: '蓝', imgSrc: 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/133091/15/29165/55562/6395a670Efc29f537/96d983a9e2c29996.jpg', price: 4499.00,
         },
       ],
     },
@@ -33,16 +33,16 @@ export const goodInfo:GoodInfo = {
       attrName: '12+256',
       color: [
         {
-          id: '895gvu89nmth8wer', name: '白', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 5099.00,
+          id: '895gvu89nmth8wer', name: '白', imgSrc: 'https://img14.360buyimg.com/n1/s450x450_jfs/t1/113016/37/29857/14788/6395ab96E48131431/37e17dbc0020a668.jpg', price: 5099.00,
         },
         {
-          id: '5n89352y6gvo', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 5199.00,
+          id: '5n89352y6gvo', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/192110/34/31853/13723/6395ab62Ed3266c2b/e7d7f61ca8d1d5ca.jpg', price: 5199.00,
         },
         {
           id: 'gv8m90j345y2896n', name: '绿', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 5299.00,
         },
         {
-          id: 'v349ny327r8932dfh2', name: '蓝', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 4999.00,
+          id: 'v349ny327r8932dfh2', name: '蓝', imgSrc: 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/133091/15/29165/55562/6395a670Efc29f537/96d983a9e2c29996.jpg', price: 4999.00,
         },
       ],
     },
@@ -51,16 +51,16 @@ export const goodInfo:GoodInfo = {
       attrName: '12+512',
       color: [
         {
-          id: 'v5yn93475t89y', name: '白', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 6099.00,
+          id: 'v5yn93475t89y', name: '白', imgSrc: 'https://img14.360buyimg.com/n1/s450x450_jfs/t1/113016/37/29857/14788/6395ab96E48131431/37e17dbc0020a668.jpg', price: 6099.00,
         },
         {
-          id: '89pmbg69034bgv5u', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 6199.00,
+          id: '89pmbg69034bgv5u', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/192110/34/31853/13723/6395ab62Ed3266c2b/e7d7f61ca8d1d5ca.jpg', price: 6199.00,
         },
         {
           id: '56hb90k3iu54y9t8jmu', name: '绿', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 6299.00,
         },
         {
-          id: 'r34v7no8t5vy73824ryf', name: '蓝', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 5999.00,
+          id: 'r34v7no8t5vy73824ryf', name: '蓝', imgSrc: 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/133091/15/29165/55562/6395a670Efc29f537/96d983a9e2c29996.jpg', price: 5999.00,
         },
       ],
     },
@@ -69,16 +69,16 @@ export const goodInfo:GoodInfo = {
       attrName: '16+512',
       color: [
         {
-          id: '4gvy905tn7284y5fg9', name: '白', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 6699.00,
+          id: '4gvy905tn7284y5fg9', name: '白', imgSrc: 'https://img14.360buyimg.com/n1/s450x450_jfs/t1/113016/37/29857/14788/6395ab96E48131431/37e17dbc0020a668.jpg', price: 6699.00,
         },
         {
-          id: '5u2rj8034u5rt084f', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 6799.00,
+          id: '5u2rj8034u5rt084f', name: '黑', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/192110/34/31853/13723/6395ab62Ed3266c2b/e7d7f61ca8d1d5ca.jpg', price: 6799.00,
         },
         {
           id: '5yn84g3789frhw7', name: '绿', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 6899.00,
         },
         {
-          id: 'jft89uyhn8erusofge', name: '蓝', imgSrc: 'https://img13.360buyimg.com/n1/s450x450_jfs/t1/124212/39/32450/17910/6397e681Ed51d6065/68f5d63c18b1bfb7.jpg', price: 6999.00,
+          id: 'jft89uyhn8erusofge', name: '蓝', imgSrc: 'https://img11.360buyimg.com/n1/s450x450_jfs/t1/133091/15/29165/55562/6395a670Efc29f537/96d983a9e2c29996.jpg', price: 6999.00,
         },
       ],
     },
