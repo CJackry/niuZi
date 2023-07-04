@@ -4,18 +4,24 @@ import {
   MagnifierContainer, MagnifierPreview, MagnifierZoom,
 } from 'react-image-magnifiers';
 import { goodBigImgList } from '@/src/utils/fakeData';
+import clsx from 'clsx';
 import classes from './imgPreview.module.scss';
 
 type Props = {
-    imgList: Array<Color>,
+  imgList: Array<Color>,
+  defaultColor: {
+      name: string,
+    imgSrc: string,
+  },
 }
 
-const ImgPreview:React.FC<Props> = ({ imgList }) => {
-  const [img, setImg] = useState({
-    name: imgList[0].name,
-    imgSrc: imgList[0].imgSrc,
+const ImgPreview:React.FC<Props> = ({ imgList, defaultColor }) => {
+  const [img, setImg] = useState(defaultColor);
+  let defaultBig = defaultColor.imgSrc;
+  goodBigImgList.forEach((bi) => {
+    if (bi.name === defaultColor.name) defaultBig = bi.imgSrc;
   });
-  const [bigImg, setBigImg] = useState(goodBigImgList[0].imgSrc);
+  const [bigImg, setBigImg] = useState(defaultBig);
   const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     const { title } = e.currentTarget;
     imgList.forEach((item) => {
@@ -51,8 +57,13 @@ const ImgPreview:React.FC<Props> = ({ imgList }) => {
             tabIndex={0}
             title={imgItem.name}
             key={imgItem.id}
+            className={clsx(classes.imgSpan, { [classes.selected]: img.name === imgItem.name })}
           >
-            <img className={classes.smallImg} src={imgItem.imgSrc} alt={imgItem.name} />
+            <img
+              className={classes.smallImg}
+              src={imgItem.imgSrc}
+              alt={imgItem.name}
+            />
           </span>
         ))}
       </div>

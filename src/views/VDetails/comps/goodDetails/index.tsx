@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GoodInfo, CartAttr } from '@/src/views/VDetails/interface';
+import { GoodInfo, CartAttr, Color } from '@/src/views/VDetails/interface';
 import Link from 'next/link';
 import AddrSelect from '@/src/components/addrSelect';
 import NumChange from '@/src/components/numChange';
@@ -10,11 +10,12 @@ import classes from './goodDetails.module.scss';
 import GoodPrice from './comps/goodPrice';
 
 type Props = {
-    goodInfo: GoodInfo,
+  goodInfo: GoodInfo,
+  onChange?: (color: Color)=> void,
 }
 
 // https://item.jd.com/100049486783.html#crumb-wrap
-const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
+const GoodDetails:React.FC<Props> = ({ goodInfo, onChange }) => {
   const { price } = goodInfo.attr[0].color[0];
   const { store: { name } } = useUserContext();
   const { handleAddCart } = useCartAction();
@@ -41,6 +42,7 @@ const GoodDetails:React.FC<Props> = ({ goodInfo }) => {
             setAttr({
               ...attr, price: c.price, color, imgSrc: c.imgSrc, id: c.id,
             });
+            if (onChange) onChange(c);
           }
         });
       }
