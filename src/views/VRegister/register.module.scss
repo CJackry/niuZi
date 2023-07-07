@@ -1,0 +1,56 @@
+@import "styles/theme/light.module";
+.root{
+  background-color: $light--base--color--white;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  width: 100%;
+  box-shadow:0 8px 5px -5px $light--base--color--gray;
+}
+.title{
+  font-size: 0;
+}
+.title img{
+  display: inline-block;
+  height: 50px;
+  vertical-align: middle;
+}
+.title span{
+  display: inline-block;
+  font-size: 24px;
+  vertical-align: middle;
+  margin-top: 5px;
+  color: $light--base--color--black;
+}
+.userLogin a{
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 10px;
+  color: $light--base--color--red;
+}
+.registerBody{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+.regisTable{
+
+}
+.registerBtn{
+  width: 400px;
+  height: 52px;
+  text-align: center;
+  line-height: 52px;
+  border: 0;
+  background-color: $light--base--color--red;
+  color: $light--base--color--white;
+  font-size: 14px;
+  cursor: pointer;
+}
+.registerBtn:hover{
+  background-color: $light--base--color--deepRed;
+}

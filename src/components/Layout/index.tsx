@@ -11,7 +11,9 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
   console.log('render');
-  if (router.pathname === '/login') return (<div className={classes.root}>{ children }</div>);
+  if (router.pathname === '/login' || router.pathname === '/register') {
+    return (<div className={classes.root}>{ children }</div>);
+  }
   return (
     <div className={classes.root}>
       <Shortcut />

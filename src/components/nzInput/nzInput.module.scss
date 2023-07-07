@@ -1,0 +1,41 @@
+@import "styles/theme/light.module";
+.root{
+  display: flex;
+  justify-content: left;
+}
+.inputTable{
+}
+.inputTable input{
+  font-size: 14px;
+  border: 0;
+  height: 52px;
+}
+.inputTable{
+  display: flex;
+  justify-content: left;
+  height: 52px;
+  text-align: center;
+  line-height: 52px;
+  border: 1px solid $light--base--color--deepGray;
+}
+.inputTit{
+  display: inline-block;
+  height: 52px;
+  line-height: 52px;
+  width: 107px;
+  border-right:1px solid $light--base--color--deepGray;
+  background-color: $light--base--color--gray;
+}
+.registerInput{
+  margin-left: 10px;
+  border: 0;
+  height: 30px;
+  width: 280px;
+  outline: 0;
+}
+.tips{
+  margin-left: 108px;
+  color: $light--base--color--red;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
