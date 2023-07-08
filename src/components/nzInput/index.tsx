@@ -34,7 +34,7 @@ const NzInput:React.FC<Props> = ({
           type={type || 'text'}
         />
       </div>
-      {isShowTips ? <span className={clsx(originClasses.tips, classes?.tips)}>{tips}</span> : null}
+      <span className={clsx(originClasses.tips, classes?.tips)}>{isShowTips ? tips : ''}</span>
     </div>
   );
 };
