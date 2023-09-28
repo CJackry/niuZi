@@ -1,3 +1,4 @@
+@import "styles/theme/light.module";
 .content {
   position: absolute;
   top: 50%;
@@ -10,6 +11,8 @@
 .header{
   position: relative;
   height: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 .header span{
   display: block;
@@ -30,4 +33,14 @@
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
   z-index: 9999;
+}
+
+.closeBtn{
+  border: 0;
+  background: transparent;
+  padding: 10px;
+}
+
+.closeBtn:hover{
+    color: $light--base--color--red;
 }

@@ -23,11 +23,11 @@ type Props = {
 const NzModal:React.FC<Props> = (props) => {
   const {
     isOpen, customClasses,
-    children, title,
+    children, title = '',
     footerCom, handleClose,
   } = props;
   const closeClick = () => {
-    if (handleClose) {
+    if (typeof handleClose === 'function') {
       handleClose();
     }
   };
@@ -40,8 +40,14 @@ const NzModal:React.FC<Props> = (props) => {
     >
       <div className={clsx(classes.header, customClasses?.header)}>
         {title}
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-        {handleClose ? <span onClick={closeClick}>x</span> : ''}
+        {typeof handleClose === 'function' && (
+          <button
+            onClick={closeClick}
+            className={classes.closeBtn}
+          >
+            x
+          </button>
+        )}
       </div>
       {children}
       {footerCom}

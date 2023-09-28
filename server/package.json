@@ -12,8 +12,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node responseNiuzi.js",
-    "start": "nodemon responseNiuzi.js"
+    "nodedev": "nodemon responseNiuzi.js",
+    "start": "node responseNiuzi.js"
   },
   "author": "",
   "license": "ISC"
